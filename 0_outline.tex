@@ -5,12 +5,16 @@
 \date{}
 
 \usepackage[margin=1in]{geometry}
+\usepackage[]{natbib}
+
 \setcounter{secnumdepth}{-1}
 
 \begin{document}
 \maketitle
 \tableofcontents
 %\listoffigures
+
+%Hello world \citet{goossens93}
 
 \input{./1_abstract.tex}
 \input{./2_introduction.tex}
@@ -19,7 +23,10 @@
 \input{./5_s3_quantify.tex}
 \input{./6_s4_analysis.tex}
 \input{./7_discussion_conclusion.tex}
-\input{./8_references.tex}
+
+\bibliographystyle{authoryear}
+\bibliography{references}
+
 \input{./9_appendices.tex}
 
 \end{document}
