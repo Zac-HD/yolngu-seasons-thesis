@@ -5,16 +5,21 @@
 \date{}
 
 \usepackage[margin=1in]{geometry}
-\usepackage[]{natbib}
+
+\usepackage{natbib}
+\bibliographystyle{agsm} % Australian Govt. Harvard-style
+
+\usepackage[nottoc]{tocbibind}
+\settocbibname{References}
 
 \setcounter{secnumdepth}{-1}
 
 \begin{document}
 \maketitle
 \tableofcontents
-%\listoffigures
+\listoffigures
 
-%Hello world \citet{goossens93}
+Hello world \cite{clarke2009}
 
 \input{./1_abstract.tex}
 \input{./2_introduction.tex}
@@ -24,7 +29,6 @@
 \input{./6_s4_analysis.tex}
 \input{./7_discussion_conclusion.tex}
 
-\bibliographystyle{authoryear}
 \bibliography{references}
 
 \input{./9_appendices.tex}
