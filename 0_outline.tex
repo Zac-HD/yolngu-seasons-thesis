@@ -19,8 +19,6 @@
 \tableofcontents
 \listoffigures
 
-Hello world \cite{clarke2009}
-
 \input{./1_abstract.tex}
 \input{./2_introduction.tex}
 \input{./3_s1_context.tex}
@@ -29,8 +27,10 @@ Hello world \cite{clarke2009}
 \input{./6_s4_analysis.tex}
 \input{./7_discussion_conclusion.tex}
 
+% force uncited references to be listed (draft only)
+\nocite{*}
 \bibliography{references}
 
-\input{./9_appendices.tex}
+\input{./appendices.tex}
 
 \end{document}
