@@ -1,0 +1,50 @@
+# Store machine-readable data about the structure of my data
+metadata_cols:
+    - Station Number
+    - Station Name
+    - Latitude
+    - Longitude
+    - Height above MSL
+wind_dirs: [
+    'N', 'NNE', 'NE', 'ENE',
+    'E', 'ESE', 'SE', 'SSE',
+    'S', 'SSW', 'SW', 'WSW',
+    'W', 'WNW', 'NW', 'NNW',
+    'CALM']
+quality_flags:
+    - Y  # quality controlled and acceptable
+    - N  # not quality controlled
+    - W  # quality controlled and considered wrong
+    - S  # quality controlled and considered suspect
+    - I  # quality controlled and inconsistent with other known information
+    - X  # no quality information available
+data_cols:
+    - Precipitation in the 24 hours before 9am (local time) in mm
+    - Maximum temperature in 24 hours after 9am (local time) in Degrees C
+    - Minimum temperature in 24 hours before 9am (local time) in Degrees C
+    - Average daily dew point temperature in Degrees C
+    - Relative humidity for observation at 09 hours Local Time in percentage %
+    - Relative humidity for observation at 15 hours Local Time in percentage %
+    - Wind speed at 09 hours Local Time measured in km/h
+    - Wind speed at 15 hours Local Time measured in km/h
+    - Wind direction at 09 hours Local Time as 16 compass point text
+    - Wind direction at 15 hours Local Time as 16 compass point text
+quality_cols:
+    - Quality of precipitation value
+    - Quality of maximum temperature in 24 hours after 9am (local time)
+    - Quality of minimum temperature in 24 hours before 9am (local time)
+    - Quality of overall dew point temperature observations used
+    - Quality of relative humidity for observation at 09 hours Local Time
+    - Quality of relative humidity for observation at 15 hours Local Time
+    - Quality of wind speed at 09 hours Local Time
+    - Quality of wind speed at 15 hours Local Time
+    - Quality of wind direction at 09 hours Local Time
+    - Quality of wind direction at 15 hours Local Time
+accumulation_pairs:
+    Precipitation in the 24 hours before 9am (local time) in mm: Accumulated number of days over which the precipitation was measured
+    Maximum temperature in 24 hours after 9am (local time) in Degrees C: Days of accumulation of maximum temperature
+    Minimum temperature in 24 hours before 9am (local time) in Degrees C: Days of accumulation of minimum temperature
+discard_cols:
+    - Number of days of rain within the days of accumulation
+    - dc
+    - "#"
