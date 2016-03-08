@@ -1,5 +1,8 @@
 #This .gitignore file covers LaTeX, Python, and Windows annoyances.
 
+# Don't track analysis outputs, regenerate instead
+output/*
+
 ## LaTeX stuff
 ## Core latex/pdflatex auxiliary files:
 *.aux
@@ -18,6 +21,8 @@
 *.ps
 *.eps
 *.pdf
+# So allow .pdf in the img dir to be tracked
+!img/*.pdf
 
 ## Bibliography auxiliary files (bibtex/biblatex/biber):
 *.bbl
