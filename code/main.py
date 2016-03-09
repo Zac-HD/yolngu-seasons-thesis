@@ -112,29 +112,28 @@ def heatmap(data, kind, **kwargs):
                         for d in data.index],
         'robust': True,
         }
-    winddircmap = mpl.colors.ListedColormap(
-        sns.hls_palette(16) + [(1, 1, 1), (0, 0, 0)])
+    temp = {'cmap': 'coolwarm'}
+    wspd = {'vmin': 10, 'vmax': 38,
+            'cmap': sns.light_palette("navy", as_cmap=True)}
+    wdir = {'cmap': mpl.colors.ListedColormap(
+        sns.hls_palette(16, h=0.25) + [(1, 1, 1), (0, 0, 0)]),
+            'robust': False,
+            }
     kind_kwargs = {
         'rain': {'cmap': 'Blues',
-                 'cbar_kws': {'label': 'Daily rainfall\n(mm)'}},
-        'maxtemp': {'cmap': 'coolwarm',
-                    'cbar_kws': {'label': 'Daily max.\ntemperature (C)'},},
-        'mintemp': {'cmap': 'coolwarm',
-                    'cbar_kws': {'label': 'Daily min.\ntemperature (C)'},},
-        'dewpoint': {'cmap': 'Blues',
-                     'cbar_kws': {'label': 'Dewpoint\ntemperature (C)'},},
-        'humid09': {'cmap': 'Blues',
-                    'cbar_kws': {'label': '9am humidity (%)'},},
-        'humid15': {'cmap': 'Blues',
-                    'cbar_kws': {'label': '3pm humidity (%)'},},
-        'windspd09': {'cbar_kws': {'label': '9am wind\nspeed (km/h)'},},
-        'windspd15': {'cbar_kws': {'label': '3pm wind\nspeed (km/h)'},},
-        'winddir09': {'cmap': winddircmap,
-                      'robust': False,
-                      'cbar_kws': {'label': '9am wind\ndirection'},},
-        'winddir15': {'cmap': winddircmap,
-                      'robust': False,
-                      'cbar_kws': {'label': '3pm wind\ndirection'},},
+                 'cbar_kws': {'label': 'Daily rain (mm)\n(5 day mean)'}},
+        'maxtemp': {
+            'cbar_kws': {'label': 'Daily max.\ntemperature (C)'}, **temp},
+        'mintemp': {
+            'cbar_kws': {'label': 'Daily min.\ntemperature (C)'}, **temp},
+        'dewpoint': {'cmap': 'BrBG',
+                     'cbar_kws': {'label': 'Dewpoint\ntemperature (C)'}},
+        'humid09': {'cbar_kws': {'label': '9am humidity (%)'}},
+        'humid15': {'cbar_kws': {'label': '3pm humidity (%)'}},
+        'windspd09': {'cbar_kws': {'label': '9am wind\nspeed (km/h)'}, **wspd},
+        'windspd15': {'cbar_kws': {'label': '3pm wind\nspeed (km/h)'}, **wspd},
+        'winddir09': {'cbar_kws': {'label': '9am wind\ndirection'}, **wdir},
+        'winddir15': {'cbar_kws': {'label': '3pm wind\ndirection'}, **wdir},
         }
     return sns.heatmap(np.asarray(data),
                        **{**base_kwargs, **kind_kwargs[kind], **kwargs})
@@ -158,8 +157,8 @@ def multipanel(df, *cols):
         }
 
     func = {  # any needed data transformations
-        'rain': lambda df, name: pivot(
-            pd.rolling_mean(df[nameof.rain], center=True, window=5).to_frame(),
+        'rain': lambda df, name: pivot(pd.rolling_mean(
+            df[nameof.rain], center=True, window=5, min_periods=1).to_frame(),
             name),
         'winddir09': lambda df, name: categorical_to_numeric_wind(df, name),
         'winddir15': lambda df, name: categorical_to_numeric_wind(df, name),
