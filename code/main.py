@@ -146,7 +146,7 @@ def categorical_to_numeric_wind(df, colname):
         df[varname].dropna().map(
             {w: i for i, w in enumerate(META['wind_dirs'])}).to_frame(),
         nameof._asdict()[colname]
-        ).fillna(18).astype(int)
+        ).fillna(17).astype(int)
 
 
 def multipanel(df, *cols):
