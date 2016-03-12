@@ -1,0 +1,31 @@
+\documentclass[11pt]{report}
+
+\title{{\Huge A Yolngu Seasonal Calendar:} \newline Past, Present, Future}
+\author{Zac Hatfield Dodds}
+\date{}
+
+\usepackage{zacstyle}
+
+\begin{document}
+\maketitle
+
+\input{1_abstract.tex}
+
+\tableofcontents
+\listoffigures
+
+\input{2_introduction.tex}
+\input{3_s1_context.tex}
+\input{4_s2_calendars.tex}
+\input{5_s3_quantify.tex}
+\input{6_s4_analysis.tex}
+\input{7_discussion_conclusion.tex}
+
+% force uncited references to be listed (draft only)
+\nocite{*}
+\bibliography{references}
+
+\appendix
+\input{appendices.tex}
+
+\end{document}
