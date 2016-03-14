@@ -21,6 +21,11 @@
 \setlist[itemize]{noitemsep,nolistsep} % minimise vertical spacing in lists
 \def\labelitemi{-} % use a dash instead of solid bullet
 
-\setcounter{secnumdepth}{-1}
+\setcounter{secnumdepth}{1}
 \setcounter{tocdepth}{1}
 
+
+\usepackage{titlesec}
+\usepackage{lipsum}
+\titleformat{\chapter}[hang]
+  {\normalfont\bfseries}{\LARGE{\thechapter}}{20pt}{\LARGE}
