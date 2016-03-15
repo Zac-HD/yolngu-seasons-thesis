@@ -33,6 +33,19 @@ nameof = namedtuple(
     )(*META['data_cols'])
 
 
+def save_figure(fig, name):
+    """Save the given figure as a vector pdf file."""
+    fig.savefig('../output/{}.pdf'.format(name), bbox_inches='tight')
+
+
+def latex_table(df, name, **kwargs):
+    """Save the given dataframe as a LaTeX longtable"""
+    with open('../output/{}.tex'.format(name), 'w') as f:
+        f.write(df.to_latex(
+            float_format=lambda n: '{:.2f}'.format(n),
+            na_rep='', longtable=True, **kwargs))
+
+
 # Then define functions for the heavy lifting of loading and cleaning data
 
 def raw_station_dataframe(station_number):
@@ -174,21 +187,13 @@ def multipanel(df, *cols):
 
 # And finally do the actual work!
 
-s = station_dataframe('014517')  # Galiwinku
-
 chart_panels = ['rain', 'maxtemp', 'mintemp', 'dewpoint',
                 'windspd09', 'winddir09', 'windspd15', 'winddir15']
-multipanel(s, *chart_panels).savefig(
-    '../output/galiwinku-all.pdf', bbox_inches='tight')
 
+s = station_dataframe('014517')  # Galiwinku
+save_figure(multipanel(s, *chart_panels), 'galiwinku-all')
+latex_table(s.describe(), 'galiwinku-summary-table',
+            column_format='l' + 'p{6em}' * 10)
 
-# Save summary table for Galiwinku conditions
-table = s.describe().to_latex(
-    longtable=True,
-    float_format=lambda n: '{:.2f}'.format(n),
-    na_rep='',
-    column_format='l' + 'p{6.5em}' * 10,
-    )
-with open('../output/galiwinku-summary-table.tex', 'w') as f:
-    f.write(table)
-
+save_figure(multipanel(station_dataframe('014404'), *chart_panels),
+            'milingimbi-all')
