@@ -170,9 +170,8 @@ def multipanel(df, *cols):
         }
 
     func = {  # any needed data transformations
-        'rain': lambda df, name: pivot(pd.rolling_mean(
-            df[nameof.rain], center=True, window=5, min_periods=1).to_frame(),
-            name),
+        'rain': lambda df, name: pivot(df[nameof.rain].rolling(
+            center=True, window=5, min_periods=1).mean().to_frame(), name),
         'winddir09': lambda df, name: categorical_to_numeric_wind(df, name),
         'winddir15': lambda df, name: categorical_to_numeric_wind(df, name),
         }
