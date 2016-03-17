@@ -111,6 +111,8 @@ def pivot(df, colname):
 
 def heatmap(data, kind, **kwargs):
     """Draw a beautiful heatmap in the given axes with variable styles."""
+    # Drop years of data with very few observations
+    data = data.dropna(thresh=20)
     # construct a list of labels, empty for most days but with month names
     labellist = [''] * 12
     for month in ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June',
@@ -126,20 +128,20 @@ def heatmap(data, kind, **kwargs):
         'robust': True,
         }
     temp = {'cmap': 'coolwarm'}
-    wspd = {'vmin': 10, 'vmax': 38,
+    wspd = {'vmin': 10, 'vmax': 40,
             'cmap': sns.light_palette("navy", as_cmap=True)}
     wdir = {'cmap': mpl.colors.ListedColormap(
         sns.hls_palette(16, h=0.25) + [(1, 1, 1), (0, 0, 0)]),
             'robust': False,
             }
     kind_kwargs = {
-        'rain': {'cmap': 'Blues',
+        'rain': {'cmap': 'Blues', 'vmin': 0, 'vmax': 30,
                  'cbar_kws': {'label': 'Daily rain (mm)\n(5 day mean)'}},
-        'maxtemp': {
-            'cbar_kws': {'label': 'Daily max.\ntemperature (C)'}, **temp},
-        'mintemp': {
-            'cbar_kws': {'label': 'Daily min.\ntemperature (C)'}, **temp},
-        'dewpoint': {'cmap': 'BrBG',
+        'maxtemp': {'cbar_kws': {'label': 'Daily max.\ntemperature (C)'},
+                    'vmin': 28, 'vmax': 35, **temp},
+        'mintemp': {'cbar_kws': {'label': 'Daily min.\ntemperature (C)'},
+                    'vmin': 17, 'vmax': 28, **temp},
+        'dewpoint': {'cmap': 'YlGnBu', 'vmin': 16, 'vmax': 26,
                      'cbar_kws': {'label': 'Dewpoint\ntemperature (C)'}},
         'humid09': {'cbar_kws': {'label': '9am humidity (%)'}},
         'humid15': {'cbar_kws': {'label': '3pm humidity (%)'}},
@@ -148,8 +150,10 @@ def heatmap(data, kind, **kwargs):
         'winddir09': {'cbar_kws': {'label': '9am wind\ndirection'}, **wdir},
         'winddir15': {'cbar_kws': {'label': '3pm wind\ndirection'}, **wdir},
         }
+    if kind not in kind_kwargs:
+        kind = {v: k for k, v in zip(nameof._fields, nameof)}.get(kind)
     return sns.heatmap(np.asarray(data),
-                       **{**base_kwargs, **kind_kwargs[kind], **kwargs})
+                       **{**base_kwargs, **kind_kwargs.get(kind, {}), **kwargs})
 
 
 def categorical_to_numeric_wind(df, colname):
@@ -159,11 +163,16 @@ def categorical_to_numeric_wind(df, colname):
         df[varname].dropna().map(
             {w: i for i, w in enumerate(META['wind_dirs'])}).to_frame(),
         nameof._asdict()[colname]
-        ).fillna(17).astype(int)
+        ).fillna(17).astype('uint8')
 
 
-def multipanel(df, *cols):
+def multipanel(df, *cols, **kwargs):
     """Draw a multi-panel figure with heatmaps for given columns in the df."""
+    if isinstance(df, pd.Series):
+        df = df.to_frame()
+    if not cols:
+        cols = df.columns
+    
     context = {
         'axes.facecolor': 'black',
         'figure.figsize': (10, 1.5 * len(cols)),
@@ -178,9 +187,9 @@ def multipanel(df, *cols):
 
     with mpl.rc_context(rc=context):
         fig, axes = plt.subplots(len(cols), sharex=True)
-        for name, ax in zip(cols, axes):
+        for name, ax in zip(cols, axes if len(cols) > 1 else [axes]):
             data = func.get(name, lambda df, name: pivot(df, name))(df, name)
-            heatmap(data, name, ax=ax)
+            heatmap(data, name, ax=ax, **kwargs)
     return fig
 
 
@@ -188,11 +197,19 @@ def multipanel(df, *cols):
 
 chart_panels = ['rain', 'maxtemp', 'mintemp', 'dewpoint',
                 'windspd09', 'winddir09', 'windspd15', 'winddir15']
+stations = {
+    "014401": 'Warruwi',
+    "014404": 'Milingimbi',
+    "014405": 'Maningrida',
+    "014508": 'Nhulunbuy',
+    "014517": 'Galiwinku',
+    }
 
 s = station_dataframe('014517')  # Galiwinku
-save_figure(multipanel(s, *chart_panels), 'galiwinku-all')
-latex_table(s.describe(), 'galiwinku-summary-table',
-            column_format='l' + 'p{6em}' * 10)
+latex_table(s.groupby(s.index.month).mean(),
+            'galiwinku-summary-table',
+            column_format='l' + 'p{6em}' * 8)
 
-save_figure(multipanel(station_dataframe('014404'), *chart_panels),
-            'milingimbi-all')
+for s, name in stations.items():
+    save_figure(multipanel(station_dataframe(s), *chart_panels),
+                name.lower() + '-all')
