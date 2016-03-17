@@ -189,7 +189,8 @@ def multipanel(df, *cols, **kwargs):
         fig, axes = plt.subplots(len(cols), sharex=True)
         for name, ax in zip(cols, axes if len(cols) > 1 else [axes]):
             data = func.get(name, lambda df, name: pivot(df, name))(df, name)
-            heatmap(data, name, ax=ax, **kwargs)
+            hax = heatmap(data, name, ax=ax, **kwargs)
+            hax.set_yticklabels(hax.yaxis.get_majorticklabels(), rotation=0)
     return fig
 
 
