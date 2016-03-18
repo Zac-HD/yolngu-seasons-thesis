@@ -126,6 +126,8 @@ def heatmap(data, kind, **kwargs):
         'yticklabels': ['' if d % (len(data.index) // 5) else d
                         for d in data.index],
         'robust': True,
+        # TODO:  check DPI for rasterised panel display
+        'rasterized': True,
         }
     temp = {'cmap': 'coolwarm'}
     wspd = {'vmin': 10, 'vmax': 40,
@@ -172,10 +174,12 @@ def multipanel(df, *cols, **kwargs):
         df = df.to_frame()
     if not cols:
         cols = df.columns
-    
+
     context = {
         'axes.facecolor': 'black',
+        # TODO:  set correct figsize for whole-page display, inc. fontsize
         'figure.figsize': (10, 1.5 * len(cols)),
+        # TODO:  investigate .eps etc to use LaTeX for text, fonts
         }
 
     func = {  # any needed data transformations
