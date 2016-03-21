@@ -9,6 +9,13 @@ from collections import namedtuple
 import os
 import shutil
 
+# Abort early if outputs are not stale
+if os.path.isdir('../output/') and \
+        os.path.getmtime('../output/') > os.path.getmtime('main.py'):
+    print('Analysis outputs are (probably) not stale')
+    exit()
+
+
 import yaml
 
 import numpy as np
@@ -16,13 +23,6 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
-
-
-# Abort early if outputs are not stale
-if os.path.isdir('../output/') and \
-        os.path.getmtime('../output/') > os.path.getmtime('main.py'):
-    print('Analysis outputs are (probably) not stale')
-    exit()
 
 
 # Miscelaneous setup functionality
@@ -168,11 +168,9 @@ def heatmap(data, kind, **kwargs):
 def categorical_to_numeric_wind(df, colname):
     """Creates a numerical pivot table of wind for plotting from the df."""
     varname = nameof._asdict()[colname]
-    return pivot(
-        df[varname].dropna().map(
-            {w: i for i, w in enumerate(META['wind_dirs'])}).to_frame(),
-        nameof._asdict()[colname]
-        ).fillna(17).astype('uint8')
+    num_wind_dirs = {w: i for i, w in enumerate(META['wind_dirs'])}
+    new = pivot(df[varname].dropna().map(num_wind_dirs).to_frame(), varname)
+    return new.fillna(17).astype('uint8')
 
 
 def multipanel(df, *cols, **kwargs):
@@ -192,15 +190,15 @@ def multipanel(df, *cols, **kwargs):
     func = {  # any needed data transformations
         'rain': lambda df, name: pivot(df[nameof.rain].rolling(
             center=True, window=5, min_periods=1).mean().to_frame(), name),
-        'winddir09': lambda df, name: categorical_to_numeric_wind(df, name),
-        'winddir15': lambda df, name: categorical_to_numeric_wind(df, name),
+        'winddir09': categorical_to_numeric_wind,
+        'winddir15': categorical_to_numeric_wind,
         }
 
     with mpl.rc_context(rc=context):
         fig, axes = plt.subplots(len(cols), sharex=True)
         for name, ax in zip(cols, axes if len(cols) > 1 else [axes]):
-            data = func.get(name, lambda df, name: pivot(df, name))(df, name)
-            hax = heatmap(data, name, ax=ax, **kwargs)
+            f = func.get(name) or pivot
+            hax = heatmap(f(df, name), name, ax=ax, **kwargs)
             hax.set_yticklabels(hax.yaxis.get_majorticklabels(), rotation=0)
     return fig
 
