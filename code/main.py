@@ -18,6 +18,13 @@ import pandas as pd
 import seaborn as sns
 
 
+# Abort early if outputs are not stale
+if os.path.isdir('../output/') and \
+        os.path.getmtime('../output/') > os.path.getmtime('main.py'):
+    print('Analysis outputs are (probably) not stale')
+    exit()
+
+
 # Miscelaneous setup functionality
 shutil.rmtree('../output/', ignore_errors=True)
 os.mkdir('../output/')
