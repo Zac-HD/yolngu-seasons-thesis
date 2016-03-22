@@ -69,7 +69,7 @@ def raw_station_dataframe(station_number):
         del df[c]
     # Discard data from multiple days of accumulation
     for d, acc in META['accumulation_pairs'].items():
-        df[d] = df[d].where(df[acc] == 1)
+        df[d] = df[d].where(df[acc].fillna(1) == 1)
         del df[acc]
     # Quality fields and wind data are categorical columns
     for c in df.columns:
@@ -82,13 +82,14 @@ def raw_station_dataframe(station_number):
 
 
 def station_dataframe(station_number,
-                      *, discard_metadata=True, discard_low_qual=False):
+                      *, discard_metadata=True, discard_unchecked=False):
     """Return a dataframe with clean data only for the given station."""
     df = raw_station_dataframe(station_number)
     # Discard low-quality data, then delete quality columns
+    low_qual = 'NWSI' if discard_unchecked else 'WSI'
     for d, q in zip(META['data_cols'], META['quality_cols']):
-        if discard_low_qual:
-            df[d] = df[d].where(df[q] == 'Y')
+        for symbol in low_qual:
+            df[d].where(df[q] != symbol, inplace=True)
         del df[q]
     # Discard metadata columns
     if discard_metadata:
