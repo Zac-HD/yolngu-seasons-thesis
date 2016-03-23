@@ -59,19 +59,19 @@ TODO check notes for other issues.
 Australian Bureau of Meterology.
 
 \begin{table}[h]
-\centering
-\begin{tabular}{llllll}
-    Station no.  &  Name                 &  Location     &  Latitude   &  Longitude   &  Elevation \\
+    \centering
+    \begin{tabular}{llllll}
+        Station no.  &  Name                 &  Location     &  Latitude   &  Longitude   &  Elevation \\
 %
-    014401       &  WARRUWI AIRPORT      &  Warruwi      &  11.6500S   &  133.3797E   &  19.2      \\
-    014404       &  MILINGIMBI AIRPORT   &  Milingimbi   &  12.0932S   &  134.8919E   &  15.0      \\
-    014405       &  MANINGRIDA AIRPORT   &  Maningrida   &  12.0569S   &  134.2339E   &  28.1      \\
-    014508       &  GOVE AIRPORT         &  Nhulunbuy    &  12.2741S   &  136.8203E   &  51.6      \\
-    014517       &  NGAYAWILI            &  Galiwinku    &  11.9971S   &  135.5726E   &  8.1
-\end{tabular}
-\caption{Summary description of weather stations used.
-    Locations are visible in \autoref{fig:arnhem-map}}
-\label{tab:weather-station-summary}
+        014401       &  WARRUWI AIRPORT      &  Warruwi      &  11.6500S   &  133.3797E   &  19.2      \\
+        014404       &  MILINGIMBI AIRPORT   &  Milingimbi   &  12.0932S   &  134.8919E   &  15.0      \\
+        014405       &  MANINGRIDA AIRPORT   &  Maningrida   &  12.0569S   &  134.2339E   &  28.1      \\
+        014508       &  GOVE AIRPORT         &  Nhulunbuy    &  12.2741S   &  136.8203E   &  51.6      \\
+        014517       &  NGAYAWILI            &  Galiwinku    &  11.9971S   &  135.5726E   &  8.1
+    \end{tabular}
+    \caption{Summary description of weather stations used.
+        Locations are visible in \autoref{fig:arnhem-map}}
+    \label{tab:weather-station-summary}
 \end{table}
 
 \autoref{tab:weather-station-summary} shows the name, ID, and location of
@@ -104,28 +104,79 @@ The second is to calculate the local trend in each varaible, identifying seasona
 change when on the normalised rate of change is high and the sign is correct.
 TODO - more details on this too.
 
+Each of these methods assigns a confidence rating for each season to each day of
+observations.  These ratings are then reconciled to a single season, or unknown,
+for each day.  The reconciliation draws on participants' comments to drop inconsistent
+ratings before comparing normalised season ratings.
+
 
 
 
 \section{Results and Discussion}
 
-\begin{enumerate}
-\item The six seasons are XXX (see above).  They are defined by XXX.
-        This calendar has the following interesting properties:
-        (eg – variable onset, multiple occurrence, at-least-once by climate not construction).
-\item Summary statistics (as charts) for input data, ie weather observations.
-\item For each season:
-\item Determine seasons by each approach, and discuss reliability
-\item APPROACH is best, for REASONS.  Finer distinctions if applicable.
-\item The Quantified calendar is as follows:  XXX (with detection functions)
-\end{enumerate}
+\subsection{Summary of a Yolngu Calendar}
+Following \autoref{ch:seasons}, \autoref{tab:quant-seasons-summary} shows
+typical timing and recognition criteria for each season.
+
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{llllll}
+        Season          &  Typical Months       &  Criteria to recognise                    \\
+        Dhuludur        &  Oct, Nov, Dec        &  Cool at night, mixed wind, first rain    \\
+        Barramirri      &  Dec, Jan, Feb        &  NW wind, heavy rain most days            \\
+        Mayaltha        &  Feb, Mar             &  NW wind, approx weekly rain              \\
+        Midawarr        &  Mar, Apr, May        &  NE to E wind, less rain, last storm      \\
+        Dharrathamirri  &  May, Jun, Jul, Aug   &  No rain, consistent ESE-SSE wind         \\
+        Rarrandharr     &  Sep, Oct             &  Hot days, low humidity                   
+    \end{tabular}
+    \caption{A quantifiable summary of the Yolngu seasons case study.}
+    \label{tab:quant-seasons-summary}
+\end{table}
+
+
+Additionally, some participants offered tips for recognising seasons,
+or information about seasonal patterns.
+
+\begin{itemize}
+\item The onset timing of seasons varies between years, with weather conditions. 
+
+\item Seasons can `interrupt' one another, if conditions oscillate appropriately.
+        It is however important to avoid premature declarations, so at least two to
+        three days of the interrupting season's conditions should be observed.
+
+\item Consequently, seasons may begin and end zero or more times each year -
+        and at least once in every annual cycle to date.
+
+\item Seasons are not required to begin in the standard order, though most do.
+
+\item At Galiwinku, and presumably in other coastal locations, the afternoon
+        sea breeze obscures the seasonal signal in wind direction.
+        9am wind is fine.  3pm is too early.  At various times, 5pm-9pm is best.
+        (The analysis below uses 6pm wind for all evening observations.)
+\end{itemize}
+
+
+
+\subsection{The Observational Weather Record in NE Arnhem Land}
+TODO - tables etc. if I need them; discuss with Janette
+
+Figures \ref{fig:galiwinku-observations} and \ref{fig:milingimbi-observations}
+show historical weather observations at Galiwinku and Milingimbi as
+sets of heatmaps, where for each variable a grid of year (y) and day-of-year(x)
+is shaded according to the observation on that date.
+Black cells indicate missing data.
+In each figure, the variation in seasonality between years is clearly visible.
+
 
 \begin{figure}[p]
     \centering
     \includegraphics[width=\textwidth]{galiwinku-all.pdf}
     \caption[Historical weather observations at Elcho Island]{
-        Historical weather observations at Elcho Island.  Each panel shows a single variable, with years on the y axis and day-of-year on the x.
-        Note that each variable has a different seasonal pattern, and that seasonality changes from year to year.}
+        Historical weather observations at Elcho Island.
+        Each panel shows a single variable, with years on the y axis and day-of-year on the x.
+        Note that each variable has a different seasonal pattern,
+        and that seasonality changes from year to year.}
     \label{fig:galiwinku-observations}
 \end{figure}
 % Note - if possible, these figures should be on facing pages to allow easy comparison
@@ -133,16 +184,39 @@ TODO - more details on this too.
     \centering
     \includegraphics[width=\textwidth]{milingimbi-all.pdf}
     \caption[Historical weather observations at Milingimbi Airport]{
-        Historical weather observations at Milingimbi Airport.  Each panel shows a single variable, with years on the y axis and day-of-year on the x.
-        Note that each variable has a different seasonal pattern, and that seasonality changes from year to year.}
+        Historical weather observations at Milingimbi Airport.
+        Each panel shows a single variable, with years on the y axis and day-of-year on the x.
+        Note that each variable has a different seasonal pattern,
+        and that seasonality changes from year to year.}
     \label{fig:milingimbi-observations}
 \end{figure}
 
+
+\autoref{tab:galiwinku-monthly-summary} shows average conditions for each
+month at Galiwinku.
+
 \begin{landscape}
 \begin{table}
-    \input{../output/galiwinku-summary-table.tex}
-    \caption{Monthly mean weather observations at Galiwinku}
-    \label{tab:galiwinku-DRAFT-ONLY}
+    \input{../output/galiwinku-monthly-summary.tex}
+    \caption{Monthly weather observations at Galiwinku.
+        Numerical data aggregated by mean, wind direction by mode.}
+    \label{tab:galiwinku-monthly-summary}
 \end{table}
 \end{landscape}
+
+
+
+\subsection{Detection of Seasons}
+For each season, run detection by the approaches given above.
+Present as a multipanel for seach approach, with a panel for each season
+and a final full-colour panel for all seasons.  Only provide this for the
+Galiwinku data; others can stick to the electronic appendicies.
+
+Discuss briefly which method is considered superior and why; note
+that \autoref{ch:analysis} will, to be concise, stick to that one.
+The other \emph{may} be used to reproduce results in an appendix.
+
+Close chapter with a table (or similar) presenting seasons, detection
+algorithms, and a summary of success rates.  Defer analysis of results
+to next chapter.
 

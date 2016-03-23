@@ -49,7 +49,7 @@ def latex_table(df, name, **kwargs):
     """Save the given dataframe as a LaTeX longtable"""
     with open('../output/{}.tex'.format(name), 'w') as f:
         f.write(df.to_latex(
-            float_format=lambda n: '{:.2f}'.format(n),
+            float_format=lambda n: '{:.1f}'.format(n),
             na_rep='', longtable=True, **kwargs))
 
 
@@ -216,11 +216,17 @@ stations = {
     "014517": 'Galiwinku',
     }
 
-s = station_dataframe('014517')  # Galiwinku
-latex_table(s.groupby(s.index.month).mean(),
-            'galiwinku-summary-table',
-            column_format='l' + 'p{6em}' * 8)
+
+def save_out(data, name):
+    """Save a multipanel summary figure and monthly text table."""
+    monthly = data[[nameof._asdict()[n] for n in chart_panels]].groupby(data.index.month)
+    modes = monthly[[nameof.winddir09, nameof.winddir15]]\
+        .agg(lambda x:x.value_counts().index[0])
+    table = pd.merge(monthly.mean(), modes, left_index=True, right_index=True)
+    latex_table(table, name + '-monthly-summary', column_format='l' + 'p{6em}' * 10)
+    save_figure(multipanel(data, *chart_panels), name + '-all')
+
 
 for s, name in stations.items():
-    save_figure(multipanel(station_dataframe(s), *chart_panels),
-                name.lower() + '-all')
+    save_out(station_dataframe(s), name.lower())
+
