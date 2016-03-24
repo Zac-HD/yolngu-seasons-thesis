@@ -3,9 +3,7 @@
 git pull || pause
 
 :: Run analysis, if code has changed more recently than outputs
-cd code
-python main.py || pause
-cd ..
+python code\main.py || pause
 
 :: Do a clean build of the document
 texify.exe --clean --batch --pdf --quiet --job-name="Zac_Thesis" "tex\thesis.tex" --run-viewer || pause
