@@ -23,6 +23,12 @@ nameof = collections.namedtuple(
      'windspd09', 'windspd15', 'winddir09', 'winddir15']
     )(*META['data_cols'])
 
+seasons = collections.namedtuple(
+    'Seasons',
+    ['du', 'ba', 'ma', 'mi', 'da', 'rr']
+    )('Dhuludur', 'Barramirri', 'Mayaltha',
+      'Midawarr', 'Dharrathamirri', 'Rarrandharr')
+
 _months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June',
            'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 dayofyear_month_labels = [
@@ -50,3 +56,9 @@ def categorical_to_numeric_wind(df, colname):
     num_wind_dirs = {w: i for i, w in enumerate(wind_dirs)}
     new = pivot(df[varname].dropna().map(num_wind_dirs).to_frame(), varname)
     return new.fillna(17).astype('uint8')
+
+
+def categorical_to_numeric_season(df, colname):
+    """Creates a numerical pivot table of wind for plotting from the df."""
+    num_seasons = {s: i for i, s in enumerate(seasons)}
+    return pivot(df[colname].dropna().map(num_seasons).to_frame(), colname)

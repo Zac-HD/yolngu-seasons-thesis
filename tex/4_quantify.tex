@@ -171,7 +171,7 @@ In each figure, the variation in seasonality between years is clearly visible.
 
 \begin{figure}[p]
     \centering
-    \includegraphics[width=\textwidth]{galiwinku-all.pdf}
+    \includegraphics[width=\textwidth]{galiwinku/observations.pdf}
     \caption[Historical weather observations at Elcho Island]{
         Historical weather observations at Elcho Island.
         Each panel shows a single variable, with years on the y axis and day-of-year on the x.
@@ -182,7 +182,7 @@ In each figure, the variation in seasonality between years is clearly visible.
 % Note - if possible, these figures should be on facing pages to allow easy comparison
 \begin{figure}[p]
     \centering
-    \includegraphics[width=\textwidth]{milingimbi-all.pdf}
+    \includegraphics[width=\textwidth]{milingimbi/observations.pdf}
     \caption[Historical weather observations at Milingimbi Airport]{
         Historical weather observations at Milingimbi Airport.
         Each panel shows a single variable, with years on the y axis and day-of-year on the x.
@@ -197,7 +197,7 @@ month at Galiwinku.
 
 \begin{landscape}
 \begin{table}
-    \input{../output/galiwinku-monthly-summary.tex}
+    \input{../output/galiwinku/monthly-summary.tex}
     \caption{Monthly weather observations at Galiwinku.
         Numerical data aggregated by mean, wind direction by mode.}
     \label{tab:galiwinku-monthly-summary}
@@ -219,4 +219,45 @@ The other \emph{may} be used to reproduce results in an appendix.
 Close chapter with a table (or similar) presenting seasons, detection
 algorithms, and a summary of success rates.  Defer analysis of results
 to next chapter.
+
+~\\
+
+There's a lot to do still, but figures \ref{fig:galiwinku-season-counts},
+\ref{fig:galiwinku-seasons}, and \ref{fig:milingimbi-seasons}
+demonstrate that the concept of the analysis is viable.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{galiwinku/season-counts.pdf}
+    \caption[Calculated season frequency, Elcho Island]{
+        Illustrative count of days for each season, Elcho Island.
+        DRAFT FIGURE ONLY, will change substantially as method improves.
+        }
+    \label{fig:galiwinku-season-counts}
+\end{figure}
+
+
+\begin{figure}[p]
+    \centering
+    \includegraphics[width=\textwidth]{galiwinku/seasons.pdf}
+    \caption[Detected seasons for Elcho Island]{
+        Detected seasons at Elcho Island, based on hand-crafted threshold conditions.
+        DRAFT FIGURE ONLY, will change substantially as method improves.
+        }
+    \label{fig:galiwinku-seasons}
+\end{figure}
+% Note - if possible, these figures should be on facing pages to allow easy comparison
+\begin{figure}[p]
+    \centering
+    \includegraphics[width=\textwidth]{milingimbi/seasons.pdf}
+    \caption[Detected seasons for Milingimbi Airport]{
+        Detected seasons at Milingimbi Airport, based on hand-crafted threshold conditions.
+        DRAFT FIGURE ONLY, will change substantially as method improves.
+        }
+    \label{fig:milingimbi-seasons}
+\end{figure}
+
+
+
+
 
