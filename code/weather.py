@@ -7,10 +7,10 @@ from utils import META, wind_dirs  # pylint:disable=no-name-in-module
 
 
 stations = (
-    ("014401", 'Warruwi'),
+    #("014401", 'Warruwi'),
     ("014404", 'Milingimbi'),
-    ("014405", 'Maningrida'),
-    ("014508", 'Nhulunbuy'),
+    #("014405", 'Maningrida'),
+    #("014508", 'Nhulunbuy'),
     ("014517", 'Galiwinku'),
     )
 

@@ -56,11 +56,15 @@ def add_seasons(df):
         below_mean(df, nameof.dewpoint),
         ])
 
+    notnull = df[list(nameof)].notnull().all(axis=1)
     for s in seasons:
+        # Carry NaNs over from data
+        df[s] = df[s].where(notnull)
         # Smooth slightly with rolling 3-day mean
-        df[s] = df[s].rolling(3).mean()
+        df[s] = df[s].rolling(3, center=True, min_periods=2).mean()
         # Scale all to [0, 1] range
         df[s] /= df[s].max()
+
     # Note that first occurance of max wins, introducing STRONG bias
     df['raw_season'] = df[list(seasons)].idxmax(axis=1).astype(
         'category', categories=seasons, ordered=True)

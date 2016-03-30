@@ -4,7 +4,6 @@
 import collections
 
 import yaml
-import pandas as pd
 
 
 with open('BOM_format.yml') as f:
@@ -42,8 +41,8 @@ def pivot(df, colname):
     """Return a 2D (year/dayofyear) table for the given column."""
     if hasattr(df, 'columns') and colname not in df.columns:
         colname = nameof._asdict()[colname]
-    df['year'] = pd.DatetimeIndex(df.index).year
-    df['dayofyear'] = pd.DatetimeIndex(df.index).dayofyear
+    df['year'] = df.index.year
+    df['dayofyear'] = df.index.dayofyear
     ret = df.pivot(index='year', columns='dayofyear', values=colname)
     del df['year']
     del df['dayofyear']
