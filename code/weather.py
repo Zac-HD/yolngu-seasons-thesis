@@ -3,6 +3,7 @@
 
 import pandas as pd
 
+import season
 from utils import META, wind_dirs  # pylint:disable=no-name-in-module
 
 
@@ -54,4 +55,4 @@ def data(station_number, *, discard_metadata=True, discard_unchecked=False):
     if discard_metadata:
         for c in META['metadata_cols']:
             del df[c]
-    return df
+    return season.add_seasons(df)

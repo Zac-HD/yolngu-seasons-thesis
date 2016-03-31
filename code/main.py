@@ -20,9 +20,7 @@ else:
     # pylint:disable=import-error,wrong-import-position
     import chart
     import weather
-    import season
 
     for station_id, name in weather.stations:
         os.mkdir('../output/' + name.lower())
-        data = season.add_seasons(weather.data(station_id))
-        chart.save_out(data, name.lower())
+        chart.save_out(weather.data(station_id), name.lower())
