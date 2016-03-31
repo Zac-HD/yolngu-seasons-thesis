@@ -27,15 +27,25 @@ def latex_table(df, station_name, name, **kwargs):
             na_rep='', longtable=True, **kwargs))
 
 
+def grouped_summary(df, gby=None):
+    """Return a table of monthly means, or modes for categorical data."""
+    gby = gby or df.index.month
+    monthly = df.groupby(gby)
+    cat_cols = [c for c in df.columns if df[c].dtype.name == 'category']
+    modes = monthly[cat_cols].agg(lambda x: x.value_counts().index[0])
+    merged = pd.merge(monthly.mean(), modes, left_index=True, right_index=True)
+    return merged[df.columns]
+
+
 def save_out(data, station_name):
     """Save a multipanel summary figure and monthly text table."""
-    monthly = data[[nameof._asdict()[n] for n in utils.chart_panels]]\
-        .groupby(data.index.month)
-    modes = monthly[[nameof.winddir09, nameof.winddir15]]\
-        .agg(lambda x: x.value_counts().index[0])
-    table = pd.merge(monthly.mean(), modes, left_index=True, right_index=True)
-    latex_table(table, station_name, 'monthly-summary',
+    monthly = grouped_summary(data)
+    observations = monthly[[nameof._asdict()[n] for n in utils.chart_panels]]
+    latex_table(observations, station_name, 'monthly-summary',
                 column_format='l' + 'p{6em}' * 10)
+    latex_table(monthly[['raw_season'] + list(utils.seasons)],
+                station_name, 'monthly-seasons',
+                column_format='l' + 'p{6em}' * 7)
 
     save_figure(multipanel(data, *utils.chart_panels),
                 station_name, 'observations')
@@ -83,7 +93,8 @@ def heatmap(data, kind, **kwargs):
         'windspd15': {'cbar_kws': {'label': '3pm wind\nspeed (km/h)'}, **wspd},
         'winddir09': {'cbar_kws': {'label': '9am wind\ndirection'}, **wdir},
         'winddir15': {'cbar_kws': {'label': '3pm wind\ndirection'}, **wdir},
-        'raw_season': {'robust': False, 'cmap': 'cubehelix'},
+        'raw_season': {'robust': False, 'cmap': mpl.colors.ListedColormap(
+            sns.color_palette(palette='muted', n_colors=6))},
         }
     for s in utils.seasons:
         kind_kwargs[s] = {'cmap': 'Blues', 'vmin': 0, 'vmax': 1}
