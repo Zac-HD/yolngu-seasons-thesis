@@ -8,6 +8,13 @@ def below_mean(df, name):
     return df[name] < df[name].mean()
 
 
+def wind_from(df, *directions, am=True, pm=True):
+    assert am or pm, 'Must use at least one of am or pm wind'
+    am_wind = sum([df[nameof.winddir09] == d for d in directions])
+    pm_wind = sum([df[nameof.winddir15] == d for d in directions])
+    return (am_wind if am else False) + (pm_wind if pm else False)
+
+
 def add_seasons(df):
     """Add a column for each season to the dataframe."""
     # Note that this function is a DEMONSTRATION ONLY
@@ -17,43 +24,33 @@ def add_seasons(df):
 
     # TODO - go back to custom aggregation function to carry NaNs through
     df[seasons.du] = sum([
+        wind_from(df, 'NNW', 'NW', 'WNW'),
         below_mean(df, nameof.mintemp),
         (weekly_rain_days >= 2) * 0.6,
         ])
     df[seasons.ba] = sum([
-        # Wind from NW quadrant
-        df[nameof.winddir09] == 'NNW',
-        df[nameof.winddir09] == 'NW',
-        df[nameof.winddir09] == 'WNW',
-        # Rainfall that day over 10 mm
+        wind_from(df, 'NNW', 'NW', 'WNW'),
         df[nameof.rain] > 10,
         ])
     df[seasons.ma] = sum([
         # Wind from NW quadrant
-        df[nameof.winddir09] == 'NNW',
-        df[nameof.winddir09] == 'NW',
-        df[nameof.winddir09] == 'WNW',
+        wind_from(df, 'NNW', 'NW', 'WNW'),
         # 1, 2, or 3 days of rain per week
         (weekly_rain_days <= 3) * 0.5,
         ])
     df[seasons.mi] = sum([
         # Wind from NE-E quadrant
-        df[nameof.winddir09] == 'NNE',
-        df[nameof.winddir09] == 'NE',
-        df[nameof.winddir09] == 'ENE',
-        df[nameof.winddir09] == 'E',
-        df[nameof.winddir09] == 'ESE',
+        wind_from(df, 'NNE', 'NE', 'ENE', 'E', 'ESE'),
         ])
     df[seasons.da] = sum([
         weekly_rain_days == 0,
         # Wind from NE-E quadrant
-        df[nameof.winddir09] == 'ESE',
-        df[nameof.winddir09] == 'SE',
-        df[nameof.winddir09] == 'SSE',
+        wind_from(df, 'ESE', 'SE', 'SSE'),
         ])
     df[seasons.rr] = sum([
         weekly_rain_days == 0,
         below_mean(df, nameof.dewpoint),
+        df[nameof.maxtemp] > df[nameof.maxtemp].mean(),
         ])
 
     notnull = df[list(nameof)].notnull().all(axis=1)
