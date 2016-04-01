@@ -29,7 +29,7 @@ def latex_table(df, station_name, name, **kwargs):
 
 def grouped_summary(df, gby=None):
     """Return a table of monthly means, or modes for categorical data."""
-    gby = gby or df.index.month
+    gby = gby if gby is not None else df.index.month
     monthly = df.groupby(gby)
     cat_cols = [c for c in df.columns if df[c].dtype.name == 'category']
     modes = monthly[cat_cols].agg(lambda x: x.value_counts().index[0])
@@ -97,7 +97,7 @@ def heatmap(data, kind, **kwargs):
             sns.color_palette(palette='muted', n_colors=6))},
         }
     for s in utils.seasons:
-        kind_kwargs[s] = {'cmap': 'Blues', 'vmin': 0, 'vmax': 1}
+        kind_kwargs[s] = {'cmap': 'BrBG', 'vmin': -2, 'vmax': 2}
     if kind not in kind_kwargs:
         kind = {v: k for k, v in zip(nameof._fields, nameof)}.get(kind)
     return sns.heatmap(
@@ -107,10 +107,11 @@ def heatmap(data, kind, **kwargs):
 
 def multipanel(df, *cols, **kwargs):
     """Draw a multi-panel figure with heatmaps for given columns in the df."""
-    if isinstance(df, pd.Series):
-        df = df.to_frame()
     if not cols:
         cols = df.columns
+    if isinstance(df, pd.Series):
+        df = df.to_frame()
+        cols = ['Unknown from Series']
 
     context = {
         'axes.facecolor': 'black',

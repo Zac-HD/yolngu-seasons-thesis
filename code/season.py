@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Detect seasons from weather observations."""
 
+import pandas as pd
+
 from utils import nameof, seasons
 
 
@@ -15,52 +17,56 @@ def wind_from(df, *directions, am=True, pm=True):
     return (am_wind if am else False) + (pm_wind if pm else False)
 
 
-def add_seasons(df):
+def season_indicies(df):
     """Add a column for each season to the dataframe."""
     # Note that this function is a DEMONSTRATION ONLY
     # and should not be interpreted as more than proof-of-concept work.
     weekly_rain_days = (df[nameof.rain] > 1).rolling(
         window=7, center=True, min_periods=5).sum()
 
-    # TODO - go back to custom aggregation function to carry NaNs through
-    df[seasons.du] = sum([
-        wind_from(df, 'NNW', 'NW', 'WNW'),
+    seasons_df = pd.DataFrame()
+    seasons_df[seasons.du] = sum([
+        wind_from(df, 'NE', 'NNE', 'N', 'NNW', 'NW', 'WNW',),
         below_mean(df, nameof.mintemp),
-        (weekly_rain_days >= 2) * 0.6,
+        (weekly_rain_days >= 2),
         ])
-    df[seasons.ba] = sum([
-        wind_from(df, 'NNW', 'NW', 'WNW'),
+    seasons_df[seasons.ba] = sum([
+        wind_from(df, 'N', 'NNW', 'NW', 'WNW', 'W'),
         df[nameof.rain] > 10,
         ])
-    df[seasons.ma] = sum([
+    seasons_df[seasons.ma] = sum([
         # Wind from NW quadrant
         wind_from(df, 'NNW', 'NW', 'WNW'),
         # 1, 2, or 3 days of rain per week
         (weekly_rain_days <= 3) * 0.5,
         ])
-    df[seasons.mi] = sum([
+    seasons_df[seasons.mi] = sum([
         # Wind from NE-E quadrant
-        wind_from(df, 'NNE', 'NE', 'ENE', 'E', 'ESE'),
+        wind_from(df, 'NE', 'ENE', 'E', 'ESE'),
         ])
-    df[seasons.da] = sum([
+    seasons_df[seasons.da] = sum([
         weekly_rain_days == 0,
         # Wind from NE-E quadrant
         wind_from(df, 'ESE', 'SE', 'SSE'),
         ])
-    df[seasons.rr] = sum([
+    seasons_df[seasons.rr] = sum([
         weekly_rain_days == 0,
-        below_mean(df, nameof.dewpoint),
+        below_mean(df, nameof.dewpoint) * 0.5,
         df[nameof.maxtemp] > df[nameof.maxtemp].mean(),
         ])
+    return seasons_df
 
+
+def add_seasons(df):
+    """Add a column for each season to the dataframe."""
     notnull = df[list(nameof)].notnull().all(axis=1)
+    seasons_df = season_indicies(df)
     for s in seasons:
-        # Carry NaNs over from data
-        df[s] = df[s].where(notnull)
-        # Smooth slightly with rolling 3-day mean
-        df[s] = df[s].rolling(3, center=True, min_periods=2).mean()
-        # Scale all to [0, 1] range
-        df[s] /= df[s].max()
+        seas = seasons_df[s]\
+            .where(notnull)\
+            .rolling(4, center=True, min_periods=2).mean()
+        # Normalise to z-score of indices
+        df[s] = (seas - seas.mean()) / seas.std()
 
     # Note that first occurance of max wins, introducing STRONG bias
     df['raw_season'] = df[list(seasons)].idxmax(axis=1).astype(
