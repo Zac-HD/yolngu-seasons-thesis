@@ -6,7 +6,7 @@ This chapter follows the established pattern of qualitative,
 bridging, and quantitative sections.
 
 
-\section{A Qualitative Calendar}
+\section{A Qualitative Yolngu Seasonal Calendar}
 
 The qualitative results fall into three parts.
 %
@@ -28,7 +28,8 @@ variation in definitions, and three distinct types of season.
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{yolngu-calendar.jpg}
-    \caption{Conceptual Yolngu seasonal calendar \citep{davis1989}}
+    \caption{Conceptual Yolngu seasonal calendar \citep{davis1989}
+        NOTE - non-final version of figure; will redraw with circle only.}
     \label{fig:yolngu-seasons}
 \end{figure}
 
@@ -127,8 +128,8 @@ Lorem Ipsum six seasons, using because, details in next subsection.  ADD DETAILS
 
 
 
-\paragraph{Phenological Seasons}
-Phenological seasons are defined by observed changes in local vegetation
+\paragraph{Ecological Seasons}
+Ecological seasons are defined by observed changes in local vegetation
 and animal behaviour.  They embody a depth and detail of Indigenous
 ecological knowledge that is difficult to imagine, and only possible
 due to the long connection between Yolngu and the natural environment.
@@ -142,10 +143,10 @@ These seasons are closely tied to traditional activities such as travel,
 use of particular foods or other resources, and ceremony.
 
 On the Tiwi Seasons Calendar, \autoref{fig:tiwi-seasons}, the inner-most
-rings concern phenological seasons and observations - such as
+rings concern ecological seasons and observations - such as
 \textit{Mumpikari}, when possums leave muddy tracks and hunting them is easy.
 
-However, certain practicalities put phenological seasons beyond scope
+However, certain practicalities put ecological seasons beyond scope
 for the remainder of this thesis.
 %
 The same detail and diversity which makes these seasons so fascinating
@@ -154,13 +155,13 @@ with the relevant knowledge holders, and proper study would require
 living in each community for a significant period.
 %
 Sensitive, sacred, or unpublishable stories and information are much more
-common around phenological seasons than the more general calendar,
+common around ecological seasons than the more general calendar,
 and researchers have obligations in this area which are not always clear.
 %
 Generalisation between communities is difficult if not impossible.
 %
 And finally, quantification would be very difficult due to the paucity
-of quantitative phenological data at the required level of detail
+of quantitative ecological data at the required level of detail
 and localisation, especially in `remote' Australia.
 
 
@@ -224,6 +225,12 @@ The sea is calm and the skies are clear.
 
 QUOTE R on whatever tye of food, how to recognise season.
 
+Mayaltha can also be placed on the `monsoon seasons' taxonomy, fitting
+between the Wet and the Dry seasons.  In this context it is distinctive
+as the season without notable downsides - \blockquote{
+    whatever you want, it's ready; favorite foods... (TODO: find correct quote)
+}.
+
 \citet{davis1989} calls Mayaltha the `flowering' season:
 \blockquote{
     [The Flowering Season] is marked by an abundance of plants that flower,
@@ -236,7 +243,8 @@ QUOTE R on whatever tye of food, how to recognise season.
 }
 
 
-\paragraph{Midawarr} is recognised at Milingimbi as the season of plenty, but folded into Mayaltha at Galiwinku.
+\paragraph{Midawarr} is recognised at Milingimbi as the season of plenty,
+but folded into Mayaltha at Galiwinku.
 
 Some participants did not name this as a separate season.
 It is instead seen as part of Mayaltha, which becomes a major season - along with wet and dry.
@@ -296,7 +304,8 @@ making them a rich source of ecological knowledge and a frustrating subject of s
     It is very short, lasting only a few weeks.
     
     The warmer southeast wind starts to blow...
-    When the wind dies down, soon the three stars of \textit{Djulpan} will begin to rise in the east before people go to sleep at night.
+    When the wind dies down, soon the three stars of \textit{Djulpan}
+    will begin to rise in the east before people go to sleep at night.
     
     When the mangoes are nearly finished, the dry season is also near its end.
     The weather changes and thunder begins.
@@ -307,7 +316,131 @@ making them a rich source of ecological knowledge and a frustrating subject of s
 
 
 
-\section{Quantifying a Calendar}
+\section{The Observational Weather Record in NE Arnhem Land}
+TODO - tables etc. if I need them; discuss with Janette
+
+\autoref{tab:weather-station-summary} shows the five weather stations in NE
+Arnhem Land from which I draw an observational record.
+
+\autoref{tab:galiwinku-monthly-summary} shows average conditions for each
+month at Galiwinku.
+
+\begin{landscape}
+\begin{table}
+    \input{../output/galiwinku/monthly-summary.tex}
+    \caption{Monthly weather observations at Galiwinku.
+        Numerical data aggregated by mean, wind direction by mode.}
+    \label{tab:galiwinku-monthly-summary}
+\end{table}
+\end{landscape}
+
+
+Figures~\ref{fig:galiwinku-climograph}~and~\ref{fig:milingimbi-climograph}
+show monthly climate statistics for Galiwinku and Milingimbi.
+Note the low variation in temperature, and strong seasonal patterns in
+rainfall, humidity, and wind.
+
+This is a typical example of tropical seasons.  To see the more nuanced
+patterns described by Indigenous seasons, daily data is required.
+
+% See http://matplotlib.org/examples/axes_grid/demo_parasite_axes2.html
+% http://pandas.pydata.org/pandas-docs/stable/visualization.html#plotting-on-a-secondary-y-axis
+% to implment climograph
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{todo.png}
+    \caption[Monthly Climograph for Galiwinku]{
+        TODO - IMPLEMENT THIS FIGURE\\
+        Monthly summary of climate statistics at Galiwinku.
+        Monthly total rainfall in mm, vertical bars.
+        Mean maximum temperature in degrees C, solid line.
+        Mean minimum temperature in degrees C, dashed line.
+        Mean dewpoint temperature in degrees C, dotted line.
+        (Dewpoint temperature is a measure of humidity; higher is more humid)
+        ~\\
+        TODO - monthly wind summaries, here or as seperate figure.
+        }
+    \label{fig:galiwinku-climograph}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{todo.png}
+    \caption[Monthly Climograph for Milingimbi]{
+        TODO - IMPLEMENT THIS FIGURE\\
+        Monthly summary of climate statistics at Milingimbi.
+        Monthly total rainfall in mm, vertical bars.
+        Mean maximum temperature in degrees C, solid line.
+        Mean minimum temperature in degrees C, dashed line.
+        Mean dewpoint temperature in degrees C, dotted line.
+        (Dewpoint temperature is a measure of humidity; higher is more humid)
+        ~\\
+        TODO - monthly wind summaries, here or as seperate figure.
+        }
+    \label{fig:milingimbi-climograph}
+\end{figure}
+
+
+
+\autoref{fig:compass-rose} shows the mapping of hue to wind direction used
+for the figures below.  The colours were generated by selecting equidistant
+points in the HSL colour space, which uses a polar coordinate system for
+hues.  The direction-colour mapping was then `rotated' so prevailing monsoon
+winds have a predominantely blue/yellow contrast, rather than red/green
+for colourblind readers.
+
+\begin{wrapfigure}{R}{0.5\textwidth}
+    \includegraphics[width=\linewidth]{compass-rose.png}
+    \caption[Compass Rose mapping colour to wind direction]{
+        TERRIBLE DRAFT VERSION ONLY\\
+        This compass rose shows the mapping of hue to wind direction used below
+        (\ref{fig:galiwinku-observations}, \ref{fig:milingimbi-observations}, etc.).
+        These colours are equidistant in the HSL colour space, which was rotated
+        to avoid a primary red/green contrast in the prevailing monsoon wind.
+        }
+    \label{fig:compass-rose}
+\end{wrapfigure}
+
+
+
+Figures \ref{fig:galiwinku-observations} and \ref{fig:milingimbi-observations}
+show historical weather observations at Galiwinku and Milingimbi as
+sets of heatmaps, where for each variable a grid of year (y) and day-of-year(x)
+is shaded according to the observation on that date.
+Black cells indicate missing data.
+In each figure, the variation in seasonality between years is clearly visible.
+
+Unlike the climographs above, these figures clearly show variation in timing
+of seasonal onset between years.  This demonstrates that timeseries data
+at daily resolution is required for investigation of Indigenous seasons.
+
+
+\begin{figure}[p]
+    \centering
+    \includegraphics[width=\textwidth]{galiwinku/observations.pdf}
+    \caption[Historical weather observations at Elcho Island]{
+        Historical weather observations at Elcho Island.
+        Each panel shows a single variable, with years on the y axis and day-of-year on the x.
+        Note that each variable has a different seasonal pattern,
+        and that seasonality changes from year to year.}
+    \label{fig:galiwinku-observations}
+\end{figure}
+% Note - if possible, these figures should be on facing pages to allow easy comparison
+\begin{figure}[p]
+    \centering
+    \includegraphics[width=\textwidth]{milingimbi/observations.pdf}
+    \caption[Historical weather observations at Milingimbi Airport]{
+        Historical weather observations at Milingimbi Airport.
+        Each panel shows a single variable, with years on the y axis and day-of-year on the x.
+        Note that each variable has a different seasonal pattern,
+        and that seasonality changes from year to year.}
+    \label{fig:milingimbi-observations}
+\end{figure}
+
+
+
+
+\section{Quantifying a Yolngu Calendar}
 
 \subsection{Summary of a Yolngu Calendar}
 Following \autoref{ch:seasons}, \autoref{tab:quant-seasons-summary} shows
@@ -351,53 +484,13 @@ or information about seasonal patterns.
         (The analysis below uses 6pm wind for all evening observations.)
 \end{itemize}
 
+~\\
 
+TODO - acknowledge importance of these tips and talk about relevance to
+detection design.  Will end up in methods.  Most important bit is that
+interruption and out-of-order means that forward-filling last known
+doesn't work; have to actually check each day.
 
-\subsection{The Observational Weather Record in NE Arnhem Land}
-TODO - tables etc. if I need them; discuss with Janette
-
-Figures \ref{fig:galiwinku-observations} and \ref{fig:milingimbi-observations}
-show historical weather observations at Galiwinku and Milingimbi as
-sets of heatmaps, where for each variable a grid of year (y) and day-of-year(x)
-is shaded according to the observation on that date.
-Black cells indicate missing data.
-In each figure, the variation in seasonality between years is clearly visible.
-
-
-\begin{figure}[p]
-    \centering
-    \includegraphics[width=\textwidth]{galiwinku/observations.pdf}
-    \caption[Historical weather observations at Elcho Island]{
-        Historical weather observations at Elcho Island.
-        Each panel shows a single variable, with years on the y axis and day-of-year on the x.
-        Note that each variable has a different seasonal pattern,
-        and that seasonality changes from year to year.}
-    \label{fig:galiwinku-observations}
-\end{figure}
-% Note - if possible, these figures should be on facing pages to allow easy comparison
-\begin{figure}[p]
-    \centering
-    \includegraphics[width=\textwidth]{milingimbi/observations.pdf}
-    \caption[Historical weather observations at Milingimbi Airport]{
-        Historical weather observations at Milingimbi Airport.
-        Each panel shows a single variable, with years on the y axis and day-of-year on the x.
-        Note that each variable has a different seasonal pattern,
-        and that seasonality changes from year to year.}
-    \label{fig:milingimbi-observations}
-\end{figure}
-
-
-\autoref{tab:galiwinku-monthly-summary} shows average conditions for each
-month at Galiwinku.
-
-\begin{landscape}
-\begin{table}
-    \input{../output/galiwinku/monthly-summary.tex}
-    \caption{Monthly weather observations at Galiwinku.
-        Numerical data aggregated by mean, wind direction by mode.}
-    \label{tab:galiwinku-monthly-summary}
-\end{table}
-\end{landscape}
 
 
 
@@ -426,11 +519,35 @@ demonstrate that the concept of the analysis is viable.
     \includegraphics[width=\textwidth]{galiwinku/season-counts.pdf}
     \caption[Calculated season frequency, Elcho Island]{
         Illustrative count of days for each season, Elcho Island.
-        DRAFT FIGURE ONLY, will change substantially as method improves.
+        These colours are used for each season in all figures below.
         }
     \label{fig:galiwinku-season-counts}
 \end{figure}
 
+\autoref{fig:galiwinku-season-counts} shows the count of days on which
+each season was detected.  Like \autoref{fig:compass-rose}, it also
+shows the repeated colour scheme.  All other season figures use the
+same colour palete, without further labelling.
+
+\autoref{fig:season-index-lines} is very interesting.  TODO EXPLAIN WHY.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{draft-season-index-lines.png}
+    \caption[Season index by day-of-year, Elcho Island]{
+        Mean normalised (z-score) index for seasons per day-of-year
+        at Galiwinku.  Note the clear distinction in the dry season,
+        but muddle in the Wet (Dec-Feb).
+        This is not indicative of poor detection on a single day,
+        but rather that occurence varies more between years.
+        }
+    \label{fig:season-index-lines}
+\end{figure}
+
+
+
+
+TODO - paragraph referencing and interpreting these figures.
 
 \begin{figure}[p]
     \centering
