@@ -37,6 +37,16 @@ def grouped_summary(df, gby=None):
     return merged[df.columns]
 
 
+def season_prob(data):
+    """Return daily probability of observing each season."""
+    is_seasons = ['is_' + n for n in utils.seasons]
+    for n in utils.seasons:
+        data['is_' + n] = data.raw_season == n
+    grp = pd.groupby(data[is_seasons], data.index.dayofyear).sum()
+    grp = grp.divide(grp.sum(axis=1), axis='rows')
+    return grp.rolling(window=7, center=True).mean()
+
+
 def save_out(data, station_name):
     """Save a multipanel summary figure and monthly text table."""
     monthly = grouped_summary(data)
@@ -51,9 +61,29 @@ def save_out(data, station_name):
                 station_name, 'observations')
     save_figure(multipanel(data, 'raw_season', *utils.seasons),
                 station_name, 'seasons')
+    save_figure(lines(grouped_summary(data, data.index.dayofyear
+                      )[list(utils.seasons)]),
+                station_name, 'seasons-daily-index')
+    save_figure(lines(
+        season_prob(data),
+        ylabel='Observed season occurence\n(probability, weekly mean)'),
+                station_name, 'seasons-daily-prob')
     fig, ax = plt.subplots()
     sns.countplot(data.raw_season, ax=ax)
     save_figure(fig, station_name, 'season-counts')
+
+
+def lines(daily, ylabel=''):
+    """Draw a line plot of the given columns daily."""
+    with sns.axes_style('darkgrid', {'axes.grid': False}):
+        fig, ax = plt.subplots()
+        plt.plot(daily)
+    # Fix axis labels and extent
+    plt.xticks(np.arange(366), utils.dayofyear_month_labels)
+    ax.set_xlabel('Month')
+    ax.set_xlim([-1, 367])
+    ax.set_ylabel(ylabel or 'Season intensity index (normalised)')
+    return fig
 
 
 def heatmap(data, kind, **kwargs):
