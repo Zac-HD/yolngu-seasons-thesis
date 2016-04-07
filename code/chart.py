@@ -59,6 +59,12 @@ def save_out(data, station_name):
 
     save_figure(multipanel(data, *utils.chart_panels),
                 station_name, 'observations')
+    save_figure(multipanel(
+        data, *[w for w in utils.nameof._fields if 'windspd' in w]),
+                station_name, 'seabreeze-speed')
+    save_figure(multipanel(
+        data, *[w for w in utils.nameof._fields if 'winddir' in w]),
+                station_name, 'seabreeze-direction')
     save_figure(multipanel(data, 'raw_season', *utils.seasons),
                 station_name, 'seasons')
     save_figure(lines(grouped_summary(data, data.index.dayofyear
@@ -119,10 +125,12 @@ def heatmap(data, kind, **kwargs):
                      'cbar_kws': {'label': 'Dewpoint\ntemperature (C)'}},
         'humid09': {'cbar_kws': {'label': '9am humidity (%)'}},
         'humid15': {'cbar_kws': {'label': '3pm humidity (%)'}},
-        'windspd09': {'cbar_kws': {'label': '9am wind\nspeed (km/h)'}, **wspd},
-        'windspd15': {'cbar_kws': {'label': '3pm wind\nspeed (km/h)'}, **wspd},
-        'winddir09': {'cbar_kws': {'label': '9am wind\ndirection'}, **wdir},
-        'winddir15': {'cbar_kws': {'label': '3pm wind\ndirection'}, **wdir},
+        **{'windspd' + h: {
+            'cbar_kws': {'label': 'hour ' + h +' wind\nspeed (km/h)'}, **wspd}
+            for h in utils._wind_hours},
+        **{'winddir' + h: {
+            'cbar_kws': {'label': 'hour ' + h +' wind\ndirection'}, **wdir}
+            for h in utils._wind_hours},
         'raw_season': {'robust': False, 'cmap': mpl.colors.ListedColormap(
             sns.color_palette(palette='muted', n_colors=6))},
         }
@@ -153,8 +161,8 @@ def multipanel(df, *cols, **kwargs):
     func = {  # any needed data transformations
         'rain': lambda df, name: utils.pivot(df[nameof.rain].rolling(
             center=True, window=5, min_periods=1).mean().to_frame(), name),
-        'winddir09': utils.categorical_to_numeric_wind,
-        'winddir15': utils.categorical_to_numeric_wind,
+        **{'winddir' + h: utils.categorical_to_numeric_wind
+           for h in utils._wind_hours},
         'raw_season': utils.categorical_to_numeric_season,
         }
 

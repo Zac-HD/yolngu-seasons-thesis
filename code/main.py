@@ -24,3 +24,4 @@ else:
     for station_id, name in weather.stations:
         os.mkdir('../output/' + name.lower())
         chart.save_out(weather.data(station_id), name.lower())
+    print('Analysis done!')

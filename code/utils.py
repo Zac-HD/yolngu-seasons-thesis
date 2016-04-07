@@ -3,11 +3,6 @@
 
 import collections
 
-import yaml
-
-
-with open('BOM_format.yml') as f:
-    META = yaml.safe_load(f)
 
 wind_dirs = (
     'N', 'NNE', 'NE', 'ENE',
@@ -16,11 +11,44 @@ wind_dirs = (
     'W', 'WNW', 'NW', 'NNW',
     'CALM')
 
+_wind_hours = ['00', '03', '06', '09', '12', '15', '18', '21']
+
 nameof = collections.namedtuple(
+    # Holds the full names of each data column with compact alias
     'ColumnNames',
-    ['rain', 'maxtemp', 'mintemp', 'dewpoint', 'humid09', 'humid15',
-     'windspd09', 'windspd15', 'winddir09', 'winddir15']
-    )(*META['data_cols'])
+    ['rain', 'maxtemp', 'mintemp', 'dewpoint',
+     *('windspd' + h for h in _wind_hours),
+     *('winddir' + h for h in _wind_hours)]
+    )(*[
+    'Precipitation in the 24 hours before 9am (local time) in mm',
+    'Maximum temperature in 24 hours after 9am (local time) in Degrees C',
+    'Minimum temperature in 24 hours before 9am (local time) in Degrees C',
+    'Average daily dew point temperature in Degrees C',
+    *('Wind speed at {} hours Local Time measured in km/h'\
+      .format(h) for h in _wind_hours),
+    *('Wind direction at {} hours Local Time as 16 compass point text'\
+      .format(h) for h in _wind_hours),
+    ])
+
+_quality_cols = tuple([
+    'Quality of precipitation value',
+    'Quality of maximum temperature in 24 hours after 9am (local time)',
+    'Quality of minimum temperature in 24 hours before 9am (local time)',
+    'Quality of overall dew point temperature observations used',
+    *('Quality of wind speed at {} hours Local Time'\
+      .format(h) for h in _wind_hours),
+    *('Quality of wind direction at {} hours Local Time'\
+      .format(h) for h in _wind_hours),
+    ])
+
+_accumulation_pairs = {
+    'Accumulated number of days over which the precipitation was measured':
+        'Precipitation in the 24 hours before 9am (local time) in mm',
+    'Days of accumulation of maximum temperature':
+        'Maximum temperature in 24 hours after 9am (local time) in Degrees C',
+    'Days of accumulation of minimum temperature':
+        'Minimum temperature in 24 hours before 9am (local time) in Degrees C',
+    }
 
 seasons = collections.namedtuple(
     'Seasons',
