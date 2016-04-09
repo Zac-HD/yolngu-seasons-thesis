@@ -24,6 +24,14 @@ reconstructed or modelled climate data, allowing investigation of trend
 or abrupt changes over time. Well-founded definitions may allow scenario-based
 investigation of a wider range of conditions than exist in the historical record. 
 
+~\\
+
+TODO - fill out methodology
+
+Historical climatology is important in that it informs my methods,
+but also for the concept and to contextualise the research.  May lead to 
+some comparisons between `lay knowledge' and IEK (an important point).\\
+
 
 
 \subsection{Fieldwork and interviews}
@@ -64,15 +72,15 @@ perspectives.  Elders bring an important perspective, but so do younger people
 and those engaged in Ranger groups or related work.
 
 
+
 \subsection{Bridging Qualitative and Quantitative methods}
 This is a vital area, particularly when working across cultures too.
-TODO - discuss approach, how exploratory qual becomes the foundation,
-etc.  More details can be found in \autoref{ch:quantify}.
+TODO - discuss approach, how exploratory qual becomes the foundation, etc.
+
 
 
 \subsection{Numerical Analysis}
-Pretty standard; it's the preceeding bit that enables novel results.
-See \autoref{ch:analysis} for details.
+There's nothing particularly fancy in here, 
 
 
 
@@ -84,10 +92,6 @@ See \autoref{ch:analysis} for details.
 
 \subsection{Relationship-building}
 Discuss the relationship-building stage in some detail; it's really important.
-May however become a part of the fieldwork methodology... at least if I set up
-methodology to reflect structure of body chapters.
-
-
 Relationships are a key part of cross-cultural research.  See Sue Smith, as 
 Sean has mentioned.
 
@@ -180,7 +184,8 @@ extreme events and outliers. Thematic questions include:
 \item Do you remember any unusual events?  What happened?
 \item What might the calendar be like if [example climate impact] happened? 
       (eg changes to wind, temperature, rainfall patterns) 
-\item What are some important ways you use the land which depend on seasons?  Have these changed over time?  Why?
+\item What are some important ways you use the land which depend on seasons?
+        Have these changed over time?  Why?
 \end{itemize}
 
 Following the interviews, I also engaged in substantial reflection on the nature
@@ -197,13 +202,6 @@ which changed my understanding of what a Yolngu seasonal calendar was!
 \section{Bridging Approaches to Quantify a Calendar}
 
 
-Data analysis and presentation is entirely via my own Python scripts,
-using a variety of scientific and data-analysis libraries.
-I lean heavily on Pandas, Seaborn, NumPy, and Matplotlib.
-For details and to read the -- well commented -- code, see
-\autoref{sec:appendix-code}
-
-
 \paragraph{Observing seasonal onset}~\\
 There is a considerable body of literature dealing with seasons defined
 by observed environmental change - from temperature thresholds in
@@ -216,6 +214,20 @@ Monotonic changes and qualitative changes are easiest to pin down.
 Ie binary states, and/or only passing the threshold once per year.
 
 TODO more on this, add references.
+
+I've started reading the literature on historical climatology, but don't have 
+enough depth to write much yet.  It's going to be an important angle though. 
+
+Matching oral history with numerical data is an established technique in 
+climate science, as recorded observations can greatly assist in reconstruction 
+of conditions before the instrumental record began.  In this case, observations 
+within living memory are an excellent source, as the instrumental record is 
+even today very sparse in Arnhem Land.  Investigation of social adaptation to 
+local climate is an interesting and often closely linked field.
+
+Look more into non-observational records; as far as I know dendrology etc has 
+not been done much in the region; this is relevant as a missing alternative to 
+oral histories.
 
 
 \paragraph{Yolngu participants} made several comments which are not about
@@ -244,7 +256,7 @@ Australian Bureau of Meterology.
 
 \begin{table}[h]
     \centering
-    \begin{tabular}{llllll}
+    \begin{tabular}{lllllll}
         Station no.  &  Name                 &  Location     &  Latitude   &  Longitude   &  Elevation  &  Opened   \\
 %                                                                                                      
         014401       &  WARRUWI AIRPORT      &  Warruwi      &  11.6500S   &  133.3797E   &  19.2       &  Jan 1916 \\
@@ -277,7 +289,16 @@ Observations which have been quality-controlled by the BoM and are considered
 Observations which have not been assessed are retained.
 
 
-\paragraph{Statistical approaches}~\\
+
+\section{Quantitative Analysis}
+
+Data analysis and presentation is entirely via my own Python scripts,
+using a variety of scientific and data-analysis libraries.
+I lean heavily on Pandas, Seaborn, NumPy, and Matplotlib.
+For details and to read the -- well commented -- code, see
+\autoref{sec:appendix-code}
+
+
 I use two statistical approaches to detect seasonal onset.
 
 The first is to calculate threshold levels, chosen based on typical conditions
@@ -301,15 +322,11 @@ Missing data is propogated throughout the analysis and not filled with other val
 
 
 
-\section{Quantitative Analysis}
-
 \begin{itemize}
 \item Calculation of summary stats for each season – typical and variation in conditions, onset, etc
 \item Comparison of stations, other data as inputs to season recognition.
 \item Normalisation functions from observations to gridded data inc. model backcasts if applicable.
 \item Correlation to ENSO, monsoon, dipole moment, etc
-\item Changes over time (by decade?) – historical data
-\item Changes over time – model outputs across models and scenarios
 \end{itemize}
 
 Note that even the simplest of these is really novel, as nobody has
@@ -320,12 +337,6 @@ descriptors and numerical data, quantitative characterisations of the
 Yolngu seasons can be calculated.  These will include both typical values
 and variation in season onset date, duration, temperatures, rainfall,
 wind, and so on.
-
-The exploration element will analyse the information generated for emergent
-insights or other novel results.  The relationships between seasons, extreme
-weather events and fire are of particular interest; along with the nature of
-seasonal changes through time including scenarios under future climate change.
-Exploratory findings may form a major result of the thesis.
 
 
 
