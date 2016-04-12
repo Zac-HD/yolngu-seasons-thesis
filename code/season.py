@@ -12,7 +12,7 @@ def below_mean(df, name):
 
 def wind_from(df, *directions, am=True, pm=True):
     assert am or pm, 'Must use at least one of am or pm wind'
-    am_name, pm_name = nameof.winddir09, nameof.winddir18
+    am_name, pm_name = nameof.winddir09, nameof.winddir15
     am_wind = sum([df[am_name] == d for d in directions]).where(
         df[am_name].notnull())
     pm_wind = sum([df[pm_name] == d for d in directions]).where(
