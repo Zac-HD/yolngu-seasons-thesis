@@ -7,13 +7,16 @@ from utils import nameof, seasons
 
 
 def below_mean(df, name):
-    return df[name] < df[name].mean()
+    return (df[name] < df[name].mean()).where(df[name].notnull())
 
 
 def wind_from(df, *directions, am=True, pm=True):
     assert am or pm, 'Must use at least one of am or pm wind'
-    am_wind = sum([df[nameof.winddir09] == d for d in directions])
-    pm_wind = sum([df[nameof.winddir15] == d for d in directions])
+    am_name, pm_name = nameof.winddir09, nameof.winddir18
+    am_wind = sum([df[am_name] == d for d in directions]).where(
+        df[am_name].notnull())
+    pm_wind = sum([df[pm_name] == d for d in directions]).where(
+        df[pm_name].notnull())
     return (am_wind if am else False) + (pm_wind if pm else False)
 
 
@@ -35,36 +38,29 @@ def season_indicies(df):
         df[nameof.rain] > 10,
         ])
     seasons_df[seasons.ma] = sum([
-        # Wind from NW quadrant
         wind_from(df, 'NNW', 'NW', 'WNW'),
-        # 1, 2, or 3 days of rain per week
         (weekly_rain_days <= 3) * 0.5,
         ])
     seasons_df[seasons.mi] = sum([
-        # Wind from NE-E quadrant
         wind_from(df, 'NE', 'ENE', 'E', 'ESE'),
         ])
     seasons_df[seasons.da] = sum([
         weekly_rain_days == 0,
-        # Wind from NE-E quadrant
         wind_from(df, 'ESE', 'SE', 'SSE'),
         ])
     seasons_df[seasons.rr] = sum([
         weekly_rain_days == 0,
         below_mean(df, nameof.dewpoint) * 0.5,
-        df[nameof.maxtemp] > df[nameof.maxtemp].mean(),
+        below_mean(df, nameof.maxtemp) == False,
         ])
     return seasons_df
 
 
 def add_seasons(df):
     """Add a column for each season to the dataframe."""
-    notnull = df[list(nameof)].notnull().all(axis=1)
     seasons_df = season_indicies(df)
     for s in seasons:
-        seas = seasons_df[s]\
-            .where(notnull)\
-            .rolling(4, center=True, min_periods=2).mean()
+        seas = seasons_df[s].rolling(4, center=True, min_periods=2).mean()
         # Normalise to z-score of indices
         df[s] = (seas - seas.mean()) / seas.std()
 

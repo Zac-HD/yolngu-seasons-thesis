@@ -62,7 +62,7 @@ dayofyear_month_labels = [
     '' if (i-14) % 30 else _months.pop(0) for i in range(1, 367)]
 
 chart_panels = ('rain', 'maxtemp', 'mintemp', 'dewpoint',
-                'windspd09', 'winddir09', 'windspd15', 'winddir15')
+                'windspd09', 'winddir09', 'windspd18', 'winddir18')
 
 
 def pivot(df, colname):
