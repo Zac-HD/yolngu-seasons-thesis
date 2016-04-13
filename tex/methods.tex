@@ -182,7 +182,8 @@ Australian Bureau of Meterology.
         014508       &  GOVE AIRPORT        &  Nhulunbuy    &  12.2741S   &  136.8203E   &  51.6       &  Jan 1944 \\
         014517       &  NGAYAWILI           &  Galiwinku    &  11.9971S   &  135.5726E   &  08.1       &  Oct 1999
     \end{tabular}
-    \caption{Summary description of weather stations used.
+    \caption[List of weather stations providing data]{
+        Summary description of weather stations used.
         Locations are visible in \autoref{fig:arnhem-map}}
     \label{tab:weather-station-summary}
 \end{table}
@@ -202,16 +203,13 @@ The weather variables of interest are:
 
 Participants suggested that season detection should not consider 3pm wind
 due to the effect of the sea breeze, and that 6pm would be more suitable.
-REF FIGURE showins wind direction by year and day-of-year, as in
-\autoref{fig:galiwinku-observations}.  Similar charts for wind speed and
-other stations are included in the electronic appendices.
-These charts show a northerly sea breeze, generally strong in the noon, 3pm,
-and 6pm data.
-
-~\\
-
-TODO - I therefore retain the meteorological standard of
-3pm wind data, which has a longer record at some stations.\\
+\autoref{fig:galiwinku-seabreeze-direction} showins wind direction by year
+and day-of-year, as in \autoref{fig:galiwinku-observations}.
+%
+Similar charts for wind speed and other stations are included in the electronic
+appendices.  These charts show a northerly sea breeze, generally strong in the
+noon, 3pm, and 6pm data.  I use 3pm wind data, as these comments are outweighed
+by the standard time and longer record at some stations.\\
 
 The data are cleaned by discarding observations accumulated over multiple days.
 Observations which have been quality-controlled by the BoM and are considered
@@ -240,7 +238,8 @@ and summing the values for each season for each day (giving NaN, 0, 1, ...).
 seasonal indicies.
 
 \begin{figure}[h]
-    \lstinputlisting[firstline=30, lastline=55]{../code/season.py}
+    \lstinputlisting[firstline=31, lastline=55, xleftmargin=0.1\textwidth]{../code/season.py}
+    \centering
     \caption[Python code: definition of season indicies]{
         Code listing of variables and conditions used to detect seasons.
         TODO - update detection, expand description, keep eye on line range.
@@ -279,6 +278,9 @@ dependencies.
 
 ~\\
 
+TODO - the remainder of this section is waiting on finalisation of the
+remaining results, particularly section numbers and calculation.
+
 As documented in REF SECTION, seasons may begin and end several
 times through the year in response to conditions.  Emphasising onset timing
 by asking ``when does [this season] typically begin?'' mischaracterises the
@@ -306,19 +308,4 @@ variation in ...
 
 Note that even the simplest of these is really novel, as nobody has
 been able to calculate the summaries before!
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
