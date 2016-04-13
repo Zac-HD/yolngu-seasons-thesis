@@ -1,19 +1,20 @@
 \documentclass[12pt,a4,oneside,openany]{book}
 
-\title{{\Huge A Yolngu Seasonal Calendar:} \newline Past, Present, Future}
-\author{Zac Hatfield Dodds}
-\date{}
-
 \usepackage{other/zacstyle}
 
 \begin{document}
-%\maketitle
+%\input{other/title.tex}
 
 \frontmatter
 %\input{other/declaration.tex}
-\input{other/abstract.tex}
-\tableofcontents
-\listoffigures
+%\input{other/abstract.tex}
+
+\begingroup \let\cleardoublepage\relax \let\clearpage\relax
+% Don't force each of these onto a new page
+	\tableofcontents
+	\listoffigures
+	\listoftables
+\endgroup
 
 \mainmatter
 \input{introduction.tex}
@@ -23,8 +24,7 @@
 \input{discussion.tex}
 \input{conclusion.tex}
 
-% force uncited references to be listed (draft only)
-\nocite{*}
+\nocite{*}  % force uncited references to be listed (draft only)
 \bibliography{other/references}
 
 %\appendix
