@@ -121,6 +121,7 @@ and localisation, especially in `remote' Australia.
 
 
 \subsection{Describing a Yolnu Seasonal Calendar}
+\label{subsec:calendar-description}
 
 The remainder of this thesis focusses on a particular Yolnu calendar,
 that of six seasons as recognised at Galiwinku on Elcho Island.
@@ -290,110 +291,91 @@ Note that informal, collaborative and participant-led conversations were key.
 
 
 \subsection{Other Advice on Detecting Seasons}
+\label{subsec:detection-advice}
 Yolngu participants made several comments which are not about
 the seasonal calendar itself, but are of vital importance when quantifying
 it - teaching about how exactly to recognise each season.
 
-Seasons are not limited to a particular order, and may happen one or more
-times per year (by definition zero or more; historically at least once).
-Any season may be `interrupted' by another if the latter's characteristic
-conditions hold for longer than two or three days.
-Where non-indigenous people might discuss a `cold snap', Yolngu might
-say that winter had interrupted summer for a few days!
+\begin{description}
+\item[Variation between years]
+    Yolngu seasons vary between years, depending on the weather conditions.
+    Participants said that the seasons had always been steady within this
+    normal variation.  When asked about climate change, participants were
+    concerned about environmental changes and attributed many to human
+    activity - including mining, but also loss of traditional knowledge
+    and respect for the land.
 
-Wind plays a defining role in Yolngu seasons, but not all winds are
-seasonal indicators.  In coastal communities, the day-time and especially
-afternoon wind is dominated by the sea breeze, and carries relatively little
-seasonal information.  Participants recommended considering wind at 9am
-and 6pm, saying that at 3pm (the meteorological standard) the sea breeze
-overwhelms the seasonal changes.
+\item[Unordered or duplicated seasons]
+    Seasons are not limited to a particular order, and may happen one or more
+    times per year (by definition zero or more; historically at least once).
+    Any season may be `interrupted' by another if the latter's characteristic
+    conditions hold.  It is important to avoid hasty judgement however, so this
+    takes at least two or three days of atypical weather.  
 
-TODO check notes for other issues.
+    Where non-indigenous people might discuss a `cold snap', Yolngu might
+    say that winter had interrupted summer!
 
+\item[Wind and the sea breeze] 
+    Wind plays a defining role in Yolngu seasons, but not all winds are
+    seasonal indicators.  In coastal communities, the day-time and especially
+    afternoon wind is dominated by the sea breeze, and carries relatively little
+    seasonal information.
+    
+    Participants said that morning wind at 9am would be fine, but that at
+    3pm the sea breeze overwhelms the seasonal changes.  The suggestion was
+    to instead consider wind between 5pm and 8pm depending on time of year.
+    
+    With data at three-hourly resolution, \autoref{fig:galiwinku-seabreeze-direction}
+    does not show a substantially stronger seasonal signal at 6pm than 3pm.
+    I therefore use the standard observations of 9am and 3pm for the analysis.
+
+\end{description}
 
 
 
 \section{The Observational Weather Record in NE Arnhem Land}
-TODO - tables etc. if I need them; discuss with Janette
 
 \autoref{tab:weather-station-summary} shows the five weather stations in NE
 Arnhem Land from which I draw an observational record.
-
 \autoref{tab:galiwinku-monthly-summary} shows average conditions for each
-month at Galiwinku.
+month at Galiwinku.  \autoref{fig:galiwinku-climograph}, above, is a monthly
+climograph of rainfall, maximum and minimum temperature, and dewpoint at
+Galiwinku.  Note the low variation in temperature, and strong seasonal
+patterns in rainfall and humidity.
+
+~\\
+
+TODO - monthly summary of wind?  Would be simplified vector field, not
+sure if this is worthwhile... and might need to (maybe) show speed too.
 
 \begin{landscape}
 \begin{table}
     \input{../output/galiwinku/monthly-summary.tex}
     \caption[Monthly weather observations at Galiwinku]{
-        Monthly weather observations at Galiwinku.
-        Numerical data are aggregated by mean, wind direction aggregated by mode.}
+        Typical weather observations at Galiwinku, by month (left column).
+        All numerical values are per-day averages, wind direction shows the
+        most common observation in that month.}
     \label{tab:galiwinku-monthly-summary}
 \end{table}
 \end{landscape}
 
 
-Figures~\ref{fig:galiwinku-climograph}~and~\ref{fig:milingimbi-climograph}
-show monthly climate statistics for Galiwinku and Milingimbi.
-Note the low variation in temperature, and strong seasonal patterns in
-rainfall, humidity, and wind.
+\autoref{fig:compass-rose} shows the mapping of colour to wind direction used
+for the figures below.  These colours are drawn from the HSL colour space,
+which uses a polar (cylindrical) coordinate system for hue, saturation,
+and lightness (hence, ``HSL'').  With constant saturation and lightness,
+hue can be mapped directly to wind direction and equidistant colours
+have similar perceptual difference - at least within reproduction tolerances.
 
-This is a typical example of tropical seasons.  To see the more nuanced
-patterns described by Indigenous seasons, daily data is required.
-
-% See http://matplotlib.org/examples/axes_grid/demo_parasite_axes2.html
-% http://pandas.pydata.org/pandas-docs/stable/visualization.html#plotting-on-a-secondary-y-axis
-% to implment climograph
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=\textwidth]{todo.png}
-    \caption[Monthly Climograph for Galiwinku]{
-        TODO - IMPLEMENT THIS FIGURE\\
-        Monthly summary of climate statistics at Galiwinku.
-        Monthly total rainfall in mm, vertical bars.
-        Mean maximum temperature in degrees C, solid line.
-        Mean minimum temperature in degrees C, dashed line.
-        Mean dewpoint temperature in degrees C, dotted line.
-        (Dewpoint temperature is a measure of humidity; higher is more humid)
-        ~\\
-        TODO - monthly wind summaries, here or as seperate figure.
-        }
-    \label{fig:galiwinku-climograph}
-\end{figure}
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=\textwidth]{todo.png}
-    \caption[Monthly Climograph for Milingimbi]{
-        TODO - IMPLEMENT THIS FIGURE\\
-        Monthly summary of climate statistics at Milingimbi.
-        Monthly total rainfall in mm, vertical bars.
-        Mean maximum temperature in degrees C, solid line.
-        Mean minimum temperature in degrees C, dashed line.
-        Mean dewpoint temperature in degrees C, dotted line.
-        (Dewpoint temperature is a measure of humidity; higher is more humid)
-        ~\\
-        TODO - monthly wind summaries, here or as seperate figure.
-        }
-    \label{fig:milingimbi-climograph}
-\end{figure}
-
-
-
-\autoref{fig:compass-rose} shows the mapping of hue to wind direction used
-for the figures below.  The colours were generated by selecting equidistant
-points in the HSL colour space, which uses a polar coordinate system for
-hues.  The direction-colour mapping was then `rotated' so prevailing monsoon
-winds have a predominantely blue/yellow contrast, rather than red/green
-for colourblind readers.
+The direction-colour mapping was `rotated' - from red at North to red at West -
+to ensure that the contrast of prevailing monsoon winds is blue/yellow,
+rather than red/green which would disadvantage colourblind readers.
 
 \begin{wrapfigure}{R}{0.5\textwidth}
     \includegraphics[width=\linewidth]{compass-rose.pdf}
     \caption[Compass Rose mapping colour to wind direction]{
-        This compass rose shows the mapping of hue to wind direction used below.
-        These colours are equidistant in the HSL colour space, which was rotated
-        to avoid a primary red/green contrast in the prevailing monsoon wind.
-        }
+        This compass rose shows the mapping of hue to wind direction used
+        for figures below.  Colours are equidistant in the HSL colour space.}
     \label{fig:compass-rose}
 \end{wrapfigure}
 
@@ -402,13 +384,14 @@ for colourblind readers.
 Figures \ref{fig:galiwinku-observations} and \ref{fig:milingimbi-observations}
 show historical weather observations at Galiwinku and Milingimbi as
 sets of heatmaps, where for each variable a grid of year (y) and day-of-year(x)
-is shaded according to the observation on that date.
-Black cells indicate missing data.
+is shaded according to the observation on that date.  Black cells indicate missing data.
 In each figure, the variation in seasonality between years is clearly visible.
 
 Unlike the climographs above, these figures clearly show variation in timing
 of seasonal onset between years.  This demonstrates that timeseries data
 at daily resolution is required for investigation of Indigenous seasons.
+
+TODO - write detailed walkthrough of how to read these figures!
 
 
 \begin{figure}[p]
@@ -439,8 +422,7 @@ at daily resolution is required for investigation of Indigenous seasons.
 \section{Quantifying a Yolngu Calendar}
 
 \subsection{Summary of a Yolngu Calendar}
-Following \autoref{ch:seasons}, \autoref{tab:quant-seasons-summary} shows
-typical timing and recognition criteria for each season.
+\autoref{tab:quant-seasons-summary} summarises typical timing and recognition criteria for each season.
 
 
 \begin{table}[h]
@@ -460,41 +442,10 @@ typical timing and recognition criteria for each season.
 \end{table}
 
 
-Additionally, some participants offered tips for recognising seasons,
-or information about seasonal patterns.
-
-\begin{itemize}
-\item The onset timing of seasons varies between years, with weather conditions. 
-
-\item Seasons can `interrupt' one another, if conditions oscillate appropriately.
-        It is however important to avoid premature declarations, so at least two to
-        three days of the interrupting season's conditions should be observed.
-
-\item Consequently, seasons may begin and end zero or more times each year -
-        and at least once in every annual cycle to date.
-
-\item Seasons are not required to begin in the standard order, though most do.
-
-\item At Galiwinku, and presumably in other coastal locations, the afternoon
-        sea breeze obscures the seasonal signal in wind direction.
-        9am wind is fine.  3pm is too early.  At various times, 5pm-9pm is best.
-        (The analysis below uses 6pm wind for all evening observations.)
-\end{itemize}
-
-~\\
-
-TODO - acknowledge importance of these tips and talk about relevance to
-detection design.  Will end up in methods.  Most important bit is that
-interruption and out-of-order means that forward-filling last known
-doesn't work; have to actually check each day.
-
-TODO - with new data, check importance of 3pm/6pm wind, and comment on
-whether this makes much difference.
-
-
 
 
 \subsection{Detection of Seasons}
+\label{subsec:results-season-detection}
 For each season, run detection by the approaches given above.
 Present as a multipanel for seach approach, with a panel for each season
 and a final full-colour panel for all seasons.  Only provide this for the

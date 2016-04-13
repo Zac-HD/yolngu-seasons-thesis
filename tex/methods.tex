@@ -220,7 +220,7 @@ Missing data is not filled in any way, to convey the coverage of the record
 and accurately represent missing data in the figures.  In scalar calculations,
 missing data is propagated (eg ${NaN+10=NaN}$); in some aggregation
 it is omitted from the sample (eg ${mean(1,NaN,5)=3}$, though
-${mean(NaN,Nan)=NaN}$). Heatmap figures represent missing data as a black cell.
+${mean(NaN,NaN)=NaN}$). Heatmap figures represent missing data as a black cell.
 
 
 \paragraph{Seasons are detected} at daily resolution, matching the input
@@ -231,7 +231,7 @@ for each day.  The reconciliation draws on participants' comments to drop incons
 ratings before comparing normalised season ratings.
 
 For each season, I construct a set of boolean criteria based on participant
-descriptions in REF SECTION.  A raw index for each season is defined by
+descriptions.  A raw index for each season is defined by
 running these conditions over each day of data (giving True, False, or NaN),
 and summing the values for each season for each day (giving NaN, 0, 1, ...).
 \autoref{fig:season-definitions-code} shows the code used to build raw
@@ -254,8 +254,30 @@ While I consider changes in the weather a better fit for season detection,
 and a strong area for further study, this approach is impractical given available
 qualitative and quantitative data.
 
-TODO - carefully go over thresholds chosen for each criterion, and
-justify here to the extent appropriate.  Reference relevant sections.
+These thresholds are set based on \autoref{subsec:calendar-description};
+for categorical criteria such as wind direction or the absence of rain days
+I am confident that they are reasonably rigorous.  For quantitative criteria,
+such as ``very hot'', ``humid'', rain on ``most days'' or ``less frequently'',
+rigour is more dificult.
+
+The ideal solution would be to find a historical record of what season
+it was on various days; regression analysis, (un)supervised classification,
+or machine learning techniques could then associate seasons with typical
+conditions.  Unfortunately, no such record exists.  In searching for one
+I spoke to Yolngu people, current and ex-mission workers, the Tropical
+Rivers and Coastal Knowledge team at CSIRO, academics from Charles Darwin
+University and Nungalinya College.
+
+Instead, I tried a range of values and selected those which appeared to
+best reproduce the described timing of each season in the Galiwinku and
+Milingimbi data.  This selection was on the basis of normalised season
+indicies before aggregation, so it tested for specific descriptions
+rather than merely expected results.
+
+This is probably the weakest step in the quantification method,
+but there isn't a practical alternative.  TODO - explain mutation
+testing shows (low, medium?) sensitivity to exact values -
+calculate and show exact difference for electronic appendices
 
 Finally, the index timeseries for each season is normalised by conversion to
 a z-score, to allow direct comparison between seasons - the variation in data
@@ -281,20 +303,33 @@ dependencies.
 TODO - the remainder of this section is waiting on finalisation of the
 remaining results, particularly section numbers and calculation.
 
-As documented in REF SECTION, seasons may begin and end several
-times through the year in response to conditions.  Emphasising onset timing
+\autoref{subsec:detection-advice} shows that seasons may occur multiple
+times in a given year, in any order.  This presents a significant
+challenge to reliable detection of seasonal onset, as it rules out
+the simple approach of detecting an event and forward-filling the
+associated season to the next detected event.  Instead, I use a local
+analysis approach which seperately analyses each day of data with
+a small window only used for smoothing via a rolling mean of 3-7 days.
+
+The cost of this well-grounded system is 
+
+
+
+Emphasising onset timing
 by asking ``when does [this season] typically begin?'' mischaracterises the
 Yolngu calendar; a better formulation might be ``what season occurs most
 often at this time of year?'' or ``what season best matches typical conditions
-for each day of the year?''.
+for each day of the year?''.  \autoref{subsec:results-season-detection}
+explores several such approaches to characterising typical timing for seasons,
+and discusses the benefits and drawbacks of each.
 
-REF SECTION explores several such approaches to characterising typical
-timing for seasons, and discusses the 
 
+TODO - acknowledge importance of these tips and talk about relevance to
+detection design.  Will end up in methods.  Most important bit is that
+interruption and out-of-order means that forward-filling last known
+doesn't work; have to actually check each day.
 
 ~\\
-
-TODO: actually calculate this stuff.
 
 Calculation of summary statistics for each season has a firmer conceptual
 grounding.  The daily data are grouped by detected season and summary statistics
