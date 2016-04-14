@@ -3,6 +3,36 @@
 
 \section{Methodology}
 
+My methodological approach is interdisciplinary and exploratory.
+%
+The interdisciplinary aspect is inherent in the topic; it would
+be impossible to characterise Indigenous seasons in this way without
+integrating qualitative and quantitative methods.
+%
+It is exploratory because there is no known precedent or published
+method for quantification of an Australian Indigenous seasonal calendar.
+This novelty means that the specific quantification methods used
+were not known ahead of time, as they are informed and shaped by
+interview data.  It also means that these methods themselves form
+a novel result, which breaks ground for further research.\\
+
+My specific methods fall into four distinct stages.
+\begin{enumerate}
+\item Draw on literature describing the Yolngu seasonal calendar
+\item Interviews with Yolngu and non-Indigenous people who
+    understand this calendar
+\item Quantitative methods bridging literature and interview
+    descriptions to the observational weather record, to characterise
+    Yolngu seasons
+\item Analysis of the derived seasonal record, such as typical
+    conditions for each season and correlations with climate indicies.
+\end{enumerate}
+
+~\\
+
+\textit{This section is not yet finalised.}\\
+
+
 I build on existing literature and primary research by deriving a physical
 characterisation of the Yolngu calendar, combining traditional Indigenous
 knowledge with numerical climate science. Using threshold values in meteorological
@@ -10,25 +40,16 @@ variables rather than a predefined date range enables analysis of means and
 variation in the timing of onset, duration of seasons, and annual patterns
 in climatological variables.
 
-Preliminary work suggests that these definitions can also be applied to
-reconstructed or modelled climate data, allowing investigation of trend
-or abrupt changes over time. Well-founded definitions may allow scenario-based
-investigation of a wider range of conditions than exist in the historical record. 
-
-~\\
-
-TODO - fill out methodology
-
 Historical climatology is important in that it informs my methods,
 but also for the concept and to contextualise the research.  May lead to 
-some comparisons between `lay knowledge' and IEK (an important point).\\
+some comparisons between `lay knowledge' and IEK (an important point).
 
 
 
 
 
 \section{Research with Indigenous People}
-
+\textit{This section is not yet finalised.}\\
 
 
 Existing research on Australian Indigenous Calendars has generally been 
@@ -76,6 +97,14 @@ such research for an Honours thesis.
 
 
 \section{Qualitative and Interview Methods}
+\textit{This section is not yet finalised.}\\
+
+
+\subsection{Sample and Recruitment}
+TODO: describe sample recruitment, size, demographics.
+Note planned trip to Galiwinku fell through, explain why
+and what fallback plan was.
+
 
 I rely on four sources of qualitative knowledge and context for the Yolngu
 seasons, in order of importance:
@@ -105,6 +134,9 @@ communities. I followed several disconnected threads such as the
 of the interviews.
 
 See \autoref{sec:ethics} for details of the human ethics approval.
+
+
+\subsection{Interview Methods and Questions}
 Semi-structured interviews with Yolngu participants are my primary source
 of information.  These interviews are utterly indispensible.
 The literature contextualises and informs the interviews, and suggested many fruitful
@@ -138,9 +170,14 @@ which changed my understanding of what a Yolngu seasonal calendar was!
 
 
 \section{Bridging Approaches to Quantify a Calendar}
+TODO - reference \autoref{subsec:three-seasons-scales}
+regarding multiple timescales for seasons and flag exclusive
+focus on one.  All laid out there, but need a reference in methods.
 
 
 \paragraph{Observing seasonal onset}~\\
+\textit{This subsection is not yet finalised.}\\
+
 There is a considerable body of literature dealing with seasons defined
 by observed environmental change - from temperature thresholds in
 Scandinavia to 'leaf out' for botanists or butterflies for zoologists.
@@ -300,9 +337,6 @@ dependencies.
 
 ~\\
 
-TODO - the remainder of this section is waiting on finalisation of the
-remaining results, particularly section numbers and calculation.
-
 \autoref{subsec:detection-advice} shows that seasons may occur multiple
 times in a given year, in any order.  This presents a significant
 challenge to reliable detection of seasonal onset, as it rules out
@@ -311,23 +345,27 @@ associated season to the next detected event.  Instead, I use a local
 analysis approach which seperately analyses each day of data with
 a small window only used for smoothing via a rolling mean of 3-7 days.
 
-The cost of this well-grounded system is 
+The cost of this well-grounded system is increased `jitter', rapid
+switching between seasons in periods when more than one is a close
+match for conditions.  To counter this, and account for the advice
+that season change requires several days observation, I...\\
 
+TODO - I have some ideas to counter this; eg boosting the index of
+whatever prevailed on the previous day by 0.25 standard deviations.
+Alternatively only change if season is same for two or three days.
+Implement and see what shakes out.
 
+~\\
 
-Emphasising onset timing
-by asking ``when does [this season] typically begin?'' mischaracterises the
-Yolngu calendar; a better formulation might be ``what season occurs most
-often at this time of year?'' or ``what season best matches typical conditions
-for each day of the year?''.  \autoref{subsec:results-season-detection}
-explores several such approaches to characterising typical timing for seasons,
-and discusses the benefits and drawbacks of each.
-
-
-TODO - acknowledge importance of these tips and talk about relevance to
-detection design.  Will end up in methods.  Most important bit is that
-interruption and out-of-order means that forward-filling last known
-doesn't work; have to actually check each day.
+Yolngu seasons cannot be well characterised by onset timing.  Instead
+of asking ``when does [this season] typically begin?'' - which implies
+that each season begins once per year, at a roughly constant date -
+it is better to ask which season best matches conditions at a date,
+or which is most commonly observed.
+%
+\autoref{subsec:results-season-detection} explores several approaches
+to characterising typical timing for seasons, and discusses the
+benefits and drawbacks of each.
 
 ~\\
 
