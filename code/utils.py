@@ -60,6 +60,9 @@ _months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June',
            'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 dayofyear_month_labels = [
     '' if (i-14) % 30 else _months.pop(0) for i in range(1, 367)]
+_months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June',
+           'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+
 
 chart_panels = ('rain', 'maxtemp', 'mintemp', 'dewpoint',
                 'windspd09', 'winddir09', 'windspd15', 'winddir15')

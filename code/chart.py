@@ -57,6 +57,7 @@ def save_out(data, station_name):
                 station_name, 'monthly-seasons',
                 column_format='l' + 'p{6em}' * 7)
 
+    save_figure(climograph(data), station_name, 'climograph')
     save_figure(multipanel(data, *utils.chart_panels),
                 station_name, 'observations')
     save_figure(multipanel(
@@ -89,6 +90,33 @@ def lines(daily, ylabel=''):
     ax.set_xlabel('Month')
     ax.set_xlim([-1, 367])
     ax.set_ylabel(ylabel or 'Season intensity index (normalised)')
+    return fig
+
+
+def climograph(df):
+    """Make a climograph from the given dataframe."""
+    temp = [(utils.nameof.maxtemp, 'solid'),
+            (utils.nameof.mintemp, 'dashed'),
+            (utils.nameof.dewpoint, 'dotted')]
+    m = pd.groupby(df, df.index.month)
+    fig, ax_rain = plt.subplots()
+    ax = ax_rain.twinx()
+    # Plot total rainfall
+    ax_rain.bar(m.mean().index, m[utils.nameof.rain].mean(),
+                width=0.6, align='center')
+    ax_rain.set_ylabel('Bars: mean rainfall per day (mm)')
+    # Plot mean temperatures
+    for series, style in temp:
+        m[series].mean().plot(
+            ax=ax, legend=False, linestyle=style, linewidth=4, color='darkred')
+    ax.set_ylabel('Lines: daily temperature (deg C)\n'
+                  '(Dewpoint < Minimum < Maximum)')
+    ax.set_xlabel('Month')
+    ax.set_xticks(m.mean().index)
+    ax.set_xticklabels(utils._months)
+    ax.set_ylim(bottom=0)
+    ax_rain.set_xlim([0.5, 12.5])
+    ax.set_xlim([0.5, 12.5])
     return fig
 
 
