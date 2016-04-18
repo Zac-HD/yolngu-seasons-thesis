@@ -40,10 +40,6 @@ variables rather than a predefined date range enables analysis of means and
 variation in the timing of onset, duration of seasons, and annual patterns
 in climatological variables.
 
-Historical climatology is important in that it informs my methods,
-but also for the concept and to contextualise the research.  May lead to
-some comparisons between `lay knowledge' and IEK (an important point).
-
 
 Discuss the relationship-building stage in some detail; it's really important.
 Relationships are a key part of cross-cultural research.  See Sue Smith, as
@@ -133,45 +129,20 @@ which changed my understanding of what a Yolngu seasonal calendar was!
 
 
 
-\section{Bridging Approaches to Quantify a Calendar}
-TODO - reference \autoref{subsec:three-seasons-scales}
-regarding multiple timescales for seasons and flag exclusive
-focus on one.  All laid out there, but need a reference in methods.
+\section{Application: from Qualitative to Numerical Data}
+
+This paper attempts to quantify only one Yolngu seasonal, with six seasons
+each year defined by weather conditions and events.  See
+\autoref{subsec:three-seasons-scales} for a brief explanation of other
+Yolngu seasonal calendars, and an explanation of this focus.
 
 
-\paragraph{Observing seasonal onset}~\\
-\textit{This subsection is not yet finalised.}\\
+\subsection{Weather Observations}
 
-There is a considerable body of literature dealing with seasons defined
-by observed environmental change - from temperature thresholds in
-Scandinavia to 'leaf out' for botanists or butterflies for zoologists.
+The numerical weather data were generously supplied by the Australian
+Bureau of Meterology.  This section describes the basic numerical data,
+quality checks, and handling of missing data.
 
-While such definitions are highly dependent on context, some common
-elements can be observed.
-
-Monotonic changes and qualitative changes are easiest to pin down.
-Ie binary states, and/or only passing the threshold once per year.
-
-TODO more on this, add references.
-
-I've started reading the literature on historical climatology, but don't have
-enough depth to write much yet.  It's going to be an important angle though.
-
-Matching oral history with numerical data is an established technique in
-climate science, as recorded observations can greatly assist in reconstruction
-of conditions before the instrumental record began.  In this case, observations
-within living memory are an excellent source, as the instrumental record is
-even today very sparse in Arnhem Land.  Investigation of social adaptation to
-local climate is an interesting and often closely linked field.
-
-Look more into non-observational records; as far as I know dendrology etc has
-not been done much in the region; this is relevant as a missing alternative to
-oral histories.
-
-
-
-\paragraph{Weather observations} were generously supplied by the
-Australian Bureau of Meterology.
 
 \begin{table}[h]
     \centering
@@ -224,7 +195,9 @@ it is omitted from the sample (eg ${mean(1,NaN,5)=3}$, though
 ${mean(NaN,NaN)=NaN}$). Heatmap figures represent missing data as a black cell.
 
 
-\paragraph{Seasons are detected} at daily resolution, matching the input
+\subsection{Detection of Seasons}
+
+Seasons are detected at daily resolution, matching the input
 weather data.
 Each of these methods assigns a confidence rating for each season to each day of
 observations.  These ratings are then reconciled to a single season, or unknown,
