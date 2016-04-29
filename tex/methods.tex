@@ -217,16 +217,6 @@ and summing the values for each season for each day (giving NaN, 0, 1, ...).
 \autoref{fig:season-definitions-code} shows the code used to build raw
 seasonal indicies.
 
-\begin{figure}[h]
-    \lstinputlisting[firstline=31, lastline=55, xleftmargin=0.1\textwidth]{../code/season.py}
-    \centering
-    \caption[Python code: definition of season indicies]{
-        Code listing of variables and conditions used to detect seasons.
-        TODO - update detection, expand description, keep eye on line range.
-        }
-    \label{fig:season-definitions-code}
-\end{figure}
-
 Season-detection criteria can be defined in two ways: based on thresholds
 in absolute measurement, or on trends.  I prefer the threshold approach,
 as experimenting with trend-based detection did not yield reliable results.

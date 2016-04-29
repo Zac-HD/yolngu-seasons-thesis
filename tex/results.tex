@@ -14,7 +14,9 @@ variation in definitions, and three distinct types of season.
 Third, a Yolngu seaonal calendar drawn from interview responses,
 defining a handful of meteorologically-defined seasons each year.
 
-
+The quantitative results follow, starting with a summary of the
+observational weather record.  Finally, the quantified seasons are
+presented.
 
 
 
@@ -416,8 +418,13 @@ patterns in rainfall and humidity.
 
 ~\\
 
+TODO - should I reproduce the climograph here?  Or is a reference enough?
+
 TODO - monthly summary of wind?  Would be simplified vector field, not
 sure if this is worthwhile... and might need to (maybe) show speed too.
+
+TODO - landscape table is larger and uglier than ideal.  Short column
+names and put on portrait page?  Requires manual editing, I think.
 
 \begin{landscape}
 \begin{table}
@@ -492,9 +499,11 @@ TODO - write detailed walkthrough of how to read these figures!
 
 \section{Quantifying a Yolngu Calendar}
 
-\subsection{Summary of a Yolngu Calendar}
-\autoref{tab:quant-seasons-summary} summarises typical timing and recognition criteria for each season.
-
+\autoref{tab:quant-seasons-summary} summarises typical timing and recognition
+criteria for each season.  \label{fig:season-definitions-code} shows the
+implementation of these conditions in Python3 code -- normalised later --
+which create the time-series shown in figures \ref{fig:galiwinku-seasons}
+and \ref{fig:milingimbi-seasons}.
 
 \begin{table}[h]
     \centering
@@ -512,46 +521,51 @@ TODO - write detailed walkthrough of how to read these figures!
     \label{tab:quant-seasons-summary}
 \end{table}
 
-
-
-
-\subsection{Detection of Seasons}
-\label{subsec:results-season-detection}
-For each season, run detection by the approaches given above.
-Present as a multipanel for seach approach, with a panel for each season
-and a final full-colour panel for all seasons.  Only provide this for the
-Galiwinku data; others can stick to the electronic appendicies.
-
-Discuss briefly which method is considered superior and why; note
-that \autoref{ch:analysis} will, to be concise, stick to that one.
-The other \emph{may} be used to reproduce results in an appendix.
-
-Close chapter with a table (or similar) presenting seasons, detection
-algorithms, and a summary of success rates.  Defer analysis of results
-to next chapter.
-
-~\\
-
-There's a lot to do still, but figures \ref{fig:galiwinku-season-counts},
-\ref{fig:galiwinku-seasons}, and \ref{fig:milingimbi-seasons}
-demonstrate that the concept of the analysis is viable.
-
-\begin{figure}
+\begin{figure}[h]
+    \lstinputlisting[firstline=31, lastline=55, xleftmargin=0.1\textwidth]{../code/season.py}
     \centering
-    \includegraphics[width=\textwidth]{galiwinku/season-counts.pdf}
-    \caption[Calculated season frequency, Elcho Island]{
-        Illustrative count of days for each season, Elcho Island.
+    \caption[Python code: definition of season indicies]{
+        Code listing of variables and conditions used to detect seasons.
+        TODO - update detection, expand description, keep eye on line range.
+        }
+    \label{fig:season-definitions-code}
+\end{figure}
+
+To avoid bloating this section, only figures for the seasons at Galiwinku
+(Ngayawili weather station) are included in the text.  Corresponding
+figures for all other stations can be found in the electronic appendicies;
+interpretation of the figures below includes descriptions and comparisons
+where relevant.
+
+\begin{wrapfigure}{R}{0.5\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{galiwinku/season-counts.pdf}
+    \caption[Calculated season frequency, Galiwinku]{
+        Number of days on which each season was observed at Galiwinku,
+        over the period of available data.
         These colours are used for each season in all figures below.
         }
     \label{fig:galiwinku-season-counts}
-\end{figure}
+\end{wrapfigure}
 
 \autoref{fig:galiwinku-season-counts} shows the count of days on which
 each season was detected.  Like \autoref{fig:compass-rose}, it also
-shows the repeated colour scheme.  All other season figures use the
+shows a repeated colour scheme -- all season figures below use the
 same colour palete, without further labelling.
 
-\autoref{fig:season-index-lines} is very interesting.  TODO EXPLAIN WHY.
+
+
+~\\
+
+TODO:  Write interpretative para/s for index lines and observed area.
+Also sort out figure sizes and formatting?
+
+TODO:  Work out formatting and write paragraph/s interpreting multipanel season figs
+
+TODO:  Close chapter with a table (or similar) presenting seasons, detection
+algorithms, and a summary of success rates.  Defer analysis of results
+to next chapter.
+
 
 \begin{figure}[h]
     \centering
@@ -563,10 +577,9 @@ same colour palete, without further labelling.
         This is not indicative of poor detection on a single day,
         but rather that occurence varies more between years.
         }
-    \label{fig:season-daily-lines}
+    \label{fig:season-daily-index}
 \end{figure}
-
-
+%
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{galiwinku/seasons-daily-prob.pdf}
@@ -578,9 +591,6 @@ same colour palete, without further labelling.
 \end{figure}
 
 
-
-
-TODO - paragraph referencing and interpreting these figures.
 
 \begin{figure}[p]
     \centering
