@@ -460,16 +460,22 @@ rather than red/green which would disadvantage colourblind readers.
 
 
 Figures \ref{fig:galiwinku-observations} and \ref{fig:milingimbi-observations}
-show historical weather observations at Galiwinku and Milingimbi as
-sets of heatmaps, where for each variable a grid of year (y) and day-of-year(x)
-is shaded according to the observation on that date.  Black cells indicate missing data.
-In each figure, the variation in seasonality between years is clearly visible.
-
+show historical weather observations at Galiwinku and Milingimbi as a set of
+heatmaps (panels, arranged vertically).  Each heatmap is a grid, with year
+on the y-axis and day-of-year on the x-axis.  Each cell is then shaded
+according to the value observed on that day; days without data are shaded
+black.
+%
 Unlike the climographs above, these figures clearly show variation in timing
 of seasonal onset between years.  This demonstrates that timeseries data
 at daily resolution is required for investigation of Indigenous seasons.
 
+
+\framebox{
 TODO - write detailed walkthrough of how to read these figures!
+This means a walkthrough and interpretation of one panel, with
+references to another.
+}
 
 
 \begin{figure}[p]
@@ -539,32 +545,23 @@ where relevant.
 
 \begin{wrapfigure}{R}{0.5\textwidth}
     \centering
-    \includegraphics[width=\linewidth]{galiwinku/season-counts.pdf}
+    \includegraphics[width=\linewidth]{galiwinku/season-pie.pdf}
     \caption[Calculated season frequency, Galiwinku]{
-        Number of days on which each season was observed at Galiwinku,
-        over the period of available data.
+        Proportion of days on which each season was observed at
+        Galiwinku, over the period of available data.
         These colours are used for each season in all figures below.
         }
     \label{fig:galiwinku-season-counts}
 \end{wrapfigure}
 
-\autoref{fig:galiwinku-season-counts} shows the count of days on which
+\autoref{fig:galiwinku-season-counts} shows the proportion of days on which
 each season was detected.  Like \autoref{fig:compass-rose}, it also
 shows a repeated colour scheme -- all season figures below use the
 same colour palete, without further labelling.
 
-
-
 ~\\
 
 TODO:  Write interpretative para/s for index lines and observed area.
-Also sort out figure sizes and formatting?
-
-TODO:  Work out formatting and write paragraph/s interpreting multipanel season figs
-
-TODO:  Close chapter with a table (or similar) presenting seasons, detection
-algorithms, and a summary of success rates.  Defer analysis of results
-to next chapter.
 
 
 \begin{figure}[h]
@@ -591,6 +588,8 @@ to next chapter.
 \end{figure}
 
 
+TODO:  write paragraph/s interpreting multipanel season figs
+
 
 \begin{figure}[p]
     \centering
@@ -612,5 +611,15 @@ to next chapter.
     \label{fig:milingimbi-seasons}
 \end{figure}
 
+
+TODO:  Close section by summarising how well season detection worked.
+Keep this impartial enough to fit results, rather than discussion.
+
+
+
+\section{Correlations with Climatic Indicies}
+\label{sec:indicies-correlations}
+
+TODO - analyse correlations between seasons and ENSO index/indicies, IOD, etc.
 
 

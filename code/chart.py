@@ -50,8 +50,8 @@ def season_prob(data):
 def save_out(data, station_name):
     """Save a multipanel summary figure and monthly text table."""
     monthly = grouped_summary(data)
-    observations = monthly[[nameof._asdict()[n] for n in utils.chart_panels]]
-    latex_table(observations, station_name, 'monthly-summary',
+    latex_table(monthly[[nameof._asdict()[n] for n in utils.chart_panels]],
+                station_name, 'monthly-summary',
                 column_format='l' + 'p{6em}' * 10)
     latex_table(monthly[['raw_season'] + list(utils.seasons)],
                 station_name, 'monthly-seasons',
@@ -72,24 +72,38 @@ def save_out(data, station_name):
                       )[list(utils.seasons)]),
                 station_name, 'seasons-daily-index')
     save_figure(lines(
-        season_prob(data),
+        season_prob(data), filled=True,
         ylabel='Observed season occurence\n(probability, weekly mean)'),
                 station_name, 'seasons-daily-prob')
-    fig, ax = plt.subplots()
-    sns.countplot(data.raw_season, ax=ax)
-    save_figure(fig, station_name, 'season-counts')
+    save_figure(season_pie(data), station_name, 'season-pie')
 
 
-def lines(daily, ylabel=''):
+def lines(daily, ylabel='', filled=False):
     """Draw a line plot of the given columns daily."""
     with sns.axes_style('darkgrid', {'axes.grid': False}):
         fig, ax = plt.subplots()
-        plt.plot(daily)
+        if not filled:
+            plt.plot(daily)
+            ax.set_xlim([-1, 367])
+        else:
+            daily.plot.area(ax=ax, legend=False)
+            ax.set_ylim([0, 1])
     # Fix axis labels and extent
     plt.xticks(np.arange(366), utils.dayofyear_month_labels)
     ax.set_xlabel('Month')
-    ax.set_xlim([-1, 367])
     ax.set_ylabel(ylabel or 'Season intensity index (normalised)')
+    return fig
+
+
+def season_pie(data):
+    """Draw a pie chart of observed season frequency."""
+    fig, ax = plt.subplots()
+    vcs = data.raw_season.value_counts(dropna=True, sort=False)
+    vcs.name = ''
+    vcs.index = ['Dhuludur', 'Barramirri', 'Mayaltha', 'Midawarr',
+                 'Dharrath-\namirri', 'Rarrandharr']
+    vcs.plot.pie(ax=ax, legend=False, figsize=(3, 3),
+                 startangle=90, counterclock=False)
     return fig
 
 
