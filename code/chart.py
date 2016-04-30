@@ -113,16 +113,18 @@ def climograph(df):
             (utils.nameof.mintemp, 'dashed'),
             (utils.nameof.dewpoint, 'dotted')]
     m = pd.groupby(df, df.index.month)
-    fig, ax_rain = plt.subplots()
-    ax = ax_rain.twinx()
-    # Plot total rainfall
-    ax_rain.bar(m.mean().index, m[utils.nameof.rain].mean(),
-                width=0.6, align='center')
-    ax_rain.set_ylabel('Bars: mean rainfall per day (mm)')
-    # Plot mean temperatures
-    for series, style in temp:
-        m[series].mean().plot(
-            ax=ax, legend=False, linestyle=style, linewidth=4, color='darkred')
+    with sns.axes_style('dark'):
+        fig, ax_rain = plt.subplots()
+        ax = ax_rain.twinx()
+        # Plot total rainfall
+        ax_rain.bar(m.mean().index, m[utils.nameof.rain].mean(),
+                    width=0.6, align='center')
+        ax_rain.set_ylabel('Bars: mean rainfall per day (mm)')
+        # Plot mean temperatures
+        for series, style in temp:
+            m[series].mean().plot(
+                ax=ax, legend=False, linestyle=style,
+                linewidth=4, color='darkred')
     ax.set_ylabel('Lines: daily temperature (deg C)\n'
                   '(Dewpoint < Minimum < Maximum)')
     ax.set_xlabel('Month')
