@@ -76,7 +76,7 @@ said \blockquote{
     QUOTE IAN RE: could not possibly fit everything on a wall
 }
 
-A similar three-level pattern of seasons is visible in \autoref{fig:tiwi-seasons},
+A similar three-level pattern of seasons is visible in \cref{fig:tiwi-seasons},
 on page~\pageref{fig:tiwi-seasons}.  The Tiwi seasons are shown at a monsoonal level,
 as well as by weather or ecology.  The latter categories are not clearly distinguished
 in this figure, though weather is generally further from the center.
@@ -154,11 +154,11 @@ due to the long connection between Yolngu and the natural environment.
 
 Participants explained that these seasons vary between groups even within
 a single clan-nation or language group, meaning that each of the towns
-across Arnhem Land (see \autoref{fig:arnhem-map}) would have a different
+across Arnhem Land (see \cref{fig:arnhem-map}) would have a different
 calendar. These seasons are closely tied to traditional activities such as
 travel, use of particular foods or other resources, and ceremony.
 
-On the Tiwi Seasons Calendar, \autoref{fig:tiwi-seasons}, the inner-most
+On the Tiwi Seasons Calendar, \cref{fig:tiwi-seasons}, the inner-most
 rings concern ecological seasons and observations - such as
 \textit{Mumpikari}, when possums leave muddy tracks and hunting them is easy.
 
@@ -176,7 +176,7 @@ And finally, quantification would be very difficult due to the paucity
 of quantitative ecological data at the required level of detail
 and localisation, especially in `remote' Australia.
 
-\autoref{sec:further-study} discusses how these seasons might be explored
+\Cref{sec:further-study} discusses how these seasons might be explored
 by further research, and some of the challenges to overcome.
 
 
@@ -216,7 +216,7 @@ it - teaching about how exactly to recognise each season.
     3pm the sea breeze overwhelms the seasonal changes.  The suggestion was
     to instead consider wind between 5pm and 8pm depending on time of year.
 
-    With data at three-hourly resolution, \autoref{fig:galiwinku-seabreeze-direction}
+    With data at three-hourly resolution, \cref{fig:galiwinku-seabreeze-direction}
     does not show a substantially stronger seasonal signal at 6pm than 3pm.
     I therefore use the standard observations of 9am and 3pm for the analysis.
 
@@ -239,13 +239,13 @@ thing exists.  Instead it represents my attempt to construct a quantifiable
 Yolngu seasonal calendar from as many sources as possible, and show some of
 the challenges of working with complex, incomplete, and sometimes missing
 information.  I am confident that the result is fit for purpose, and -- taken
-with \autoref{sec:complex-seasons} -- avoids misleading similarities to
+with \cref{sec:complex-seasons} -- avoids misleading similarities to
 more familiar seasonal cycles.
 
 
 \paragraph{Dhuludur} marks the beginning of the seasonal cycle.  It is the
 first of three predominantely wet seasons, before the heavy rain begins.
-One participant read \autoref{fig:yolngu-seasons} as claiming Rarrandharr
+One participant read \cref{fig:yolngu-seasons} as claiming Rarrandharr
 was the first season and issued a correction, saying \blockquote{
     XXXXX (find: this before RR.)}.
 
@@ -295,9 +295,9 @@ a fire to stay warm is very difficult, and \todo{MORE QUOTES HERE}.
 
 
 \paragraph{Mayaltha} is the season of plenty.  It does not appear in
-\autoref{fig:yolngu-seasons} \citep{davis1989}, but was described by
+\cref{fig:yolngu-seasons} \citep{davis1989}, but was described by
 participants and appears in the \textit{Yan-nhangu Atlas}.  Mayaltha's
-place in the three-level taxonomy of seasons (\autoref{subsec:three-seasons-scales})
+place in the three-level taxonomy of seasons (\cref{subsec:three-seasons-scales})
 is less clear than other seasons; while usually a meterological season
 it is sometimes considered to fit between the Wet and the Dry seasons.
 In this monsoonal context it is distinctive as the season without notable
@@ -408,10 +408,10 @@ day, and tricks for walking over very hot sand and rocks in bare feet.
 
 \section{The Observational Weather Record in NE Arnhem Land}
 
-\autoref{tab:weather-station-summary} shows the five weather stations in NE
+\Cref{tab:weather-station-summary} shows the five weather stations in NE
 Arnhem Land from which I draw an observational record.
-\autoref{tab:galiwinku-monthly-summary} shows average conditions for each
-month at Galiwinku.  \autoref{fig:galiwinku-climograph}, above, is a monthly
+\cref{tab:galiwinku-monthly-summary} shows average conditions for each
+month at Galiwinku.  \cref{fig:galiwinku-climograph}, above, is a monthly
 climograph of rainfall, maximum and minimum temperature, and dewpoint at
 Galiwinku.  Note the low variation in temperature, and strong seasonal
 patterns in rainfall and humidity.
@@ -438,7 +438,7 @@ names and put on portrait page?  Requires manual editing, I think.}
 \end{landscape}
 
 
-\autoref{fig:compass-rose} shows the mapping of colour to wind direction used
+\Cref{fig:compass-rose} shows the mapping of colour to wind direction used
 for the figures below.  These colours are drawn from the HSL colour space,
 which uses a polar (cylindrical) coordinate system for hue, saturation,
 and lightness (hence, ``HSL'').  With constant saturation and lightness,
@@ -459,7 +459,7 @@ rather than red/green which would disadvantage colourblind readers.
 
 
 
-Figures \ref{fig:galiwinku-observations} and \ref{fig:milingimbi-observations}
+\Cref{fig:galiwinku-observations,fig:milingimbi-observations}
 show historical weather observations at Galiwinku and Milingimbi as a set of
 heatmaps (panels, arranged vertically).  Each heatmap is a grid, with year
 on the y-axis and day-of-year on the x-axis.  Each cell is then shaded
@@ -504,11 +504,11 @@ references to another.}
 
 \section{Quantifying a Yolngu Calendar}
 
-\autoref{tab:quant-seasons-summary} summarises typical timing and recognition
-criteria for each season.  \label{fig:season-definitions-code} shows the
+\Cref{tab:quant-seasons-summary} summarises typical timing and recognition
+criteria for each season.  \Cref{fig:season-definitions-code} shows the
 implementation of these conditions in Python3 code -- normalised later --
-which create the time-series shown in figures \ref{fig:galiwinku-seasons}
-and \ref{fig:milingimbi-seasons}.
+which create the time-series shown in
+\Cref{fig:galiwinku-seasons,fig:milingimbi-seasons}.
 
 \begin{table}[h]
     \centering
@@ -553,8 +553,8 @@ where relevant.
     \label{fig:galiwinku-season-counts}
 \end{wrapfigure}
 
-\autoref{fig:galiwinku-season-counts} shows the proportion of days on which
-each season was detected.  Like \autoref{fig:compass-rose}, it also
+\Cref{fig:galiwinku-season-counts} shows the proportion of days on which
+each season was detected.  Like \cref{fig:compass-rose}, it also
 shows a repeated colour scheme -- all season figures below use the
 same colour palete, without further labelling.
 

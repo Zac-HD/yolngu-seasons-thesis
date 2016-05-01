@@ -117,7 +117,7 @@ communities. I followed several disconnected threads such as the
 \citet{CSIROcals} project, which helped to clarify and test my interpretation
 of the interviews.
 
-See \autoref{sec:ethics} for details of the human ethics approval.
+See \cref{sec:ethics} for details of the human ethics approval.
 
 
 \subsection{Interview Methods and Questions}
@@ -157,7 +157,7 @@ which changed my understanding of what a Yolngu seasonal calendar was!
 
 This paper attempts to quantify only one Yolngu seasonal, with six seasons
 each year defined by weather conditions and events.  See
-\autoref{subsec:three-seasons-scales} for a brief explanation of other
+\cref{subsec:three-seasons-scales} for a brief explanation of other
 Yolngu seasonal calendars, and an explanation of this focus.
 
 
@@ -181,11 +181,11 @@ quality checks, and handling of missing data.
     }
     \caption[List of weather stations providing data]{
         Summary description of weather stations used.
-        Locations are visible in \autoref{fig:arnhem-map}}
+        Locations are visible in \cref{fig:arnhem-map}}
     \label{tab:weather-station-summary}
 \end{table}
 
-\autoref{tab:weather-station-summary} shows the name, ID, and location of
+\Cref{tab:weather-station-summary} shows the name, ID, and location of
 the weather stations used.
 %
 The weather variables of interest are:
@@ -200,8 +200,8 @@ The weather variables of interest are:
 
 Participants suggested that season detection should not consider 3pm wind
 due to the effect of the sea breeze, and that 6pm would be more suitable.
-\autoref{fig:galiwinku-seabreeze-direction} showins wind direction by year
-and day-of-year, as in \autoref{fig:galiwinku-observations}.
+\Cref{fig:galiwinku-seabreeze-direction} shows wind direction by year
+and day-of-year, as in \cref{fig:galiwinku-observations}.
 %
 Similar charts for wind speed and other stations are included in the electronic
 appendices.  These charts show a northerly sea breeze, generally strong in the
@@ -233,7 +233,7 @@ For each season, I construct a set of boolean criteria based on participant
 descriptions.  A raw index for each season is defined by
 running these conditions over each day of data (giving True, False, or NaN),
 and summing the values for each season for each day (giving NaN, 0, 1, ...).
-\autoref{fig:season-definitions-code} shows the code used to build raw
+\Cref{fig:season-definitions-code} shows the code used to build raw
 seasonal indicies.
 
 Season-detection criteria can be defined in two ways: based on thresholds
@@ -243,7 +243,7 @@ While I consider changes in the weather a better fit for season detection,
 and a strong area for further study, this approach is impractical given available
 qualitative and quantitative data.
 
-These thresholds are set based on \autoref{subsec:calendar-description};
+These thresholds are set based on \cref{subsec:calendar-description};
 for categorical criteria such as wind direction or the absence of rain days
 I am confident that they are reasonably rigorous.  For quantitative criteria,
 such as ``very hot'', ``humid'', rain on ``most days'' or ``less frequently'',
@@ -289,7 +289,7 @@ dependencies.
 
 ~\\
 
-\autoref{subsec:detection-advice} shows that seasons may occur multiple
+\Cref{subsec:detection-advice} shows that seasons may occur multiple
 times in a given year, in any order.  This presents a significant
 challenge to reliable detection of seasonal onset, as it rules out
 the simple approach of detecting an event and forward-filling the
@@ -315,7 +315,7 @@ that each season begins once per year, at a roughly constant date -
 it is better to ask which season best matches conditions at a date,
 or which is most commonly observed.
 %
-\autoref{subsec:results-season-detection} explores several approaches
+\Cref{subsec:results-season-detection} explores several approaches
 to characterising typical timing for seasons, and discusses the
 benefits and drawbacks of each.
 
