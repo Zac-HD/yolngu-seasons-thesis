@@ -75,8 +75,8 @@ def save_out(station):
                 station_name, 'seabreeze-direction')
     save_figure(multipanel(data, 'raw_season', *utils.seasons),
                 station_name, 'seasons')
-    save_figure(lines(grouped_summary(data, data.index.dayofyear
-                      )[list(utils.seasons)]),
+    save_figure(lines(
+        grouped_summary(data, data.index.dayofyear)[list(utils.seasons)]),
                 station_name, 'seasons-daily-index')
     save_figure(lines(
         season_prob(data), filled=True,
@@ -178,10 +178,10 @@ def heatmap(data, kind, **kwargs):
         'humid15': {'cbar_kws': {'label': '3pm humidity (%)'}},
         **{'windspd' + h: {
             'cbar_kws': {'label': 'hour ' + h +' wind\nspeed (km/h)'}, **wspd}
-            for h in utils._wind_hours},
+           for h in utils._wind_hours},
         **{'winddir' + h: {
             'cbar_kws': {'label': 'hour ' + h +' wind\ndirection'}, **wdir}
-            for h in utils._wind_hours},
+           for h in utils._wind_hours},
         'raw_season': {'robust': False, 'cmap': mpl.colors.ListedColormap(
             sns.color_palette(palette='muted', n_colors=6))},
         }

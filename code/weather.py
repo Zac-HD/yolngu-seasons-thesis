@@ -23,10 +23,11 @@ _BOM_quality_flags = (
     'I',  # quality controlled and inconsistent with other known information
     'X')  # no quality information available
 
-_data_cols = ['Month Day Year in YYYY-MM-DD format',
-                 *utils.nameof,
-                 *utils._quality_cols,
-                 *utils._accumulation_pairs]
+_data_cols = [
+    'Month Day Year in YYYY-MM-DD format',
+    *utils.nameof,
+    *utils._quality_cols,
+    *utils._accumulation_pairs]
 
 
 def raw_station_dataframe(station_number):

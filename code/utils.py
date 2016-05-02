@@ -19,16 +19,15 @@ nameof = collections.namedtuple(
     ['rain', 'maxtemp', 'mintemp', 'dewpoint',
      *('windspd' + h for h in _wind_hours),
      *('winddir' + h for h in _wind_hours)]
-    )(*[
-    'Precipitation in the 24 hours before 9am (local time) in mm',
-    'Maximum temperature in 24 hours after 9am (local time) in Degrees C',
-    'Minimum temperature in 24 hours before 9am (local time) in Degrees C',
-    'Average daily dew point temperature in Degrees C',
-    *('Wind speed at {} hours Local Time measured in km/h'\
-      .format(h) for h in _wind_hours),
-    *('Wind direction at {} hours Local Time as 16 compass point text'\
-      .format(h) for h in _wind_hours),
-    ])
+    )(*['Precipitation in the 24 hours before 9am (local time) in mm',
+        'Maximum temperature in 24 hours after 9am (local time) in Degrees C',
+        'Minimum temperature in 24 hours before 9am (local time) in Degrees C',
+        'Average daily dew point temperature in Degrees C',
+        *('Wind speed at {} hours Local Time measured in km/h'\
+          .format(h) for h in _wind_hours),
+        *('Wind direction at {} hours Local Time as 16 compass point text'\
+          .format(h) for h in _wind_hours),
+       ])
 
 _quality_cols = tuple([
     'Quality of precipitation value',

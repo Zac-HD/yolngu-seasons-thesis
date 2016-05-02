@@ -7,10 +7,12 @@ from utils import nameof, seasons
 
 
 def below_mean(df, name):
+    # TODO: generalise to 'is within given deciles'
     return (df[name] < df[name].mean()).where(df[name].notnull())
 
 
 def wind_from(df, *directions, am=True, pm=True):
+    """Test if wind is from one of the given directions."""
     assert am or pm, 'Must use at least one of am or pm wind'
     am_name, pm_name = nameof.winddir09, nameof.winddir15
     am_wind = sum([df[am_name] == d for d in directions]).where(
