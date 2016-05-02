@@ -88,7 +88,7 @@ def save_out(station):
 def lines(daily, ylabel='', filled=False):
     """Draw a line plot of the given columns daily."""
     with sns.axes_style('dark'):
-        fig, ax = plt.subplots()
+        fig, ax = plt.subplots(figsize=(8, 4))
     if not filled:
         plt.plot(daily)
         ax.set_xlim([-1, 367])

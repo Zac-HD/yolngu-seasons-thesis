@@ -22,39 +22,37 @@ def wind_from(df, *directions, am=True, pm=True):
     return (am_wind if am else False) + (pm_wind if pm else False)
 
 
-def season_indicies(df):
+def season_indicies(data):
     """Add a column for each season to the dataframe."""
-    # Note that this function is a DEMONSTRATION ONLY
-    # and should not be interpreted as more than proof-of-concept work.
-    weekly_rain_days = (df[nameof.rain] > 1).rolling(
+    weekly_rain_days = (data[nameof.rain] > 1).rolling(
         window=7, center=True, min_periods=5).sum()
 
     season = pd.DataFrame()
     season["Dhuludur"] = sum([
-        wind_from(df, "NE", "NNE", "N", "NNW", "NW", "WNW",),
-        below_mean(df, nameof.mintemp),
+        wind_from(data, "NE", "NNE", "N", "NNW", "NW", "WNW",),
+        below_mean(data, nameof.mintemp),
         (weekly_rain_days >= 2),
         ])
     season["Barramirri"] = sum([
-        wind_from(df, "N", "NNW", "NW", "WNW", "W"),
-        df[nameof.rain] > 10,
+        wind_from(data, "N", "NNW", "NW", "WNW", "W"),
+        data[nameof.rain] > 10,
         ])
     season["Mayaltha"] = sum([
-        wind_from(df, "NNW", "NW", "WNW"),
+        wind_from(data, "NNW", "NW", "WNW"),
         (weekly_rain_days <= 3) * 0.5,
         ])
     season["Midawarr"] = sum([
-        wind_from(df, "NE", "ENE", "E", "ESE"),
+        wind_from(data, "NE", "ENE", "E", "ESE"),
         (weekly_rain_days != 0) * 0.5,
         ])
     season["Dharrathamirri"] = sum([
         weekly_rain_days == 0,
-        wind_from(df, "ESE", "SE", "SSE"),
+        wind_from(data, "ESE", "SE", "SSE"),
         ])
     season["Rarrandharr"] = sum([
         weekly_rain_days == 0,
-        below_mean(df, nameof.dewpoint) * 0.5,
-        below_mean(df, nameof.maxtemp) == False,
+        below_mean(data, nameof.dewpoint) * 0.5,
+        below_mean(data, nameof.maxtemp) == False,
         ])
     return season
 

@@ -19,6 +19,8 @@ observational weather record.  Finally, the quantified seasons are
 presented.
 
 
+\todo{Add intro/flags to start of each section for better flow}
+
 
 \section{Unexpected Complexity in Seasonal Calendars}
 \label{sec:complex-seasons}
@@ -246,6 +248,9 @@ the challenges of working with complex, incomplete, and sometimes missing
 information.  I am confident that the result is fit for purpose, and -- taken
 with \cref{sec:complex-seasons} -- avoids misleading similarities to
 more familiar seasonal cycles.
+
+\todo{Fill out this section, and clearly distinguish my results from
+the literature.}
 
 
 \paragraph{Dhuludur} marks the beginning of the seasonal cycle.  It is the
@@ -511,8 +516,7 @@ references to another.}
 \Cref{tab:quant-seasons-summary} summarises typical timing and recognition
 criteria for each season.  \Cref{fig:season-definitions-code} shows the
 implementation of these conditions in Python3 code -- normalised later --
-which create the time-series shown in
-\Cref{fig:galiwinku-seasons,fig:milingimbi-seasons}.
+which create the time-series shown in \cref{fig:galiwinku-seasons}.
 
 \begin{table}[h]
     \centering
@@ -531,7 +535,7 @@ which create the time-series shown in
 \end{table}
 
 \begin{figure}[h]
-    \lstinputlisting[firstline=33, lastline=58, xleftmargin=0.1\textwidth]{../code/season.py}
+    \lstinputlisting[firstline=31, lastline=56, xleftmargin=0.1\textwidth]{../code/season.py}
     \centering
     \caption[Python code: definition of season indicies]{
         Code listing of variables and conditions used to detect seasons.
@@ -564,12 +568,71 @@ same colour palete, without further labelling.
 
 ~\\
 
+\Cref{fig:galiwinku-seasons} is a multi-panel heatmap, using the same format
+as \cref{fig:galiwinku-observations,fig:milingimbi-observations} above.
+Each season has an individual panel showing the index for that season on each
+day, derived by taking the raw index from \cref{fig:season-definitions-code}
+and applying a four-day rolling mean and converting to a z-score (standard
+deviations from the mean) to allow direct comparison between indicies.
+%
+The topmost panel is an aggregated version, showing which season on each day
+had the greatest index -- the crucial timeseries for any further analysis.
+
+Note the clear distinction between Midawarr (purple), Dharrathamirri (yellow),
+and Rarrandharr (light blue) -- the dry seasons.  This clear pattern in the
+all-seasons panel arises from the distinctive and largely non-overlapping
+peaks in the index value for each season, forming a diagonal pattern over
+the lower three panels.
+%
+On the other hand, Dhuludur (dark blue), Barramirri (green), and Mayaltha
+(red) are not clearly distinguished in their individual patterns.  This
+manifests in mixed occurance shown on the all-seasons panel, and is clearly
+visible in the summarising \cref{fig:season-daily-index,fig:season-daily-prob}.
+
+
+\begin{figure}[p]
+    \centering
+    \includegraphics[width=\textwidth]{galiwinku/seasons.pdf}
+    \caption[Detected seasons for Elcho Island]{
+        Detected seasons at Elcho Island, based on hand-crafted threshold
+        conditions.  \todo{improve caption}
+        }
+    \label{fig:galiwinku-seasons}
+\end{figure}
+
+~\\
+
 \todo{Write interpretative para/s for index lines and observed area.}
+
+\Cref{fig:season-daily-index,fig:season-daily-prob} are two attempts to
+summarise the full data shown in \cref{fig:galiwinku-seasons} without
+erasing or misrepresenting the variability that is a key characteristic
+of Yolngu seasons.
+
+\Cref{fig:season-daily-index} is a simple line chart, showing the mean
+per-day index for each season.
+%
+This gives insight into the degree of distinction between seasons.
+\todo{fill out interpretation}
+
+
+\Cref{fig:season-daily-prob} takes a different approach, showing empirical
+probability of observing each season on a given day of the year.  These
+data are further smoothed by a running weekly mean, to remove noise
+introduced by the small sample size (only 10-15 years for each station).
+%
+This tells a similar story to the index lines, but readers should note
+that these figures are independently derived from the data show in
+\cref{fig:galiwinku-seasons}.  There are a number of visible features in
+each which hint at the variation between years or unusual events, such as
+%
+\todo{fill out interpretation}
+
 
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.8\textwidth]{galiwinku/seasons-daily-index.pdf}
+    \includegraphics[width=\textwidth]{galiwinku/seasons-daily-index.pdf}
     \caption[Season index by day-of-year, Elcho Island]{
         Mean normalised (z-score) index for seasons per day-of-year
         at Galiwinku.  Note the clear distinction in the dry season,
@@ -579,43 +642,19 @@ same colour palete, without further labelling.
         }
     \label{fig:season-daily-index}
 \end{figure}
-%
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.8\textwidth]{galiwinku/seasons-daily-prob.pdf}
+    \includegraphics[width=\textwidth]{galiwinku/seasons-daily-prob.pdf}
     \caption[Season probability by day-of-year, Elcho Island]{
         Observed probability of each season by day of year.
         This figure does not show consistently strong ordering among all
-        seseasons; this may be attributed to a combination of imperfect
+        seasons; this may be attributed to a combination of imperfect
         detection, true variation in seasonal occurance, and details
         lost in aggregation.
         }
     \label{fig:season-daily-prob}
 \end{figure}
 
-
-\todo{write paragraph/s interpreting multipanel season figs}
-
-
-\begin{figure}[p]
-    \centering
-    \includegraphics[width=\textwidth]{galiwinku/seasons.pdf}
-    \caption[Detected seasons for Elcho Island]{
-        Detected seasons at Elcho Island, based on hand-crafted threshold conditions.
-        DRAFT FIGURE ONLY, will change substantially as method improves.
-        }
-    \label{fig:galiwinku-seasons}
-\end{figure}
-% Note - if possible, these figures should be on facing pages to allow easy comparison
-\begin{figure}[p]
-    \centering
-    \includegraphics[width=\textwidth]{milingimbi/seasons.pdf}
-    \caption[Detected seasons for Milingimbi Airport]{
-        Detected seasons at Milingimbi Airport, based on hand-crafted threshold conditions.
-        DRAFT FIGURE ONLY, will change substantially as method improves.
-        }
-    \label{fig:milingimbi-seasons}
-\end{figure}
 
 
 \todo{Close section by summarising how well season detection worked.
