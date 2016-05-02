@@ -30,27 +30,28 @@ def season_indicies(df):
         window=7, center=True, min_periods=5).sum()
 
     season = pd.DataFrame()
-    season['Dhuludur'] = sum([
-        wind_from(df, 'NE', 'NNE', 'N', 'NNW', 'NW', 'WNW',),
+    season["Dhuludur"] = sum([
+        wind_from(df, "NE", "NNE", "N", "NNW", "NW", "WNW",),
         below_mean(df, nameof.mintemp),
         (weekly_rain_days >= 2),
         ])
-    season['Barramirri'] = sum([
-        wind_from(df, 'N', 'NNW', 'NW', 'WNW', 'W'),
+    season["Barramirri"] = sum([
+        wind_from(df, "N", "NNW", "NW", "WNW", "W"),
         df[nameof.rain] > 10,
         ])
-    season['Mayaltha'] = sum([
-        wind_from(df, 'NNW', 'NW', 'WNW'),
+    season["Mayaltha"] = sum([
+        wind_from(df, "NNW", "NW", "WNW"),
         (weekly_rain_days <= 3) * 0.5,
         ])
-    season['Midawarr'] = sum([
-        wind_from(df, 'NE', 'ENE', 'E', 'ESE'),
+    season["Midawarr"] = sum([
+        wind_from(df, "NE", "ENE", "E", "ESE"),
+        (weekly_rain_days != 0) * 0.5,
         ])
-    season['Dharrathamirri'] = sum([
+    season["Dharrathamirri"] = sum([
         weekly_rain_days == 0,
-        wind_from(df, 'ESE', 'SE', 'SSE'),
+        wind_from(df, "ESE", "SE", "SSE"),
         ])
-    season['Rarrandharr'] = sum([
+    season["Rarrandharr"] = sum([
         weekly_rain_days == 0,
         below_mean(df, nameof.dewpoint) * 0.5,
         below_mean(df, nameof.maxtemp) == False,
