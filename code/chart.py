@@ -87,15 +87,14 @@ def save_out(station):
 
 def lines(daily, ylabel='', filled=False):
     """Draw a line plot of the given columns daily."""
-    with sns.axes_style('darkgrid', {'axes.grid': False}):
+    with sns.axes_style('dark'):
         fig, ax = plt.subplots()
-        if not filled:
-            plt.plot(daily)
-            ax.set_xlim([-1, 367])
-        else:
-            daily.plot.area(ax=ax, legend=False)
-            ax.set_ylim([0, 1])
-    # Fix axis labels and extent
+    if not filled:
+        plt.plot(daily)
+        ax.set_xlim([-1, 367])
+    else:
+        daily.plot.area(ax=ax, legend=False)
+        ax.set_ylim([0, 1])
     plt.xticks(np.arange(366), utils.dayofyear_month_labels)
     ax.set_xlabel('Month')
     ax.set_ylabel(ylabel or 'Season intensity index (normalised)')
