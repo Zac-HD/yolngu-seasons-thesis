@@ -27,33 +27,33 @@ def season_indicies(df):
     weekly_rain_days = (df[nameof.rain] > 1).rolling(
         window=7, center=True, min_periods=5).sum()
 
-    seasons_df = pd.DataFrame()
-    seasons_df[seasons.du] = sum([
+    season = pd.DataFrame()
+    season['Dhuludur'] = sum([
         wind_from(df, 'NE', 'NNE', 'N', 'NNW', 'NW', 'WNW',),
         below_mean(df, nameof.mintemp),
         (weekly_rain_days >= 2),
         ])
-    seasons_df[seasons.ba] = sum([
+    season['Barramirri'] = sum([
         wind_from(df, 'N', 'NNW', 'NW', 'WNW', 'W'),
         df[nameof.rain] > 10,
         ])
-    seasons_df[seasons.ma] = sum([
+    season['Mayaltha'] = sum([
         wind_from(df, 'NNW', 'NW', 'WNW'),
         (weekly_rain_days <= 3) * 0.5,
         ])
-    seasons_df[seasons.mi] = sum([
+    season['Midawarr'] = sum([
         wind_from(df, 'NE', 'ENE', 'E', 'ESE'),
         ])
-    seasons_df[seasons.da] = sum([
+    season['Dharrathamirri'] = sum([
         weekly_rain_days == 0,
         wind_from(df, 'ESE', 'SE', 'SSE'),
         ])
-    seasons_df[seasons.rr] = sum([
+    season['Rarrandharr'] = sum([
         weekly_rain_days == 0,
         below_mean(df, nameof.dewpoint) * 0.5,
         below_mean(df, nameof.maxtemp) == False,
         ])
-    return seasons_df
+    return season
 
 
 def add_seasons(df):

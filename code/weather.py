@@ -8,11 +8,11 @@ import utils
 
 
 stations = (
-    #("014401", 'Warruwi'),
-    ("014404", 'Milingimbi'),
-    #("014405", 'Maningrida'),
-    #("014508", 'Nhulunbuy'),
-    ("014517", 'Galiwinku'),
+    #("014401", 'warruwi'),
+    ("014404", 'milingimbi'),
+    ("014405", 'maningrida'),
+    ("014508", 'nhulunbuy'),
+    ("014517", 'galiwinku'),
     )
 
 _BOM_quality_flags = (

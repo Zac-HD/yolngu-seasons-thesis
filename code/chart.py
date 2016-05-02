@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Turn invisible data into beautiful tables and figures."""
 
+import os
+
 import numpy as np
 import matplotlib as mpl
 import matplotlib.pyplot as plt
@@ -8,6 +10,7 @@ import pandas as pd
 import seaborn as sns
 
 import utils
+import weather
 
 nameof = utils.nameof
 
@@ -47,8 +50,12 @@ def season_prob(data):
     return grp.rolling(window=7, center=True).mean()
 
 
-def save_out(data, station_name):
+def save_out(station):
     """Save a multipanel summary figure and monthly text table."""
+    station_id, station_name = station
+    data = weather.data(station_id)
+    os.mkdir('../output/' + station_name)
+
     monthly = grouped_summary(data)
     latex_table(monthly[[nameof._asdict()[n] for n in utils.chart_panels]],
                 station_name, 'monthly-summary',
