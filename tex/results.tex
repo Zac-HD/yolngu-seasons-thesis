@@ -19,11 +19,11 @@ observational weather record.  Finally, the quantified seasons are
 presented.
 
 
-\todo{Add intro/flags to start of each section for better flow}
-
 
 \section{Unexpected Complexity in Seasonal Calendars}
 \label{sec:complex-seasons}
+
+\todo{Add intro/flags to start of section for better flow}
 
 
 
@@ -234,8 +234,9 @@ it - teaching about how exactly to recognise each season.
 \section{A Qualitative Yolngu Seasonal Calendar}
 \label{sec:calendar-description}
 
-The remainder of this thesis focusses on a six-season Yolnu calendar with
-meteorological definitions.  It is based primarily on interview data, within
+The remainder of this thesis focusses on the six-season Yolnu calendar with
+meteorological definitions, described by this section.
+It is based primarily on interview data, within
 the framework provided by \textit{Man of All Seasons} \citep{davis1989} and
 \textit{Yan-nhangu Atlas} \citep{atlas2014} -- recognising that all of these
 sources describe different communities and areas.  When sources conflict, I
@@ -418,6 +419,9 @@ day, and tricks for walking over very hot sand and rocks in bare feet.
 
 \section{The Observational Weather Record in NE Arnhem Land}
 
+\todo{Add intro/flags to start of section for better flow}
+
+
 \Cref{tab:weather-station-summary} shows the five weather stations in NE
 Arnhem Land from which I draw an observational record.
 \cref{tab:galiwinku-monthly-summary} shows average conditions for each
@@ -436,16 +440,34 @@ sure if this is worthwhile... and might need to (maybe) show speed too.}
 \todo{landscape table is larger and uglier than ideal.  Short column
 names and put on portrait page?  Requires manual editing, I think.}
 
-\begin{landscape}
-\begin{table}
-    \input{../output/galiwinku/monthly-summary.tex}
+\begin{table}[h]
+    \centerline{
+    \begin{tabular}{lp{4em}p{5em}p{5em}*{5}{p{4em}}}
+        Month & Daily Rainfall (mm) & Maximum Temp. (deg. C) & %
+            Minimum Temp. (deg. C) &  Mean Dew Point (deg. C) & %
+            9am Wind speed (km/h) & 9am Wind Direction & %
+            3pm Wind speed (km/h) & 3pm Wind Direction \\
+        \noalign{\vskip 0.5em}\hline\noalign{\vskip 0.5em}
+        Jan &  11.6 &  31.8 &  25.7 &  24.6 &  19.9 &   W &  23.4 &   NW \\
+        Feb &  11.2 &  31.5 &  25.6 &  24.7 &  18.9 &   W &  22.5 &   NW \\
+        Mar &   9.2 &  31.6 &  24.9 &  24.4 &  14.0 &  SE &  18.4 &    N \\
+        Apr &   5.3 &  31.8 &  23.7 &  23.3 &  12.2 &  SE &  15.1 &    E \\
+        May &   0.9 &  31.1 &  22.2 &  21.1 &  14.0 &  SE &  15.4 &  ESE \\
+        Jun &   0.1 &  29.6 &  20.3 &  18.9 &  16.4 &  SE &  17.3 &   SE \\
+        Jul &   0.1 &  29.5 &  19.6 &  17.8 &  15.9 &  SE &  17.3 &  ESE \\
+        Aug &   0.0 &  30.4 &  19.2 &  17.4 &  14.2 &  SE &  18.2 &  ESE \\
+        Sep &   0.2 &  31.8 &  20.5 &  19.7 &  12.6 &  SE &  21.3 &    N \\
+        Oct &   0.3 &  32.6 &  22.5 &  21.3 &  14.0 &  NE &  23.0 &    N \\
+        Nov &   2.3 &  33.2 &  24.3 &  23.1 &  13.8 &   N &  23.2 &    N \\
+        Dec &   7.9 &  32.8 &  25.7 &  24.0 &  15.1 &   N &  22.2 &    N \\
+    \end{tabular}
+    }
     \caption[Monthly weather observations at Galiwinku]{
-        Typical weather observations at Galiwinku, by month (left column).
+        Mean monthly weather observations at Galiwinku.
         All numerical values are per-day averages, wind direction shows the
         most common observation in that month.}
     \label{tab:galiwinku-monthly-summary}
 \end{table}
-\end{landscape}
 
 
 \begin{wrapfigure}{R}{0.5\textwidth}
@@ -513,6 +535,9 @@ references to another.}
 
 \section{Quantifying a Yolngu Calendar}
 
+\todo{Add intro/flags to start of section for better flow}
+
+
 \Cref{tab:quant-seasons-summary} summarises typical timing and recognition
 criteria for each season.  \Cref{fig:season-definitions-code} shows the
 implementation of these conditions in Python3 code -- normalised later --
@@ -522,6 +547,7 @@ which create the time-series shown in \cref{fig:galiwinku-seasons}.
     \centering
     \begin{tabular}{llllll}
         Season          &  Typical Months       &  Criteria to recognise                    \\
+        \noalign{\vskip 0.5em}\hline\noalign{\vskip 0.5em}
         Dhuludur        &  Oct, Nov, Dec        &  Cool at night, mixed wind, first rain    \\
         Barramirri      &  Dec, Jan, Feb        &  NW wind, heavy rain most days            \\
         Mayaltha        &  Feb, Mar             &  NW wind, approx weekly rain              \\
@@ -539,7 +565,7 @@ which create the time-series shown in \cref{fig:galiwinku-seasons}.
     \centering
     \caption[Python code: definition of season indicies]{
         Code listing of variables and conditions used to detect seasons.
-        \todo{update detection, expand description, keep eye on line range.}
+        \todo{expand description, keep eye on line range.}
         }
     \label{fig:season-definitions-code}
 \end{figure}
@@ -661,10 +687,42 @@ each which hint at the variation between years or unusual events, such as
 Keep this impartial enough to fit results, rather than discussion.}
 
 
+\begin{table}[h]
+    \centerline{
+    \begin{tabular}{llrrrrrr}
+        Month & Main Season &  Dhuludur &  Barramirri & %
+        Mayaltha &  Midawarr &  Dharrathamirri &  Rarrandharr \\
+        \noalign{\vskip 0.5em}\hline\noalign{\vskip 0.5em}
+        Jan &      Barramirri &   0.8 &   1.2 &   0.9 &  -0.4 &  -1.1 &  -0.9  \\
+        Feb &      Barramirri &   0.6 &   1.1 &   0.8 &  -0.4 &  -1.0 &  -1.0  \\
+        Mar &        Midawarr &   0.3 &   0.5 &   0.2 &   0.1 &  -0.8 &  -0.9  \\
+        Apr &        Midawarr &  -0.6 &  -0.5 &  -0.5 &   1.0 &   0.0 &  -0.3  \\
+        May &  Dharrathamirri &  -1.0 &  -0.9 &  -0.5 &   0.5 &   0.9 &   0.1  \\
+        Jun &  Dharrathamirri &  -0.9 &  -0.9 &  -0.5 &  -0.5 &   1.3 &   0.2  \\
+        Jul &  Dharrathamirri &  -0.8 &  -0.9 &  -0.5 &  -0.1 &   1.3 &   0.2  \\
+        Aug &  Dharrathamirri &  -0.5 &  -0.8 &  -0.5 &   0.2 &   1.0 &   0.5  \\
+        Sep &     Rarrandharr &   0.1 &  -0.5 &  -0.4 &   0.3 &   0.3 &   1.0  \\
+        Oct &     Rarrandharr &   0.5 &  -0.0 &  -0.1 &   0.0 &  -0.2 &   0.9  \\
+        Nov &     Rarrandharr &   0.6 &   0.5 &   0.3 &  -0.3 &  -0.6 &   0.4  \\
+        Dec &        Mayaltha &   0.7 &   0.9 &   0.5 &  -0.3 &  -0.9 &  -0.3  \\
+    \end{tabular}
+    }
+    \caption[Most common season and indicies by month]{
+        Most common season at Galiwinku by month, and monthly mean season
+        indicies.  `Main Season' summarises the data shown in
+        \cref{fig:season-daily-prob}, while the per-season index columns
+        are equivalent to \label{fig:season-daily-index}.
+        }
+    \label{tab:galiwinku-monthly-summary}
+\end{table}
+
+
+
 
 \section{Correlations with Climatic Indicies}
 \label{sec:indicies-correlations}
 
+\todo{Add intro/flags to start of section for better flow}
 \todo{analyse correlations between seasons and ENSO index/indicies, IOD, etc.}
 
 
