@@ -1,5 +1,6 @@
 \documentclass[12pt,a4,oneside,openany]{book}
 
+%TC:ignore
 \usepackage{other/zacstyle}
 
 \begin{document}
@@ -15,6 +16,7 @@
     \listoffigures
     \listoftables
 \endgroup
+%TC:endignore
 
 \mainmatter
 \input{introduction.tex}
@@ -24,10 +26,12 @@
 \input{discussion.tex}
 \input{conclusion.tex}
 
+%TC:ignore
 \nocite{*}  % force uncited references to be listed (draft only)
 \bibliography{other/references}
 
 \appendix
 \input{other/appendices.tex}
+%TC:endignore
 
 \end{document}
