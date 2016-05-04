@@ -21,13 +21,11 @@ def save_figure(fig, station_name, name):
                 bbox_inches='tight')
 
 
-def latex_table(df, station_name, name, **kwargs):
+def save_table(df, cols, station_name, name):
     """Save the given dataframe as a LaTeX longtable"""
     # pylint:disable=unnecessary-lambda
-    with open('../output/{}/{}.tex'.format(station_name, name), 'w') as f:
-        f.write(df.to_latex(
-            float_format=lambda n: '{:.1f}'.format(n),
-            na_rep='', longtable=True, **kwargs))
+    with open('../output/{}/{}.csv'.format(station_name, name), 'w') as f:
+        f.write(df[cols].to_csv(float_format='%.1f'))
 
 
 def grouped_summary(df, gby=None):
@@ -57,12 +55,10 @@ def save_out(station):
     os.mkdir('../output/' + station_name)
 
     monthly = grouped_summary(data)
-    latex_table(monthly[[nameof._asdict()[n] for n in utils.chart_panels]],
-                station_name, 'monthly-summary',
-                column_format='l' + 'p{6em}' * 10)
-    latex_table(monthly[['raw_season'] + list(utils.seasons)],
-                station_name, 'monthly-seasons',
-                column_format='l' + 'p{6em}' * 7)
+    save_table(monthly, [nameof._asdict()[n] for n in utils.chart_panels],
+               station_name, 'monthly-summary')
+    save_table(monthly, ['raw_season'] + list(utils.seasons),
+               station_name, 'monthly-seasons')
 
     save_figure(climograph(data), station_name, 'climograph')
     save_figure(multipanel(data, *utils.chart_panels),
