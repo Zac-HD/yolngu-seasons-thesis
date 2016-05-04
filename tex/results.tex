@@ -472,7 +472,7 @@ the five weather stations from which I draw an observational record.\\
 
 
 \Cref{tab:galiwinku-monthly-summary} shows average conditions for each
-month at Galiwinku.  \cref{fig:galiwinku-climograph}, above, is a monthly
+month at Galiwinku.  \Cref{fig:galiwinku-climograph}, above, is a monthly
 climograph of rainfall, maximum and minimum temperature, and dewpoint at
 Galiwinku.  Note the low variation in temperature, and strong seasonal
 patterns in rainfall and humidity.
@@ -518,7 +518,9 @@ sure if this is worthwhile... and might need to (maybe) show speed too.}
     \includegraphics[width=\linewidth]{compass-rose.pdf}
     \caption[Compass Rose mapping colour to wind direction]{
         This compass rose shows the mapping of hue to wind direction used
-        for figures below.  Colours are equidistant in the HSL colour space.}
+        for figures below.  Colours are equidistant in the HSL colour space.
+        \todo{Sort out placement of compass rose}
+        }
     \label{fig:compass-rose}
 \end{wrapfigure}
 
@@ -535,24 +537,33 @@ rather than red/green which would disadvantage colourblind readers.
 
 \Cref{fig:galiwinku-observations,fig:milingimbi-observations}
 show historical weather observations at Galiwinku and Milingimbi as a set of
-heatmaps (panels, arranged vertically).  Each heatmap is a grid, with year
-on the y-axis and day-of-year on the x-axis.  Each cell is then shaded
-according to the value observed on that day; days without data are shaded
-black.  \Cref{fig:how-read-multipanel} gives a more detailed walkthrough
-of how to read these figures.
+heatmaps (panels, arranged vertically).  \Cref{fig:how-read-multipanel}
+gives a detailed walkthrough of how to read these figures.
 %
 Unlike the climographs above, these figures clearly show variation in timing
 of seasonal onset between years.  This demonstrates that timeseries data
 at daily resolution is required for investigation of Indigenous seasons.
 %
 The degree of seasonal variation in each indicator is also clearly visible:
-minimum temperature varies more than maximum; while the sea breeze sees wind
-direction vary less in the afternoon than the morning (the reverse is true
-of wind speed, however).
+minimum temperature varies more than maximum; wind direction varies more in
+the morning while wind speed varies more in the afternoon (both due to the
+sea breeze).
 
 
-\todo{Sort out placement of compass rose and all fullpage stuff}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This section gets a little tricky.  We want the multipanels on
+% facing pages, and the explainer box immediately before or after.
+%
+% However, the page(s) aren't filled until after the floats are placed.
+% We therefore use \clearpage to get to the top of the first of three
+% float pages.  Iff it's odd, don't place the multipanels.  Place the
+% explain box.  Iff it's odd, place the multipanels.  This looks
+% weird, but works because all conditions check the same page!
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\clearpage
+
+\newcommand{\ObservationMultipanels}{
 \begin{figure}[p]
     \centering
     \includegraphics[width=\textwidth]{galiwinku/observations.pdf}
@@ -564,7 +575,6 @@ of wind speed, however).
         and that seasonality changes from year to year.}
     \label{fig:galiwinku-observations}
 \end{figure}
-% Note - if possible, these figures should be on facing pages to allow easy comparison
 \begin{figure}[p]
     \centering
     \includegraphics[width=\textwidth]{milingimbi/observations.pdf}
@@ -575,7 +585,9 @@ of wind speed, however).
         and that seasonality changes from year to year.}
     \label{fig:milingimbi-observations}
 \end{figure}
+}
 
+\checkoddpage\ifoddpage\ObservationMultipanels\fi
 
 \begin{figure}[p]
 \begin{framed}
@@ -585,12 +597,13 @@ of wind speed, however).
     great deal of data, and make trends or variability between years clearly
     visible.  They are designed to show all the details of hetrogenous data
     that would usually be hidden by sumarising or aggregating it to a simpler
-    form.
-
-    Detail sometimes comes at the expense of readability, so this tutorial
+    form.  Detail sometimes comes at the expense of readability, so this tutorial
     walks through how to read and interpret \cref{fig:galiwinku-observations},
-    which shows forty-eight thousand weather observations at Galiwinku.\\
+    which shows forty-eight thousand weather observations at taken Galiwinku.\\
 
+    Each heatmap is a grid, with year on the y-axis and day-of-year on the
+    x-axis, which is shared by all panels.  Each cell is then shaded according
+    to the value observed on that day; days  without data are shaded black.
     Years of observation are printed to the left of each panel, as y-axis labels.
     At the bottom of the figure, the x-axis is labelled by month -- the data
     is daily, but numerical day-of-year labels are generally unintuitive.
@@ -604,10 +617,10 @@ of wind speed, however).
     where the record was interrupted for a few days or weeks, are visible in
     all panels; apparently the station was mostly non-functional between June
     and October 2015.
-
+    %
     Rainfall is clearly seasonal, but also intermittent:  there are a series
     of large rainfall events in most years until late-April, then little if any
-    rainfall until November.
+    rainfall until November.\\
 
     The next panels show maximum and minimum temperature.  Note the scale to
     the right of the panel - even the lowest minimum temperatures rarely drop
@@ -617,14 +630,13 @@ of wind speed, however).
 
     The bottom four panels are probably the most complex, and form a pair of
     pairs: wind speed and direction in the morning, and in the afternoon.
-    This is a key indicator of seasonality.
-
+    %
     The monochrome (blue) panels show wind speed.  Until March, wind speed at
     both times is dominated by rainfall events -- knowing that the wind is also
     high, we could properly call them storms -- and in later months a clear
     divergence is visible, showing that the sea breeze is most notable from
     September onwards.
-
+    %
     The colourful panels show wind direction; \cref{fig:compass-rose} gives
     the key.  The morning data shows a clear Westerly / South-easterly / Northerly
     wind regime through the year, while the afternoon wind -- sea breeze --
@@ -632,7 +644,7 @@ of wind speed, however).
 \end{framed}
 \end{figure}
 
-
+\checkoddpage\ifoddpage\else\ObservationMultipanels\fi
 
 
 \section{Quantifying a Yolngu Calendar}
@@ -722,8 +734,8 @@ the lower three panels.
 %
 On the other hand, Dhuludur (dark blue), Barramirri (green), and Mayaltha
 (red) are not clearly distinguished in their individual patterns.  This
-manifests in mixed occurance shown on the all-seasons panel, and is clearly
-visible in the summarising \cref{fig:season-daily-index,fig:season-daily-prob}.
+manifests in mixed occurance shown on the all-seasons panel, and is also
+clearly visible in the summarising figures below.\\
 
 
 \begin{figure}[p]
@@ -736,34 +748,32 @@ visible in the summarising \cref{fig:season-daily-index,fig:season-daily-prob}.
     \label{fig:galiwinku-seasons}
 \end{figure}
 
-~\\
 
-\todo{Write interpretative para/s for index lines and observed area.}
-
-\Cref{fig:season-daily-index,fig:season-daily-prob} are two attempts to
-summarise the full data shown in \cref{fig:galiwinku-seasons} without
-erasing or misrepresenting the variability that is a key characteristic
-of Yolngu seasons.
+\Cref{fig:season-daily-index,fig:season-daily-prob} represent two distinct
+approaches to summarising the data shown in \cref{fig:galiwinku-seasons},
+without erasing or misrepresenting the variability that is a key
+characteristic of Yolngu seasons.
 
 \Cref{fig:season-daily-index} is a simple line chart, showing the mean
-per-day index for each season.
-%
-This gives insight into the degree of distinction between seasons.
-\todo{fill out interpretation}
-
+per-day index for each season.  This shows the degree of distinction
+between seasons; lines of similar heights show seasons which describe
+typical conditions with similar predictive power.  That Dharrathamirri
+has the highest peak means it is most distinct -- southeast wind and no
+rain describes it well, and also matches other seasons very poorly.
+Note however that these indicies are independent.\\
 
 \Cref{fig:season-daily-prob} takes a different approach, showing empirical
 probability of observing each season on a given day of the year.  These
 data are further smoothed by a running weekly mean, to remove noise
 introduced by the small sample size (only 10-15 years for each station).
-%
-This tells a similar story to the index lines, but readers should note
-that these figures are independently derived from the data show in
-\cref{fig:galiwinku-seasons}.  There are a number of visible features in
-each which hint at the variation between years or unusual events, such as
-%
-\todo{fill out interpretation}
 
+This tells a similar story to the index lines, but readers should note
+that these figures are seperately derived from the data shown in
+\cref{fig:galiwinku-seasons}.  Most importantly, observed occurance
+rates are not independent -- when one season is observed more, others
+must be observed proportionally less.  This property amplifies the
+difference between indicies on a year-by-year basis, which clearly
+shows variability between years or `strong second' finishes.
 
 
 \begin{figure}[h]
@@ -792,9 +802,9 @@ each which hint at the variation between years or unusual events, such as
 \end{figure}
 
 
-
-\todo{Close section by summarising how well season detection worked.
-Keep this impartial enough to fit results, rather than discussion.}
+\Cref{tab:galiwinku-monthly-summary} shows monthly means for the normalised
+index of each season, and the most common season in each month.  This is
+a simplified textual form of \cref{fig:season-daily-prob,fig:season-daily-index}.
 
 
 \begin{table}[h]
@@ -825,7 +835,6 @@ Keep this impartial enough to fit results, rather than discussion.}
         }
     \label{tab:galiwinku-monthly-summary}
 \end{table}
-
 
 
 
