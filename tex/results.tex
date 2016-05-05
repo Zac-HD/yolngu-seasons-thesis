@@ -489,21 +489,21 @@ sure if this is worthwhile... and might need to (maybe) show speed too.}
     \begin{tabular}{lp{4em}p{5em}p{5em}*{5}{p{4em}}}
         Month & Daily Rainfall (mm) & Maximum Temp. (deg. C) & %
             Minimum Temp. (deg. C) &  Mean Dew Point (deg. C) & %
-            9am Wind speed (km/h) & 9am Wind Direction & %
-            3pm Wind speed (km/h) & 3pm Wind Direction \\
+            9am Wind Direction & 3pm Wind Direction & %
+            9am Wind speed (km/h) & 3pm Wind speed (km/h)\\
         \noalign{\vskip 0.5em}\hline\noalign{\vskip 0.5em}
-        Jan &  11.6 &  31.8 &  25.7 &  24.6 &  19.9 &   W &  23.4 &   NW \\
-        Feb &  11.2 &  31.5 &  25.6 &  24.7 &  18.9 &   W &  22.5 &   NW \\
-        Mar &   9.2 &  31.6 &  24.9 &  24.4 &  14.0 &  SE &  18.4 &    N \\
-        Apr &   5.3 &  31.8 &  23.7 &  23.3 &  12.2 &  SE &  15.1 &    E \\
-        May &   0.9 &  31.1 &  22.2 &  21.1 &  14.0 &  SE &  15.4 &  ESE \\
-        Jun &   0.1 &  29.6 &  20.3 &  18.9 &  16.4 &  SE &  17.3 &   SE \\
-        Jul &   0.1 &  29.5 &  19.6 &  17.8 &  15.9 &  SE &  17.3 &  ESE \\
-        Aug &   0.0 &  30.4 &  19.2 &  17.4 &  14.2 &  SE &  18.2 &  ESE \\
-        Sep &   0.2 &  31.8 &  20.5 &  19.7 &  12.6 &  SE &  21.3 &    N \\
-        Oct &   0.3 &  32.6 &  22.5 &  21.3 &  14.0 &  NE &  23.0 &    N \\
-        Nov &   2.3 &  33.2 &  24.3 &  23.1 &  13.8 &   N &  23.2 &    N \\
-        Dec &   7.9 &  32.8 &  25.7 &  24.0 &  15.1 &   N &  22.2 &    N \\
+        Jan &  11.6 &  31.8 &  25.7 &  24.6 &   W &   NW &  19.9 &  23.4 \\
+        Feb &  11.2 &  31.5 &  25.6 &  24.7 &   W &   NW &  18.9 &  22.5 \\
+        Mar &   9.2 &  31.6 &  24.9 &  24.4 &  SE &    N &  14.0 &  18.4 \\
+        Apr &   5.3 &  31.8 &  23.7 &  23.3 &  SE &    E &  12.2 &  15.1 \\
+        May &   0.9 &  31.1 &  22.2 &  21.1 &  SE &  ESE &  14.0 &  15.4 \\
+        Jun &   0.1 &  29.6 &  20.3 &  18.9 &  SE &   SE &  16.4 &  17.3 \\
+        Jul &   0.1 &  29.5 &  19.6 &  17.8 &  SE &  ESE &  15.9 &  17.3 \\
+        Aug &   0.0 &  30.4 &  19.2 &  17.4 &  SE &  ESE &  14.2 &  18.2 \\
+        Sep &   0.2 &  31.8 &  20.5 &  19.7 &  SE &    N &  12.6 &  21.3 \\
+        Oct &   0.3 &  32.6 &  22.5 &  21.3 &  NE &    N &  14.0 &  23.0 \\
+        Nov &   2.3 &  33.2 &  24.3 &  23.1 &   N &    N &  13.8 &  23.2 \\
+        Dec &   7.9 &  32.8 &  25.7 &  24.0 &   N &    N &  15.1 &  22.2 \\
     \end{tabular}
     }
     \caption[Monthly weather observations at Galiwinku]{
@@ -540,7 +540,7 @@ show historical weather observations at Galiwinku and Milingimbi as a set of
 heatmaps (panels, arranged vertically).  \Cref{fig:how-read-multipanel}
 gives a detailed walkthrough of how to read these figures.
 %
-Unlike the climographs above, these figures clearly show variation in timing
+Unlike the climograph above, these figures clearly show variation in timing
 of seasonal onset between years.  This demonstrates that timeseries data
 at daily resolution is required for investigation of Indigenous seasons.
 %
@@ -567,11 +567,10 @@ sea breeze).
 \begin{figure}[p]
     \centering
     \includegraphics[width=\textwidth]{galiwinku/observations.pdf}
-    \caption[Historical weather observations at Elcho Island]{
-        \todo{fix wind hour labelling}
-        Historical weather observations at Elcho Island.
-        Each panel shows a single variable, with years on the y axis and day-of-year on the x.
-        Note that each variable has a different seasonal pattern,
+    \caption[Historical weather observations at Galiwinku]{
+        Historical weather observations at Galiwinku.  Each panel shows
+        a single variable, with years on the y axis and day-of-year on
+        the x.  Note that each variable has a different seasonal pattern,
         and that seasonality changes from year to year.}
     \label{fig:galiwinku-observations}
 \end{figure}
@@ -579,9 +578,9 @@ sea breeze).
     \centering
     \includegraphics[width=\textwidth]{milingimbi/observations.pdf}
     \caption[Historical weather observations at Milingimbi Airport]{
-        Historical weather observations at Milingimbi Airport.
-        Each panel shows a single variable, with years on the y axis and day-of-year on the x.
-        Note that each variable has a different seasonal pattern,
+        Historical weather observations at Milingimbi Airport.  Each panel shows
+        a single variable, with years on the y axis and day-of-year on
+        the x.  Note that each variable has a different seasonal pattern,
         and that seasonality changes from year to year.}
     \label{fig:milingimbi-observations}
 \end{figure}
@@ -705,6 +704,9 @@ which create the time-series shown in \cref{fig:galiwinku-seasons}.
         Proportion of days on which each season was observed at
         Galiwinku, over the period of available data.
         These colours are used for each season in all figures below.
+        Note that this figure shows proportional duration, but does
+        not represent onset timing; seasons do not always occur over
+        contiguous periods.
         }
     \label{fig:galiwinku-season-pie}
 \end{wrapfigure}
@@ -785,6 +787,7 @@ shows variability between years or `strong second' finishes.
         but muddle in the Wet (Dec-Feb).
         This is not indicative of poor detection on a single day,
         but rather that occurence varies more between years.
+        \todo{Set NESW ticklabels on wind direction colorbar}
         }
     \label{fig:season-daily-index}
 \end{figure}

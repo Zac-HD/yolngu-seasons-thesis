@@ -171,12 +171,12 @@ def heatmap(data, kind, **kwargs):
                      'cbar_kws': {'label': 'Dewpoint\ntemperature (C)'}},
         'humid09': {'cbar_kws': {'label': '9am humidity (%)'}},
         'humid15': {'cbar_kws': {'label': '3pm humidity (%)'}},
-        **{'windspd' + h: {
-            'cbar_kws': {'label': 'hour ' + h +' wind\nspeed (km/h)'}, **wspd}
-           for h in utils._wind_hours},
-        **{'winddir' + h: {
-            'cbar_kws': {'label': 'hour ' + h +' wind\ndirection'}, **wdir}
-           for h in utils._wind_hours},
+        **{'windspd' + hr: {
+            'cbar_kws': {'label': text + ' wind\nspeed (km/h)'}, **wspd}
+           for hr, text in zip(utils._wind_hours, utils._hour_names)},
+        **{'winddir' + hr: {
+            'cbar_kws': {'label': text + ' wind\ndirection'}, **wdir}
+           for hr, text in zip(utils._wind_hours, utils._hour_names)},
         'raw_season': {'robust': False, 'cmap': mpl.colors.ListedColormap(
             sns.color_palette(palette='muted', n_colors=6))},
         }
@@ -199,9 +199,7 @@ def multipanel(df, *cols, **kwargs):
 
     context = {
         'axes.facecolor': 'black',
-        # TODO:  set correct figsize for whole-page display, inc. fontsize
         'figure.figsize': (10, 1.5 * len(cols)),
-        # TODO:  investigate .eps etc to use LaTeX for text, fonts
         }
 
     func = {  # any needed data transformations

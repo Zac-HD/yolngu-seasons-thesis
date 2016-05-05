@@ -11,7 +11,8 @@ wind_dirs = (
     'W', 'WNW', 'NW', 'NNW',
     'CALM')
 
-_wind_hours = ['00', '03', '06', '09', '12', '15', '18', '21']
+_wind_hours = ('00', '03', '06', '09', '12', '15', '18', '21')
+_hour_names = ('Midnight', '3am', '6am', '9am', 'Noon', '3pm', '6pm', '9pm')
 
 nameof = collections.namedtuple(
     # Holds the full names of each data column with compact alias
@@ -64,7 +65,7 @@ _months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June',
 
 
 chart_panels = ('rain', 'maxtemp', 'mintemp', 'dewpoint',
-                'windspd09', 'winddir09', 'windspd15', 'winddir15')
+                'winddir09', 'winddir15', 'windspd09', 'windspd15')
 
 
 def pivot(df, colname):
