@@ -7,11 +7,12 @@
 \usepackage{graphicx}
 \graphicspath{{./img/}{./output/}}
 
-\usepackage{csquotes}
 \usepackage[hidelinks]{hyperref}
 \usepackage{wrapfig}
 \usepackage{framed}
 \usepackage{ifoddpage}
+
+\renewenvironment{quote}{\begin{quotation}\small}{\end{quotation}}
 
 \usepackage{listings}
 \lstset{basicstyle=\footnotesize\ttfamily,breaklines=true}
