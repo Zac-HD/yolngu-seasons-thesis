@@ -181,7 +181,7 @@ def heatmap(data, kind, **kwargs):
             sns.color_palette(palette='muted', n_colors=6))},
         }
     for s in utils.seasons:
-        kind_kwargs[s] = {'cmap': 'BrBG', 'vmin': -2, 'vmax': 2}
+        kind_kwargs[s] = {'vmin': 0, 'vmax': 2}
     if kind not in kind_kwargs:
         kind = {v: k for k, v in zip(nameof._fields, nameof)}.get(kind)
     return sns.heatmap(

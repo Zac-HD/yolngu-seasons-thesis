@@ -10,8 +10,8 @@ import utils
 stations = (
     #("014401", 'warruwi'),
     ("014404", 'milingimbi'),
-    ("014405", 'maningrida'),
-    ("014508", 'nhulunbuy'),
+    #("014405", 'maningrida'),
+    #("014508", 'nhulunbuy'),
     ("014517", 'galiwinku'),
     )
 
