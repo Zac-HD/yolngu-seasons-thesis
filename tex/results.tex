@@ -656,7 +656,7 @@ sea breeze).
     that would usually be hidden by sumarising or aggregating it to a simpler
     form.  Detail sometimes comes at the expense of readability, so this tutorial
     walks through how to read and interpret \cref{fig:galiwinku-observations},
-    which shows forty-eight thousand weather observations at taken Galiwinku.\\
+    which shows forty-eight thousand weather observations taken at Galiwinku.\\
 
     Each heatmap is a grid, with year on the y-axis and day-of-year on the
     x-axis, which is shared by all panels.  Each cell is then shaded according
@@ -707,8 +707,6 @@ sea breeze).
 \section{Quantifying a Yolngu Calendar}
 \label{sec:applying-seasons-method}
 
-\todo{Proposed changes to figures (dad); correct pagination etc of figures}
-
 In this section, the qualitative data describing a Yolngu seasonal
 calendar is applied to the observational weather record, deriving
 a numerical specification for each season and ultimately a best-effort
@@ -758,7 +756,7 @@ which create the time-series shown in \cref{fig:galiwinku-seasons}.
 \end{figure}
 
 
-\begin{wrapfigure}{R}{0.5\textwidth}
+\begin{wrapfigure}[21]{r}{0.5\textwidth}
     \centering
     \includegraphics[width=\linewidth]{galiwinku/season-pie.pdf}
     \caption[Calculated season frequency, Galiwinku]{
@@ -811,9 +809,6 @@ clearly visible in the summarising figures below.\\
         the mean and sum of each panel is zero.  Higher values
         (darker) indicate a better match between weather
         conditions on that day and the description of that season.
-
-        \todo{Set NESW ticklabels on wind direction colorbar}
-        \todo{Make negative values white?}
         }
     \label{fig:galiwinku-seasons}
 \end{figure}
@@ -846,7 +841,7 @@ difference between indicies on a year-by-year basis, which clearly
 shows variability between years or `strong second' finishes.
 
 
-\begin{figure}[h]
+\begin{figure}[p]
     \centering
     \includegraphics[width=\textwidth]{galiwinku/seasons-daily-index.pdf}
     \caption[Season index by day-of-year, Elcho Island]{
@@ -857,9 +852,7 @@ shows variability between years or `strong second' finishes.
         but rather that occurence varies more between years.
         }
     \label{fig:season-daily-index}
-\end{figure}
-\begin{figure}[h]
-    \centering
+\vfill
     \includegraphics[width=\textwidth]{galiwinku/seasons-daily-prob.pdf}
     \caption[Season probability by day-of-year, Elcho Island]{
         Observed probability of each season by day of year.

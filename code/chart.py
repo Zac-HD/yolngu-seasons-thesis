@@ -22,8 +22,7 @@ def save_figure(fig, station_name, name):
 
 
 def save_table(df, cols, station_name, name):
-    """Save the given dataframe as a LaTeX longtable"""
-    # pylint:disable=unnecessary-lambda
+    """Save a dataframe as .csv, for manual analysis or typesetting."""
     with open('../output/{}/{}.csv'.format(station_name, name), 'w') as f:
         f.write(df[cols].to_csv(float_format='%.1f'))
 
@@ -116,7 +115,7 @@ def climograph(df):
             (utils.nameof.dewpoint, 'dotted')]
     m = pd.groupby(df, df.index.month)
     with sns.axes_style('dark'):
-        fig, ax_rain = plt.subplots()
+        fig, ax_rain = plt.subplots(figsize=(8, 4))
         ax = ax_rain.twinx()
         # Plot total rainfall
         ax_rain.bar(m.mean().index, m[utils.nameof.rain].mean(),
