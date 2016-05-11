@@ -3,11 +3,24 @@
 \usepackage[stretch=10,shrink=10]{microtype}
 
 \usepackage[margin=1in]{geometry}
+% easy to expand inner margin
+% [inner=1.5in,outer=.5in,top=1in,bottom=1in]
 
 \usepackage{graphicx}
 \graphicspath{{./img/}{./output/}}
 
-\usepackage[hidelinks]{hyperref}
+\usepackage{hyperref}
+\hypersetup{
+    % display as two-sided, printed links look nice, author name
+    hidelinks,
+    pdfpagelayout=TwoColumnRight,
+    pdfauthor={Zac Hatfield-Dodds},
+    % hide useless cruft in Acrobat
+    pdftoolbar=false,
+    pdfmenubar=false,
+    pdfpagemode=UseNone,
+}
+
 \usepackage{wrapfig}
 \usepackage{framed}
 \usepackage{ifoddpage}
