@@ -646,8 +646,7 @@ sea breeze).
 
 \checkoddpage\ifoddpage\ObservationMultipanels\fi
 
-\begin{figure}[p]
-\begin{framed}
+\begin{framedbox}
 \caption[How to read multipanel heatmaps]{How to read multipanel heatmaps}
 \label{fig:how-read-multipanel}
     Multipanel heatmaps have several advantages: they concisely express a
@@ -698,8 +697,7 @@ sea breeze).
     the key.  The morning data shows a clear Westerly / South-easterly / Northerly
     wind regime through the year, while the afternoon wind -- sea breeze --
     tends to blow mainly from the north or (less often) south-east.
-\end{framed}
-\end{figure}
+\end{framedbox}
 
 \checkoddpage\ifoddpage\else\ObservationMultipanels\fi
 
@@ -740,7 +738,7 @@ criteria for each season.  \Cref{fig:season-definitions-code} shows the
 implementation of these conditions in Python3 code -- normalised later --
 which create the time-series shown in \cref{fig:galiwinku-seasons}.
 
-\begin{figure}[h]
+\begin{framedbox}
     \lstinputlisting[firstline=36, lastline=63, xleftmargin=0.1\textwidth]{../code/season.py}
     \centering
     \caption[Python code: definition of season indicies]{
@@ -753,7 +751,7 @@ which create the time-series shown in \cref{fig:galiwinku-seasons}.
         \todo{keep eye on line range.}
         }
     \label{fig:season-definitions-code}
-\end{figure}
+\end{framedbox}
 
 
 \begin{wrapfigure}[21]{r}{0.5\textwidth}

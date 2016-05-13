@@ -61,3 +61,14 @@
 
 
 \usepackage[nameinlink,noabbrev]{cleveref}
+
+
+\usepackage{float}
+\newfloat{infobox}{h}{lob}[chapter]
+\floatname{infobox}{Box}
+\restylefloat*{infobox}
+
+\newenvironment{framedbox}
+    {\begin{infobox} \begin{framed}}
+    {\end{framed} \end{infobox}}
+
