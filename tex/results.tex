@@ -543,7 +543,12 @@ patterns in rainfall and humidity.
 sure if this is worthwhile... and might need to (maybe) show speed too.}
 
 \begin{table}[h]
-    \centerline{
+    \caption[Monthly weather observations at Galiwinku]{
+        Mean monthly weather observations at Galiwinku.
+        All numerical values are per-day averages, wind direction shows the
+        most common observation in that month.}
+    \label{tab:galiwinku-monthly-summary}
+    \sffamily\small\centerline{
     \begin{tabular}{lp{4em}p{5em}p{5em}*{5}{p{4em}}}
         Month & Daily Rainfall (mm) & Maximum Temp. (deg. C) & %
             Minimum Temp. (deg. C) &  Mean Dew Point (deg. C) & %
@@ -564,11 +569,6 @@ sure if this is worthwhile... and might need to (maybe) show speed too.}
         Dec &   7.9 &  32.8 &  25.7 &  24.0 &   N &    N &  15.1 &  22.2 \\
     \end{tabular}
     }
-    \caption[Monthly weather observations at Galiwinku]{
-        Mean monthly weather observations at Galiwinku.
-        All numerical values are per-day averages, wind direction shows the
-        most common observation in that month.}
-    \label{tab:galiwinku-monthly-summary}
 \end{table}
 
 
@@ -720,6 +720,9 @@ where relevant.
 
 \begin{table}[h]
     \centering
+    \caption{A quantifiable summary of the Yolngu seasons case study.}
+    \label{tab:quant-seasons-summary}
+    \sffamily\small
     \begin{tabular}{llllll}
         Season          &  Typical Months       &  Criteria to recognise                    \\
         \noalign{\vskip 0.5em}\hline\noalign{\vskip 0.5em}
@@ -730,9 +733,6 @@ where relevant.
         Dharrathamirri  &  May, Jun, Jul, Aug   &  No rain, consistent ESE-SSE wind         \\
         Rarrandharr     &  Sep, Oct             &  Hot days, low humidity
     \end{tabular}
-    \caption[A quantifiable summary of the Yolngu seasons case study]{
-        A quantifiable summary of the Yolngu seasons case study.}
-    \label{tab:quant-seasons-summary}
 \end{table}
 
 \Cref{tab:quant-seasons-summary} summarises typical timing and recognition
@@ -871,7 +871,14 @@ a simplified textual form of \cref{fig:season-daily-prob,fig:season-daily-index}
 
 
 \begin{table}[h]
-    \centerline{
+    \caption[Most common season and indicies by month]{
+        Most common season at Galiwinku by month, and monthly mean season
+        indicies.  `Main Season' summarises the data shown in
+        \cref{fig:season-daily-prob}, while the per-season index columns
+        are equivalent to \cref{fig:season-daily-index}.
+        }
+    \label{tab:galiwinku-monthly-summary}
+    \sffamily\small\centerline{
     \begin{tabular}{llrrrrrr}
         Month & Main Season &  Dhuludur &  Barramirri & %
         Mayaltha &  Midawarr &  Dharrathamirri &  Rarrandharr \\
@@ -890,13 +897,6 @@ a simplified textual form of \cref{fig:season-daily-prob,fig:season-daily-index}
         Dec &        Mayaltha &   0.7 &   0.9 &   0.5 &  -0.3 &  -0.9 &  -0.3  \\
     \end{tabular}
     }
-    \caption[Most common season and indicies by month]{
-        Most common season at Galiwinku by month, and monthly mean season
-        indicies.  `Main Season' summarises the data shown in
-        \cref{fig:season-daily-prob}, while the per-season index columns
-        are equivalent to \cref{fig:season-daily-index}.
-        }
-    \label{tab:galiwinku-monthly-summary}
 \end{table}
 
 
