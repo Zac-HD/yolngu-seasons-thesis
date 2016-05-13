@@ -21,7 +21,7 @@
     pdfpagemode=UseNone,
 }
 
-\usepackage{wrapfig}
+\usepackage{sidecap}
 \usepackage{framed}
 \usepackage{ifoddpage}
 
@@ -61,12 +61,14 @@
 
 
 \usepackage[nameinlink,noabbrev]{cleveref}
+\renewcommand{\cref}{\Cref} % Capitalise all references (Table X, Fig Y, etc.)
 
 
 \usepackage{float}
 \newfloat{infobox}{h}{lob}[chapter]
 \floatname{infobox}{Box}
 \restylefloat*{infobox}
+\crefname{infobox}{box}{boxes}
 
 \newenvironment{framedbox}
     {\begin{infobox} \begin{framed}}

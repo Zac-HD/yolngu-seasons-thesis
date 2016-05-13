@@ -572,15 +572,14 @@ sure if this is worthwhile... and might need to (maybe) show speed too.}
 \end{table}
 
 
-\begin{wrapfigure}{R}{0.5\textwidth}
-    \includegraphics[width=\linewidth]{compass-rose.pdf}
+\begin{SCfigure}[][h]
+    \includegraphics[width=0.3\linewidth]{compass-rose.pdf}
     \caption[Compass Rose mapping colour to wind direction]{
         This compass rose shows the mapping of hue to wind direction used
         for figures below.  Colours are equidistant in the HSL colour space.
-        \todo{Sort out placement of compass rose}
         }
     \label{fig:compass-rose}
-\end{wrapfigure}
+\end{SCfigure}
 
 \Cref{fig:compass-rose} shows the mapping of colour to wind direction used
 for the figures below.  These colours are drawn from the HSL colour space,
@@ -589,7 +588,7 @@ and lightness (hence, ``HSL'').  With constant saturation and lightness,
 hue can be mapped directly to wind direction and equidistant colours
 have similar perceptual difference - at least within reproduction tolerances.
 
-The direction-colour mapping was `rotated' - from red at North to red at West -
+The direction-colour mapping was `rotated' - from red at north to red at west -
 to ensure that the contrast of prevailing monsoon winds is blue/yellow,
 rather than red/green which would disadvantage colourblind readers.
 
@@ -626,20 +625,22 @@ sea breeze).
     \centering
     \includegraphics[width=\textwidth]{galiwinku/observations.pdf}
     \caption[Historical weather observations at Galiwinku]{
-        Historical weather observations at Galiwinku.  Each panel shows
+        Weather observations at Galiwinku.  Each panel shows
         a single variable, with years on the y axis and day-of-year on
         the x.  Note that each variable has a different seasonal pattern,
-        and that seasonality changes from year to year.}
+        and that seasonality changes from year to year.
+        \Cref{fig:how-read-multipanel} explains how to read this figure.}
     \label{fig:galiwinku-observations}
 \end{figure}
 \begin{figure}[p]
     \centering
     \includegraphics[width=\textwidth]{milingimbi/observations.pdf}
     \caption[Historical weather observations at Milingimbi Airport]{
-        Historical weather observations at Milingimbi Airport.  Each panel shows
+        Weather observations at Milingimbi Airport.  Each panel shows
         a single variable, with years on the y axis and day-of-year on
         the x.  Note that each variable has a different seasonal pattern,
-        and that seasonality changes from year to year.}
+        and that seasonality changes from year to year.
+        \Cref{fig:how-read-multipanel} explains how to read this figure.}
     \label{fig:milingimbi-observations}
 \end{figure}
 }
@@ -651,24 +652,24 @@ sea breeze).
 \label{fig:how-read-multipanel}
     Multipanel heatmaps have several advantages: they concisely express a
     great deal of data, and make trends or variability between years clearly
-    visible.  They are designed to show all the details of hetrogenous data
+    visible.  They are designed to show all the details of heterogenous data
     that would usually be hidden by sumarising or aggregating it to a simpler
     form.  Detail sometimes comes at the expense of readability, so this tutorial
     walks through how to read and interpret \cref{fig:galiwinku-observations},
     which shows forty-eight thousand weather observations taken at Galiwinku.\\
 
     Each heatmap is a grid, with year on the y-axis and day-of-year on the
-    x-axis, which is shared by all panels.  Each cell is then shaded according
+    x-axis.  Each cell is then shaded according
     to the value observed on that day; days  without data are shaded black.
     Years of observation are printed to the left of each panel, as y-axis labels.
     At the bottom of the figure, the x-axis is labelled by month -- the data
-    is daily, but numerical day-of-year labels are generally unintuitive.
+    are daily, but numerical day-of-year labels are generally unintuitive.
     To the left of each panel is the colour key, and the name of the variable.
-    This color key is identical for panels of the same variable, even across
+    This color key is identical for panels of the same variable across all
     figures, for easier comparison.\\
 
-    Let's start with the topmost panel, which shows the five-day mean for
-    daily rainfall.  The first row of data is mostly black, indicating missing
+    The topmost panel shows the five-day mean for daily rainfall.
+    The first row of data is mostly black, indicating missing
     values -- this station began observations in October 1999.  Other gaps,
     where the record was interrupted for a few days or weeks, are visible in
     all panels; apparently the station was mostly non-functional between June
@@ -680,23 +681,24 @@ sea breeze).
 
     The next panels show maximum and minimum temperature.  Note the scale to
     the right of the panel - even the lowest minimum temperatures rarely drop
-    below 18 degrees C at night!  Daily maximum temperature fluctuates in the
-    early months of the year, and careful inspection hints that low temperatures
-    may be related to heavy rainfall.\\
+    below 18 $^\circ$C.  Daily maximum temperature fluctuates in the
+    early months of the year, and careful inspection hints that relatively
+    low temperatures may be related to heavy rainfall.\\
 
-    The bottom four panels are probably the most complex, and form a pair of
-    pairs: wind speed and direction in the morning, and in the afternoon.
+    The bottom four panels are probably the most complex, and form two pairs:
+    wind speed and direction in the morning (9am), and in the afternoon (3pm).
     %
-    The monochrome (blue) panels show wind speed.  Until March, wind speed at
+    The blue shaded panels show wind speed.  Until March, wind speed at
     both times is dominated by rainfall events -- knowing that the wind is also
     high, we could properly call them storms -- and in later months a clear
     divergence is visible, showing that the sea breeze is most notable from
     September onwards.
     %
-    The colourful panels show wind direction; \cref{fig:compass-rose} gives
-    the key.  The morning data shows a clear Westerly / South-easterly / Northerly
+    The multi-coloured panels show wind direction; \cref{fig:compass-rose} gives
+    the key.  The morning data show a clear westerly / south-easterly / northerly
     wind regime through the year, while the afternoon wind -- sea breeze --
     tends to blow mainly from the north or (less often) south-east.
+    (for an explanation, see the discussion of these results)
 \end{framedbox}
 
 \checkoddpage\ifoddpage\else\ObservationMultipanels\fi
@@ -744,19 +746,19 @@ which create the time-series shown in \cref{fig:galiwinku-seasons}.
     \caption[Python code: definition of season indicies]{
         Code listing of variables and conditions used to detect seasons.
         Seasons are defined by numerical criteria for each day, such as
-        ``rainfall greater than 10mm'', or ``maximum temperature below mean''.
+        ``rainfall greater than 15mm'', or ``maximum temperature below mean''.
         Applying a criterion to the weather data gives a timeseries with 1 or 0
         for each day, and the raw index for each season is the element-wise
-        sum of the applied criteria that define it.
+        sum of these timeseries.
         \todo{keep eye on line range.}
         }
     \label{fig:season-definitions-code}
 \end{framedbox}
 
 
-\begin{wrapfigure}[21]{r}{0.5\textwidth}
+\begin{SCfigure}[][h]
     \centering
-    \includegraphics[width=\linewidth]{galiwinku/season-pie.pdf}
+    \includegraphics[width=0.7\textwidth]{galiwinku/season-pie.pdf}
     \caption[Calculated season frequency, Galiwinku]{
         Proportion of days on which each season was observed at
         Galiwinku, over the period of available data.
@@ -766,7 +768,7 @@ which create the time-series shown in \cref{fig:galiwinku-seasons}.
         contiguous periods.
         }
     \label{fig:galiwinku-season-pie}
-\end{wrapfigure}
+\end{SCfigure}
 
 \Cref{fig:galiwinku-season-pie} shows the proportion of days on which
 each season was detected.  Like \cref{fig:compass-rose}, it also
@@ -817,7 +819,7 @@ approaches to summarising the data shown in \cref{fig:galiwinku-seasons},
 without erasing or misrepresenting the variability that is a key
 characteristic of Yolngu seasons.
 
-\Cref{fig:season-daily-index} is a simple line chart, showing the mean
+\Cref{fig:season-daily-index} is a line chart, showing the mean
 per-day index for each season.  This shows the degree of distinction
 between seasons; lines of similar heights show seasons which describe
 typical conditions with similar predictive power.  That Dharrathamirri

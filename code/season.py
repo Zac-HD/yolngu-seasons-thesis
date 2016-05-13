@@ -73,7 +73,7 @@ def add_seasons(df):
         df[s] = (seas - seas.mean()) / seas.std()
 
     # Note that first occurance of max wins, introducing STRONG bias
-    df['raw_season'] = df[list(seasons)]\
+    df['Detected Season'] = df[list(seasons)]\
         .dropna()\
         .idxmax(axis=1)\
         .astype('category', categories=seasons, ordered=True)

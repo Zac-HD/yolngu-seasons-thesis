@@ -41,7 +41,7 @@ def season_prob(data):
     """Return daily probability of observing each season."""
     is_seasons = ['is_' + n for n in utils.seasons]
     for n in utils.seasons:
-        data['is_' + n] = data.raw_season == n
+        data['is_' + n] = data['Detected Season'] == n
     grp = pd.groupby(data[is_seasons], data.index.dayofyear).sum()
     grp = grp.divide(grp.sum(axis=1), axis='rows')
     return grp.rolling(window=7, center=True).mean()
@@ -51,12 +51,12 @@ def save_out(station):
     """Save a multipanel summary figure and monthly text table."""
     station_id, station_name = station
     data = weather.data(station_id)
-    os.mkdir('../output/' + station_name)
+    os.makedirs('../output/' + station_name, exist_ok=True)
 
     monthly = grouped_summary(data)
     save_table(monthly, [nameof._asdict()[n] for n in utils.chart_panels],
                station_name, 'monthly-summary')
-    save_table(monthly, ['raw_season'] + list(utils.seasons),
+    save_table(monthly, ['Detected Season'] + list(utils.seasons),
                station_name, 'monthly-seasons')
 
     save_figure(climograph(data), station_name, 'climograph')
@@ -68,7 +68,7 @@ def save_out(station):
     save_figure(multipanel(
         data, *[w for w in utils.nameof._fields if 'winddir' in w]),
                 station_name, 'seabreeze-direction')
-    save_figure(multipanel(data, 'raw_season', *utils.seasons),
+    save_figure(multipanel(data, 'Detected Season', *utils.seasons),
                 station_name, 'seasons')
     save_figure(lines(
         grouped_summary(data, data.index.dayofyear)[list(utils.seasons)]),
@@ -99,10 +99,8 @@ def lines(daily, ylabel='', filled=False):
 def season_pie(data):
     """Draw a pie chart of observed season frequency."""
     fig, ax = plt.subplots()
-    vcs = data.raw_season.value_counts(dropna=True, sort=False)
+    vcs = data['Detected Season'].value_counts(dropna=True, sort=False)
     vcs.name = ''
-    vcs.index = ['Dhuludur', 'Barramirri', 'Mayaltha', 'Midawarr',
-                 'Dharrath-\namirri', 'Rarrandharr']
     vcs.plot.pie(ax=ax, legend=False, figsize=(3, 3),
                  startangle=90, counterclock=False)
     return fig
@@ -176,16 +174,19 @@ def heatmap(data, kind, **kwargs):
         **{'winddir' + hr: {
             'cbar_kws': {'label': text + ' wind\ndirection'}, **wdir}
            for hr, text in zip(utils._wind_hours, utils._hour_names)},
-        'raw_season': {'robust': False, 'cmap': mpl.colors.ListedColormap(
+        'Detected Season': {'robust': False, 'cmap': mpl.colors.ListedColormap(
             sns.color_palette(palette='muted', n_colors=6))},
         }
     for s in utils.seasons:
         kind_kwargs[s] = {'vmin': 0, 'vmax': 2}
     if kind not in kind_kwargs:
         kind = {v: k for k, v in zip(nameof._fields, nameof)}.get(kind)
-    return sns.heatmap(
-        np.asarray(data),
-        **{**base_kwargs, **kind_kwargs.get(kind, {}), **kwargs})
+    all_kwargs = {**base_kwargs, **kind_kwargs.get(kind, {}), **kwargs}
+    hax = sns.heatmap(np.asarray(data), **all_kwargs)
+    hax.set_yticklabels(hax.yaxis.get_majorticklabels(), rotation=0)
+    hax.set_title(all_kwargs['cbar_kws']['label'].replace('\n', ' ')\
+                  .split('(')[0], loc='left', y=0.96, fontsize=10)
+    return hax
 
 
 def multipanel(df, *cols, **kwargs):
@@ -206,13 +207,12 @@ def multipanel(df, *cols, **kwargs):
             center=True, window=5, min_periods=1).mean().to_frame(), name),
         **{'winddir' + h: utils.categorical_to_numeric_wind
            for h in utils._wind_hours},
-        'raw_season': utils.categorical_to_numeric_season,
+        'Detected Season': utils.categorical_to_numeric_season,
         }
 
     with mpl.rc_context(rc=context):
         fig, axes = plt.subplots(len(cols), sharex=True)
         for name, ax in zip(cols, axes if len(cols) > 1 else [axes]):
             f = func.get(name) or utils.pivot
-            hax = heatmap(f(df, name), name, ax=ax, **kwargs)
-            hax.set_yticklabels(hax.yaxis.get_majorticklabels(), rotation=0)
+            heatmap(f(df, name), name, ax=ax, **kwargs)
     return fig
