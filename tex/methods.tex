@@ -14,7 +14,7 @@ method for quantification of an Australian Indigenous seasonal calendar.
 This novelty means that the specific quantification methods used
 were not known ahead of time, as they are informed and shaped by
 interview data.  It also means that these methods themselves form
-a novel result, which breaks ground for further research.\\
+a novel result, which breaks ground for further research.
 
 My specific methods fall into four distinct stages.
 \begin{enumerate}
@@ -29,7 +29,7 @@ My specific methods fall into four distinct stages.
 \end{enumerate}
 These stages reflect the cross-disciplinary or mixed-methods approach --
 literature informing the direction of the research, and qualitative
-methods providing the framework for well-founded numerical analysis.\\
+methods providing the framework for well-founded numerical analysis.
 
 
 \paragraph{Qualitative research methodology} is particularly important
@@ -125,7 +125,7 @@ Indigenous seasons \citep[eg.][]{prober2011,oconnor2010}, and Yolngu seasons
 \citep{davis1989,atlas2014}.  Secondary sources shape the specific methods
 and interview questions (below), or in the case of grey literature --
 posters produced for remote schools, workbooks for cross-cultural teacher
-training, etc. -- provided a starting point for informal conversations.\\
+training, etc. -- provided a starting point for informal conversations.
 
 
 Prior to fieldwork, the planned sample was ten to twenty Yolngu people
@@ -144,7 +144,7 @@ CSIRO Tropical Rivers and Coastal Knowledge team \citep{CSIROcals}.
 The final interview sample consisted of three older Yolngu men, four past
 or practising teachers with several years experience in Arnhem Land, and
 the CSIRO team.  Most participants asked not to be identified, so comments
-are not attributed to individuals.\\
+are not attributed to individuals.
 
 
 I conducted a series of informal, semistructured interviews discussing
@@ -240,7 +240,7 @@ and day-of-year, as in \cref{fig:galiwinku-observations}.
 Similar charts for wind speed and other stations are included in the electronic
 appendices.  These charts show a northerly sea breeze, generally strong in the
 noon, 3pm, and 6pm data.  I use 3pm wind data, as these comments are outweighed
-by the standard time and longer record at some stations.\\
+by the standard time and longer record at some stations.
 
 The data are cleaned by discarding observations accumulated over multiple days.
 Observations which have been quality-controlled by the BoM and are considered
@@ -321,8 +321,6 @@ or datasets.  Running the scripts requires Python version 3.5 or later,
 as well as the Pandas (0.18+) and Seaborn (0.7+) libraries with their
 dependencies.
 
-~\\
-
 \Cref{subsec:detection-advice} shows that seasons may occur multiple
 times in a given year, in any order.  This presents a significant
 challenge to reliable detection of seasonal onset, as it rules out
@@ -331,11 +329,12 @@ associated season to the next detected event.  Instead, I use a local
 analysis approach which seperately analyses each day of data with
 a small window only used for smoothing via a rolling mean of 3-7 days.
 
+\todo{Section is unfinished below this point}
+
 The cost of this well-grounded system is increased `jitter', rapid
 switching between seasons in periods when more than one is a close
 match for conditions.  To counter this, and account for the advice
-that season change requires several days observation, I...\\
-
+that season change requires several days observation, I
 \todo{I have some ideas to counter this; eg boosting the index of
 whatever prevailed on the previous day by 0.25 standard deviations.
 Alternatively only change if season is same for two or three days.
