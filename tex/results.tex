@@ -1,18 +1,14 @@
 \chapter{Results}
 \label{ch:results}
 
-The qualitative results fall into three parts.
-%
-First, personal reflections on my approach to interviews and drawing
-from Indigenous knowledge - and how I underestimated the complexity
-of seasonal calendars.
-%
-Second, commentary on how to accurately characterise Yonlgu seasons.
-This section covers required datasets, historical changes, spatial
+The qualitative results fall into three parts.  In the first,
+I reflect on my approach to interviews and drawing from Indigenous knowledge --
+and how I underestimated the complexity of seasonal calendars.
+The second part consists of commentary on how to accurately characterise
+Yonlgu seasons, covering required datasets, historical changes, spatial
 variation in definitions, and three distinct types of season.
-%
-Third, a Yolngu seaonal calendar drawn from interview responses,
-defining a handful of meteorologically-defined seasons each year.
+The third, \cref{sec:calendar-description}, describes a Yolngu calendar
+of six seasons defined by weather conditions.
 
 The quantitative results follow, starting with a summary of the
 observational weather record.  Finally, the quantified seasons are
@@ -29,14 +25,13 @@ not for the description of the seasons, which can be found in books
 of knowledge and definitions they revealed.  While I anticipated finding
 some unsought information, the unexpected results were surprisingly important.
 This section summarises the structurally-relevant `unexpected results',
-which are vital to an accurate understanding of the Yolngu seasons.\\
-
+which are vital to an accurate understanding of the Yolngu seasons.
 
 I began this project with many assumptions about Yolngu seasons, which were
 slowly broken down by engagemnt with the literature on Indigenous Knowedge,
 fieldwork and interviews, analysis, and listening again to the recorded
 interviews.
-
+%
 I believe that some were (and a few still are) reasonable -- relationships
 and trust built over several years allowed participants to correct
 misinterpretation of their contribution, and helped both parties to notice
@@ -53,10 +48,9 @@ language and cultural frameworks is slow and difficult.
 Speaking without the cultural translation, this man showed me aspects of
 seasonal calendars that could easily be missed, simply because Indigenous
 people may not mention things without a European analogue, and non-Indigenous
-researchers may neglect to ask.  My lesson: pay particular attention to the
-questions that seem like `simple fact-finding' -- especially in cross-cultural
-research, there's no such thing!\\
-
+researchers may neglect to ask.  I found that `easy questions' demanded careful
+consideration and reflection, or assumptions ruled -- in  cross-cultural
+research, there's no such thing as simple fact finding.
 
 The breakthrough moment for me came after the third day of interviews.
 At this point I had spoken to two Yolngu men and one non-Indigenous
@@ -225,7 +219,7 @@ by further research, and some of the challenges to overcome.
 \subsection{Other Advice}
 \label{subsec:detection-advice}
 
-Recongising seasons is not always simple.  Yolngu participants made
+Recognising seasons is not always simple.  Yolngu participants made
 several comments which, while not about the seasons themselves, are
 cucial to a well-grounded attempt to quantify them.
 
@@ -318,7 +312,7 @@ the framework provided by \textit{Man of All Seasons} \citep{davis1989} and
 sources describe different communities and areas.  When sources conflict, I
 use participant comments from Galiwinku.
 
-Readers should note that this is not a definitive Yolngu calendar; no such
+This is not a definitive Yolngu calendar; no such
 thing exists.  Instead it represents my attempt to construct a quantifiable
 Yolngu seasonal calendar from as many sources as possible, and show some of
 the challenges of working with complex, incomplete, and sometimes missing
@@ -530,17 +524,35 @@ the five weather stations from which I draw an observational record.\\
 
 
 \Cref{tab:galiwinku-monthly-summary} shows average conditions for each
-month at Galiwinku.  \Cref{fig:galiwinku-climograph}, above, is a monthly
+month at Galiwinku.  \Cref{fig:galiwinku-climograph} is a monthly
 climograph of rainfall, maximum and minimum temperature, and dewpoint at
 Galiwinku.  Note the low variation in temperature, and strong seasonal
 patterns in rainfall and humidity.
+%
+Wind vectors, \cref{fig:galiwinku-wind-vectors}, show the typical wind direction
+and speed by month.
 
-~\\
 
-\todo{should I reproduce the climograph here?  Or is a reference enough?}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\linewidth]{galiwinku/climograph.pdf}
+    \caption[Monthly Climograph for Galiwinku]{
+        Monthly summary of climate statistics at Galiwinku, showing the per-day
+        mean for each month.  Rainfall (vertical bars), maximum temperature
+        (solid line), minimum temperature (dashed line), and  dewpoint
+        temperature (dotted line).  Dewpoint temperature is a measure of humidity.}
+    \label{fig:galiwinku-climograph}
+% vspace?
+    \todo{monthly summary of wind as some kind of vector field}
+    \caption[Monthly wind vector summary for Galiwinku]{
+        Monthly summary of climate statistics at Galiwinku, showing the per-day
+        mean for each month.  Rainfall (vertical bars), maximum temperature
+        (solid line), minimum temperature (dashed line), and  dewpoint
+        temperature (dotted line).  Dewpoint temperature is a measure of humidity.}
+    \label{fig:galiwinku-wind-vectors}
+\end{figure}
 
-\todo{monthly summary of wind?  Would be simplified vector field, not
-sure if this is worthwhile... and might need to (maybe) show speed too.}
+
 
 \begin{table}[h]
     \caption[Monthly weather observations at Galiwinku]{
@@ -575,9 +587,10 @@ sure if this is worthwhile... and might need to (maybe) show speed too.}
 \begin{SCfigure}[][h]
     \includegraphics[width=0.3\linewidth]{compass-rose.pdf}
     \caption[Compass Rose mapping colour to wind direction]{
-        This compass rose shows the mapping of hue to wind direction used
-        for figures below.  Colours are equidistant in the HSL colour space.
-        }
+        The mapping of hue to wind direction used for
+        \cref{fig:galiwinku-observations,fig:milingimbi-observations}.
+        These colours are equidistant in the HSL colour space,
+        with constant saturation and lightness.}
     \label{fig:compass-rose}
 \end{SCfigure}
 
@@ -593,13 +606,13 @@ to ensure that the contrast of prevailing monsoon winds is blue/yellow,
 rather than red/green which would disadvantage colourblind readers.
 
 \Cref{fig:galiwinku-observations,fig:milingimbi-observations}
-show historical weather observations at Galiwinku and Milingimbi as a set of
+show weather observations at Galiwinku and Milingimbi as a set of
 heatmaps (panels, arranged vertically).  \Cref{fig:how-read-multipanel}
 gives a detailed walkthrough of how to read these figures.
 %
 Unlike the climograph above, these figures clearly show variation in timing
 of seasonal onset between years.  This demonstrates that timeseries data
-at daily resolution is required for investigation of Indigenous seasons.
+at daily resolution are required for investigation of Indigenous seasons.
 %
 The degree of seasonal variation in each indicator is also clearly visible:
 minimum temperature varies more than maximum; wind direction varies more in
@@ -625,10 +638,9 @@ sea breeze).
     \centering
     \includegraphics[width=\textwidth]{galiwinku/observations.pdf}
     \caption[Historical weather observations at Galiwinku]{
-        Weather observations at Galiwinku.  Each panel shows
-        a single variable, with years on the y axis and day-of-year on
-        the x.  Note that each variable has a different seasonal pattern,
-        and that seasonality changes from year to year.
+        Weather observations at Galiwinku.  Each panel shows a single variable,
+        with years on the y axis and day-of-year on the x.  Note that variables
+        have distinct seasonal patterns, the details of which vary each year.
         \Cref{fig:how-read-multipanel} explains how to read this figure.}
     \label{fig:galiwinku-observations}
 \end{figure}
@@ -636,10 +648,9 @@ sea breeze).
     \centering
     \includegraphics[width=\textwidth]{milingimbi/observations.pdf}
     \caption[Historical weather observations at Milingimbi Airport]{
-        Weather observations at Milingimbi Airport.  Each panel shows
-        a single variable, with years on the y axis and day-of-year on
-        the x.  Note that each variable has a different seasonal pattern,
-        and that seasonality changes from year to year.
+        Weather observations at Milingimbi Airport.  Each panel shows a single variable,
+        with years on the y axis and day-of-year on the x.  Note that variables
+        have distinct seasonal patterns, the details of which vary each year.
         \Cref{fig:how-read-multipanel} explains how to read this figure.}
     \label{fig:milingimbi-observations}
 \end{figure}
@@ -710,13 +721,12 @@ sea breeze).
 In this section, the qualitative data describing a Yolngu seasonal
 calendar is applied to the observational weather record, deriving
 a numerical specification for each season and ultimately a best-effort
-timeseries of which season was `observed' on each day.\\
-
-To avoid bloating this section, only figures for the seasons at Galiwinku
+timeseries of which season was `observed' on each day.
+%
+For readability, only figures for the seasons at Galiwinku
 (Ngayawili weather station) are included in the text.  Corresponding
-figures for all other stations can be found in the electronic appendicies;
-interpretation of the figures below includes descriptions and comparisons
-where relevant.
+figures for all other stations can be found in the electronic appendicies.
+
 
 \begin{table}[h]
     \centering
@@ -813,6 +823,13 @@ clearly visible in the summarising figures below.\\
     \label{fig:galiwinku-seasons}
 \end{figure}
 
+
+\todo{write clear explanation that there are two distinct ways that
+`seasonal intensity' are presented: by index, and by occurance.
+Group figure references this way, and note the clear links from
+bluepanels to indexlines, and the equal-proportional-area in
+pie, probability, and top heatmap.
+}
 
 \Cref{fig:season-daily-index,fig:season-daily-prob} represent two distinct
 approaches to summarising the data shown in \cref{fig:galiwinku-seasons},
