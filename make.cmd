@@ -2,6 +2,11 @@
 :: Get the latest code
 git pull || pause
 
+echo.
+echo Words in thesis: (body/headings/other)
+texcount -1 -inc -dir=tex\ tex\thesis.tex
+echo.
+
 :: Run analysis, if code has changed more recently than outputs
 python code\main.py || pause
 
