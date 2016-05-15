@@ -155,7 +155,8 @@ def wind_vectors_plot(data):
             ax.quiver(x, y, v[0], v[1], scale=1.2*max(data), units='xy',
                       headlength=0, headwidth=1, color=col)
 
-    fig, axes = plt.subplots(2, sharex=True, figsize=(8, 3))
+    with sns.axes_style("dark", {"axes.facecolor": "1"}):
+        fig, axes = plt.subplots(2, sharex=True, figsize=(8, 3))
 
     for ax, name, title in ((axes[0], nameof.winddir09, 'Morning (9am)'),
                             (axes[1], nameof.winddir15, 'Afternoon (3pm)')):
