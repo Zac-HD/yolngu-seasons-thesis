@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Turn invisible data into beautiful tables and figures."""
 
+import math
 import os
 
 import numpy as np
@@ -60,6 +61,7 @@ def save_out(station):
                station_name, 'monthly-seasons')
 
     save_figure(climograph(data), station_name, 'climograph')
+    save_figure(wind_vectors_plot(data), station_name, 'wind-vectors')
     save_figure(multipanel(data, *utils.chart_panels),
                 station_name, 'observations')
     save_figure(multipanel(
@@ -132,6 +134,40 @@ def climograph(df):
     ax.set_ylim(bottom=0)
     ax_rain.set_xlim([0.5, 12.5])
     ax.set_xlim([0.5, 12.5])
+    return fig
+
+
+def wind_vectors_plot(data):
+    def count_by_month(series):
+        return [g.value_counts(dropna=True, sort=False) for name, g in (
+                series
+                .where(series != 'CALM')
+                .map({w: i for i, w in enumerate(utils.wind_dirs)})
+                .groupby(series.index.month))]
+
+    def wind_dir_to_xy(dir_num, scale=1):
+        rads = 2 * math.pi * -(dir_num - 4) / 16
+        return scale * math.cos(rads), scale * math.sin(rads)
+
+    def month_vec_plot(ax, data, x=0, y=0):
+        w_vec = [wind_dir_to_xy(i, scale) for i, scale in enumerate(data)]
+        for v, col in zip(w_vec, list(sns.hls_palette(16, h=0.25))):
+            ax.quiver(x, y, v[0], v[1], scale=1.2*max(data), units='xy',
+                      headlength=0, headwidth=1, color=col)
+
+    fig, axes = plt.subplots(2, sharex=True, figsize=(8, 3))
+
+    for ax, name, title in ((axes[0], nameof.winddir09, 'Morning (9am)'),
+                            (axes[1], nameof.winddir15, 'Afternoon (3pm)')):
+        ax.set_title(title, loc='left', y=0.9, fontsize=9)
+        ax.set_ylim([-0.25, 0.25])
+        ax.set_yticks([])
+        ax.set_xlim([0, 13])
+        ax.set_xticks(list(range(1, 13)))
+        ax.set_xticklabels(utils._months)
+        for i, series in enumerate(count_by_month(data[name])):
+            month_vec_plot(ax, list(series), i+1, 0)
+
     return fig
 
 
