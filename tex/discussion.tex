@@ -127,7 +127,7 @@ or if it has a real basis in Yolngu definitions of seasons.
 
 
 The tendency of this approach to show seasons interrupting each other at odd
-times is a great strength to the degree that these interuptions accurately
+times is a strength to exactly the degree that these interuptions accurately
 reflect Yolngu understanding of the seasons.  Assessing this aspect of the
 results would be a high priority for subsequent rounds of fieldwork, which
 were not possible within the resources available for this thesis.
@@ -149,13 +149,62 @@ a certain day could be affected by observations at a substantial temporal distan
 
 \subsection{Quantitative Analysis}
 
-\todo{
-Discuss various ways to characterise onset and typical timing, issues with each.
-Really hammer home the non-european-ness of these seasons,
-including by listing the shortcuts that would not be well supported.
-}
+Part of the motivation for this research was dissatisfaction with the way in
+which onset and typical timing of Indigneous seasons is typically presented
+(if at all) -- usually by listing the months in which each season occurs.
+%
+An early draft suggested calculating the onset date of each season in each
+year, and summarising this data.  Unfortunately, such summaries are less
+meaningful when seasons can interrupt one another in any order; simply finding
+the first date or last on which a season occurred is far from a robust method.
+
+How then, if at all, can the typical timing of Yolngu seasons be accurately
+characterised?  The results in \cref{sec:applying-seasons-method} suggest two
+basic possibilities: for each day of the year, take the mean over all years
+and compare either the mean normalised indicies, or the observed occurance
+of each season.
+%
+Comparing the indicies has a conceptual clarity to it; it suggests that the
+typical timing of a season is that period where conditions tend to fit the
+definition of that season better than any other.  It can be estimated simply
+by reading off the topmost line in \cref{fig:season-daily-index} for any
+particular day.  This aggregation gives a steady progression for most of the
+year, and while it jitters a little in the Wet no two seasons ever co-occur.
+
+Comparing observed occurance (see \cref{fig:season-daily-prob}) is somewhat
+further from the raw data, but closer to people's experience.  If a similar
+result to the index-based characterisation is desired -- non-overlapping
+occurance, albeit with some jitter -- the same approach of taking the season
+with the highest value for each day of the year can be applied.
+%
+Alternatively, for each season we can calculate the shortest interval which
+contains some proportion of all days on which that season occured -- eg.
+ninety percent for a robust and overlapping intervals, or fifty percent for
+shorter intervale with gaps between them.  In my opinion, this last option
+is the most robust way to characterise typical timing of Yolngu seasons while
+remaining well-founded in Indigenous definitions of the seasons.
+%
+All three approaches are drawn for comparison in \cref{fig:galiwinku-seasons}.
 
 
+\begin{figure}[h]
+    \centering
+    \vspace{1.5in}\todo{draw this figure} \vspace{1.5in}
+    %\includegraphics[width=\linewidth]{galiwinku/seasons-timing-circle.pdf}
+    \caption[Three ways to characterise timing of seasons, Galiwinku]{
+        Three ways to characterise timing of seasons, Galiwinku.
+        %
+        Months are shown in the center.  The inner ring shows the dominant season
+        for each day, defined as that with the greatest mean normalised index.
+        The middle ring shows which season was most often observed on that day.
+        The outer ring shows intervals in which a specified proportion of days
+        of that season fell -- dotted 90\%, dashed 75\%, solid 50\%.
+        \todo{check accuracy of caption after drawing}
+        %
+        The colour scheme is given by \cref{fig:galiwinku-season-pie}.
+        }
+    \label{fig:galiwinku-seasons}
+\end{figure}
 
 
 \todo{Discuss correlations work, once completed.}
