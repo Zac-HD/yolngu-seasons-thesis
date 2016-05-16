@@ -47,6 +47,9 @@ An investment in cross-cultural understanding is well worth making, especially
 on complex topics that appear to be simple!
 
 
+\todo{Compare to previous research, acknowledge chance of own failure}
+
+
 
 \subsection{Weather Observations}
 
@@ -84,21 +87,78 @@ peaks in the afternoon.
 \subsection{Detection of Seasons}
 \label{subsec:disc-season-detection}
 
-\todo{
-Note that trend- and event-based approaches were tested and didn't work.
-Discuss how well season detection worked, nondistinctiveness of wet
-season.  Propose algorithm with memory to fix this.  (and implement?)
-Really hammer home the non-european-ness of these seasons,
-including by listing the shortcuts that would not be well supported.
-Discuss various ways to characterise onset and typical timing, issues with each,
-foreshadow the final plot for conclusions.
-}
+Without published literature as a guide, several approaches to numerical
+detection of seasons were tested; conceptually based on (1) weather conditions
+directly, (2) trend change in conditions, or (3) event- or threshold-based
+detection.  It eventually became clear that direct assessment from daily
+weather was the most robust approach, as well as enjoying a stronger basis
+in the qualitative and interview data.
+%
+Trend-based detection would in principle detect seasons similarly in years
+which were eg. consistently hotter or colder than the norm, by recognising
+a relative increase or decrease in the weather variable of interest.  In
+practise, this approach was prone to very frequent `jitter' between seasons,
+or with other parameters too stable to reflect the possibility of `interrupting'
+seasons -- or sometimes that the season could change at all.
+%
+Event-based detection is not supported by the qualitative definitions of Yolngu
+seasons, and has similar problems with `stickiness' -- some years would
+not pass the event threshold, and seasonal change would not be detected!
+%
+Many of these problems could be disguised by adding a notion of time to the
+season-detection algorithms -- unacceptable, on the basis that research
+participants explained the fundamental unimportance of date to Yolngu seasons.
+
+
+The algorithm which was ultimately used to detect seasons,
+described in \cref{sec:applying-seasons-method}, appears to give good results
+-- an objective assessment is not possible without some independent record of
+season occurence, which as mentioned in the Methods chapter likely does not exist.
+%
+The season detection figures above show a relatively clear pattern for the
+dry seasons, with Midawarr, Dharrathamirri, and Rarrandharr in the correct
+dominant order and time of year.  Dhuludur, the start of the wet season, is
+somewhat less clear -- but this seems mostly due to variation in timing between
+years rather than poor detection.  If Barramirri and Mayaltha were treated as
+a single season, they would be detected reasonably well -- but internally,
+the distinction is very poor and their ordering is inconsistent. It is unclear
+whether this is purely an arifact of the skewed distribution of rainfall,
+or if it has a real basis in Yolngu definitions of seasons.
+
+
+The tendency of this approach to show seasons interrupting each other at odd
+times is a great strength to the degree that these interuptions accurately
+reflect Yolngu understanding of the seasons.  Assessing this aspect of the
+results would be a high priority for subsequent rounds of fieldwork, which
+were not possible within the resources available for this thesis.
+
+In the case that interruptions were too common, two solutions are proposed.
+If phenological data were available, season definitions accounting for
+ecological events might constrain the periods in which seasons can be detected.
+This would be a fuller reflection of Yolngu knowledge, but faces serious
+practical challenges -- and if historically typical timings are used rather
+than live data, the results will fail to represent the `strange changes'
+that participants reported seeing in their environment.
+%
+The second  possibility is to apply a more complex algorithm to weather data,
+which prefers to detect longer runs of days for each season.  The disdvantages
+of this approach include increased complexity, and either heightened sensitivity
+to initial conditions or a loss of locality -- in either case, the result for
+a certain day could be affected by observations at a substantial temporal distance.
 
 
 \subsection{Quantitative Analysis}
 
-\todo{discuss this stuff}
+\todo{
+Discuss various ways to characterise onset and typical timing, issues with each.
+Really hammer home the non-european-ness of these seasons,
+including by listing the shortcuts that would not be well supported.
+}
 
+
+
+
+\todo{Discuss correlations work, once completed.}
 
 
 \section{Reflection - methods and limitations}
@@ -221,8 +281,12 @@ collecting and analysing more data.
 
 
 \subsection{Depth of Study}
-Increasing the depth of study would \todo{elaborate}
-
+Deeper studies would likely focus on Indigenous Ecological Knowledge as it
+relates to seasonal patterns, and work to integrate IEK with western scientific
+knowledge.  Researchers must ensure that both Indigenous and non-Indigenous
+people benefit from such work, as there is a considerable history of
+exploitative `sharing' \citep[eg.][]{smith1999}.  Further analysis of monsoon-
+or weather-based seasons would also fit in this category.
 
 \begin{description}
 \item[Kinds of seasons]
@@ -252,7 +316,9 @@ change, non-Indigenous calendars, and so on.
 
 \begin{description}
 \item[Non-Indigenous calendars]
-    \todo{something}
+    A comparative study of many kinds of calendars could be fascinating --
+    Indigenous, agricultural, solar, lunar, or harvest seasons -- unlocking
+    the knowledge embedded in each.
 
 \item[Other weather data]
     The methods used in this study can be applied to any dataset which
