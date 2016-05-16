@@ -128,7 +128,8 @@ other calendars, but provide a longer weather record in a similar climate.
 \paragraph{Season recognition} is difficult to encode, and my methods can
 best be described as exploratory.  The specifics are described in
 \cref{sec:applying-seasons-method}, as they closely follow qualitative
-findings and constitute a result in themselves.
+findings and constitute a result in themselves.  Alternative approaches
+which were tried and rejected are described in \cref{subsec:disc-season-detection}.
 
 The general approach is to observe that seasons are recognised or defined
 at least partially by weather conditions on a day-to-day basis.  It is
@@ -137,7 +138,7 @@ it in terms of daily weather observations, and derive an daily index for
 each season.  Normalising these indicies by z-score makes them directly
 comparable, and the season with the greatest index on some day is said
 to occur on that day.
-
+%
 Alternative approaches, such as definitions by trend change in weather
 or onset thresholds, are not supported by the qualitative data.  See
 \cref{ch:results} for details.
@@ -393,29 +394,12 @@ several days observation.  This study prefers to avoid the risk of
 over-fitting, sensitivity to initial conditions, and implementation
 challenges such an approach brings.
 
-In ny case, Yolngu seasons cannot be well characterised by onset timing.
+In any case, Yolngu seasons cannot be well characterised by onset timing.
 Instead of asking ``when does [this season] typically begin?'' - which implies
 that each season begins once per year, at a roughly constant date -
 it is better to ask which season best matches conditions at a date,
 or which is most commonly observed.
 %
 The benefits and drawbacks of various ways to characterise typical or onset
-timing for seasons is discussed in \cref{subsec:disc-season-detection}.
-
-
-
-~\\
-
-Calculation of summary statistics for each season has a firmer conceptual
-grounding.  The daily data are grouped by detected season and summary statistics
-for each subset calculated, including measures of central tendency and
-variation in ...
-\begin{itemize}
-\item Calculation of summary stats for each season – typical and variation in conditions, onset, etc
-\item Comparison of stations, other data as inputs to season recognition.
-\item Correlation to ENSO, monsoon, dipole moment, etc
-\end{itemize}
-
-Note that even the simplest of these is really novel, as nobody has
-been able to calculate the summaries before!
+timing for seasons is discussed in \cref{subsec:disc-season-characterisation}.
 
