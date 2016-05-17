@@ -2,16 +2,17 @@
 """Data analysis and presentation for my thesis."""
 
 import concurrent
-import os
 import glob
+import os
 import shutil
+import sys
 
 import chart
 import weather
 
 if __name__ == '__main__':
     os.chdir(os.path.dirname(os.path.abspath(__file__)))
-    if os.path.isdir('../output') and (
+    if len(sys.argv) == 1 and os.path.isdir('../output') and (
             os.path.getmtime('../output') >
             max(os.path.getmtime(p) for p in glob.glob('*'))):
         print('Analysis outputs are (probably) not stale')

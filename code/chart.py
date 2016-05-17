@@ -55,6 +55,7 @@ def save_out(station):
     os.makedirs('../output/' + station_name, exist_ok=True)
 
     monthly = grouped_summary(data)
+    daily = grouped_summary(data, data.index.dayofyear)
     save_table(monthly, [nameof._asdict()[n] for n in utils.chart_panels],
                station_name, 'monthly-summary')
     save_table(monthly, ['Detected Season'] + list(utils.seasons),
@@ -72,14 +73,15 @@ def save_out(station):
                 station_name, 'seabreeze-direction')
     save_figure(multipanel(data, 'Detected Season', *utils.seasons),
                 station_name, 'seasons')
-    save_figure(lines(
-        grouped_summary(data, data.index.dayofyear)[list(utils.seasons)]),
+    save_figure(lines(daily[list(utils.seasons)]),
                 station_name, 'seasons-daily-index')
     save_figure(lines(
         season_prob(data), filled=True,
         ylabel='Observed season occurence\n(probability, weekly mean)'),
                 station_name, 'seasons-daily-prob')
     save_figure(season_pie(data), station_name, 'season-pie')
+    save_figure(timing_circle(daily[list(utils.seasons)], season_prob(data)),
+                station_name, 'timing-circle')
 
 
 def lines(daily, ylabel='', filled=False):
@@ -105,6 +107,55 @@ def season_pie(data):
     vcs.name = ''
     vcs.plot.pie(ax=ax, legend=False, figsize=(3, 3),
                  startangle=90, counterclock=False)
+    return fig
+
+
+def timing_circle(daily_seasons, obvs):
+    """A polar chart showing typical timing of seasons in three ways."""
+    def is_max(df, name):
+        out = np.array(df.idxmax(axis=1) == name, dtype=float)
+        out[out == 0] = np.nan
+        return out
+
+    def occur_interval(series, interval=0.9):
+        """Also handle wraparound and optimisation."""
+        longer = pd.concat([series, series])
+        delta = (1 - interval) / 2
+        candidates = []
+        for i in range(365):
+            s = longer.iloc[i:i+365]
+            cs = (s / s.sum()).cumsum()
+            candidates.append((
+                cs[cs <= delta].index[-1],
+                cs[cs >= (interval + delta)].index[0]))
+        start, end = sorted(candidates, key=lambda c: (c[1] - c[0]) % 366)[0]
+        ret = [np.nan] * 366
+        if end > start:
+            ret[start:end] = [1] * (end-start)
+        else:
+            ret[:end] = [1] * end
+            ret[start:] = [1] * (366 - start)
+        return np.array(ret)
+
+    fig, ax = plt.subplots(figsize=(8, 8), subplot_kw={'projection': 'polar'})
+    ax.set_xticks([i * 2 * np.pi / 12 for i in range(12)])
+    ax.set_xticklabels(utils._months)
+    ax.set_theta_zero_location('N')
+    ax.set_theta_direction(-1)
+    ax.set_rticks([])
+    ax.set_rlim([-8, 6])
+    radians = np.arange(366)*2*np.pi/365
+
+    for i, s in enumerate(utils.seasons):
+        obs = is_max(obvs, 'is_' + s)
+        idx = is_max(daily_seasons, s)
+        for y, dat in [(-3.5, idx), (-5, obs)]:
+            ax.plot(radians, dat * y, linewidth=15,
+                    color=sns.color_palette()[i], solid_capstyle='butt')
+        for it in (0.5, 0.75, 0.9):
+            dat = occur_interval(obvs['is_'+s], interval=it)
+            ax.plot(radians, dat * i, linewidth=(1-it)*25,
+                    color=sns.color_palette()[i])
     return fig
 
 
