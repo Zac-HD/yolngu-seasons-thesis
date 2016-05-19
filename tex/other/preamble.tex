@@ -1,13 +1,55 @@
-% All the style information for the thesis
+%%%%%%%%%%%%%%%%%%%%    Style    %%%%%%%%%%%%%%%%%%%%
+
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage[nottoc]{tocbibind}
+\usepackage{titlesec}
+\usepackage{lipsum}
+
+\setlist[itemize]{noitemsep,nolistsep} % minimise vertical spacing in lists
+\setlist[description]{style=nextline}  % description-lists have body on new line
+\def\labelitemi{-} % use a dash instead of solid bullet
+
+\setcounter{secnumdepth}{1}
+\setcounter{tocdepth}{1}
 
 \setlength{\parskip}{4pt}
+\setlength{\parindent}{18pt}
+
+\settocbibname{References}
+\titleformat{\chapter}[hang]{\normalfont\bfseries}{\LARGE{\thechapter}}{20pt}{\LARGE}
+
+
+%%%%%%%%%%%%%%%%%%%%    Other/Misc    %%%%%%%%%%%%%%%%%%%%
 
 \usepackage{microtype}
 
-\usepackage[margin=1in]{geometry}
-
 \usepackage{graphicx}
 \graphicspath{{./img/}{./output/}}
+
+\usepackage[status=draft,inline,nomargin]{fixme}
+\fxusetheme{color}
+\newcommand{\todo}{\fxfatal}
+
+
+%%%%%%%%%%%%%%%%%%%%    Figures    %%%%%%%%%%%%%%%%%%%%
+
+\usepackage{sidecap}
+\usepackage{ifoddpage}
+\usepackage{rotating}
+\usepackage[section]{placeins}
+\usepackage[font={small,it}]{caption}
+
+% Figure spacing; see https://tex.stackexchange.com/questions/26521
+\setlength{\textfloatsep}{24pt plus 4.0pt minus 4.0pt}  % 20.0pt plus 2.0pt minus 4.0pt
+\setlength{\floatsep}    {20pt plus 4.0pt minus 4.0pt}  % 12.0pt plus 2.0pt minus 4.0pt
+\setlength{\intextsep}   {20pt plus 4.0pt minus 4.0pt}  % 14.0pt plus 4.0pt minus 4.0pt
+
+
+%%%%%%%%%%%%%%%%%%%%    References    %%%%%%%%%%%%%%%%%%%%
+
+\usepackage[sort]{natbib}
+\bibliographystyle{agsm} % Australian Govt. Harvard-style
 
 \usepackage{hyperref}
 \hypersetup{
@@ -21,62 +63,23 @@
     pdfpagemode=UseNone,
 }
 
-\usepackage{sidecap}
-\usepackage{framed}
-\usepackage{ifoddpage}
-\usepackage{rotating}
-
-\renewenvironment{quote}{\begin{quotation}\small}{\end{quotation}}
-
-\usepackage{listings}
-\lstset{basicstyle=\footnotesize\ttfamily,breaklines=true}
-
-\usepackage[section]{placeins}
-
-\usepackage[font={small,it}]{caption}
-
-\usepackage[sort]{natbib}
-\bibliographystyle{agsm} % Australian Govt. Harvard-style
-
-\usepackage[nottoc]{tocbibind}
-\settocbibname{References}
-
-\usepackage{enumitem}
-\setlist[itemize]{noitemsep,nolistsep} % minimise vertical spacing in lists
-\setlist[description]{style=nextline}  % description-lists have body on new line
-\def\labelitemi{-} % use a dash instead of solid bullet
-
-\setcounter{secnumdepth}{1}
-\setcounter{tocdepth}{1}
-
-
-\usepackage{titlesec}
-\usepackage{lipsum}
-\titleformat{\chapter}[hang]
-  {\normalfont\bfseries}{\LARGE{\thechapter}}{20pt}{\LARGE}
-
-
-\usepackage[status=draft,inline,nomargin]{fixme}
-\fxusetheme{color}
-\newcommand{\todo}{\fxfatal}
-
-
 \usepackage[nameinlink,noabbrev,capitalise]{cleveref}
 
 
+%%%%%%%%%%%%%%%%%%%%    Other Envs.   %%%%%%%%%%%%%%%%%%%%
+
 \usepackage{float}
+\usepackage{framed}
+\usepackage{listings}
+
+\lstset{basicstyle=\footnotesize\ttfamily,breaklines=true}
+
+\renewenvironment{quote}{\begin{quotation}\small}{\end{quotation}}
+
 \newfloat{infobox}{h}{lob}[chapter]
 \floatname{infobox}{Box}
 \restylefloat*{infobox}
-\crefname{infobox}{box}{boxes}
+\crefname{infobox}{Box}{Boxes}
+\newenvironment{framedbox}{\begin{infobox} \begin{framed}}{\end{framed} \end{infobox}}
 
-\newenvironment{framedbox}
-    {\begin{infobox} \begin{framed}}
-    {\end{framed} \end{infobox}}
-
-
-% Figure spacing; see https://tex.stackexchange.com/questions/26521
-\setlength{\textfloatsep}{24pt plus 4.0pt minus 4.0pt}  % 20.0pt plus 2.0pt minus 4.0pt
-\setlength{\floatsep}    {20pt plus 4.0pt minus 4.0pt}  % 12.0pt plus 2.0pt minus 4.0pt
-\setlength{\intextsep}   {20pt plus 4.0pt minus 4.0pt}  % 14.0pt plus 4.0pt minus 4.0pt
 
