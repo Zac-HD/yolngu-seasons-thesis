@@ -3,14 +3,14 @@
 %TC:group quote 0 0
 %TC:macro \todo 1
 %TC:ignore
-\input{other/preamble.tex}
+\input{prelude.tex}
 
 \begin{document}
-\input{other/title.tex}
+\input{title.tex}
 
 \frontmatter
-\input{other/declaration.tex}
-\input{other/abstract.tex}
+\input{declaration.tex}
+\input{abstract.tex}
 
 \begingroup \let\cleardoublepage\relax \let\clearpage\relax
 % Don't force each of these onto a new page
@@ -31,10 +31,10 @@
 
 %TC:ignore
 \nocite{*}  % force uncited references to be listed (draft only)
-\bibliography{other/references}
+\bibliography{references}
 
 \appendix
-\input{other/appendices.tex}
+\input{appendices.tex}
 %TC:endignore
 
 \end{document}
