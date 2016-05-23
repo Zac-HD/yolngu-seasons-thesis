@@ -16,21 +16,11 @@ research in this area.
 
 \subsection{Qualitative and Interview Results}
 
-Interviews and informal discussions are an essential part of this study --
-that much was obvious in advance, and easily justified the cost of fieldwork.
-In retrospect they were indeed essential, for unforseen reasons!
-%
-Two goals necessitated fieldwork and in-person discussion of Yolngu seasons.
-The first was to collect detailed descriptions of each season, the definitions
-and timing, extreme events, climate change, and so on; the qualitative results
-show this was a success.  However, this is in a sense preliminary work --
-enough to get exploratory results, that can be taken back to Indigenous
-research participants and partners to start a deeper discussion.  In future
-studies secondary sources such as \textit{Man of All Seasons} \citep{davis1989}
-may support this preliminary analysis, and allow researchers to demonstrate
-their intentions, at some risk of wasted effort.
+Interviews and informal discussions were an essential and integral part of
+this study.
 
-The second goal of fieldwork  was to learn about the structure of Yolngu
+Two goals necessitated fieldwork and in-person discussion of Yolngu seasons.
+The first goal of fieldwork  was to learn about the structure of Yolngu
 seasons and try to catch any important information that would otherwise
 fail to cross cultural barriers.  The volume of \cref{sec:complex-seasons},
 on \textit{\nameref{sec:complex-seasons}}, speaks to the importance of these
@@ -46,20 +36,30 @@ founded on faulty premises, no matter how rigorous or technically impressive.
 An investment in cross-cultural understanding is well worth making, especially
 on complex topics that appear to be simple!
 
+The second goal was to collect detailed descriptions of the characteristics,
+definitions and timing of each season, and investigate related issues
+including extreme events and climate change.  The qualitative results
+show this was a success.  However, this is in a sense preliminary work --
+enough to get exploratory results, that can be taken back to Indigenous
+research participants and partners to start a deeper discussion.  Future
+studies may base such preliminary analysis entirely on secondary sources
+such as \textit{Man of All Seasons} \citep{davis1989} and this thesis,
+allowing researchers to demonstrate their intentions.
 
-This study goes further than previous published descriptions of Yolngu seasons.
+
+This study goes further and deeper than previous published descriptions of Yolngu seasons.
 \citet{barber2005} and the \textit{Yan-nhangu Atlas} \citep{atlas2014} each
 provide a list of seasons, with names and typical conditions on a single page.
 \citet{davis1989} goes into much greater detail on the weather conditions and
 social or ecological events of each season, but spends little time examining
 the structure or fluidity of Yolngu seasons.  Davis is nonetheless unusually
 detailed; some sources \citep[eg.][]{BOM-iwk} list seasons in terms of which
-months they occur in, without further explanation of variability or their true
-definitions.
+months they occur in, without further explanation of their characteristics,
+onset definitions, or underlying variability .
+\todo{add crisp statement of my unique or distinctive findings}
 
 
-
-\subsection{Weather Observations}
+\subsection{Raw Weather Observations}
 \label{ssec:disc-weather}
 
 The observational weather record, shown in
@@ -99,39 +99,39 @@ peaks in the afternoon.
 Without published literature as a guide, several approaches to numerical
 detection of seasons were tested; conceptually based on (1) weather conditions
 directly, (2) trend change in conditions, or (3) event- or threshold-based
-detection.  It eventually became clear that direct assessment from daily
-weather was the most robust approach, as well as enjoying a stronger basis
-in the qualitative and interview data.
+detection.  Extensive exploratory analysis demonstrated that direct assessment
+from daily weather was the most robust approach, and had the strongest
+correspondence with qualitative and interview data.
 %
 Trend-based detection would in principle detect seasons similarly in years
 which were eg. consistently hotter or colder than the norm, by recognising
-a relative increase or decrease in the weather variable of interest.  In
-practice, this approach was prone to very frequent `jitter' between seasons,
-or with other parameters too stable to reflect the possibility of `interrupting'
-seasons -- or sometimes that the season could change at all.
-%
-Event-based detection is not supported by the qualitative definitions of Yolngu
-seasons, and has similar problems with `stickiness' -- some years would
-not pass the event threshold, and seasonal change would not be detected!
+a relative increase or decrease in the weather variable of interest.
+In practice, this approach was highly dependent on arbitary parameters.
+Most were too stable, without the possibility of `interrupting' seasons --
+in some cases not changing at all.  Other parameters led to constantly
+changing seasons, while still getting occasionally failing to change for a
+year or more.  Event-based or trend detection is therefore not supported by
+the qualitative definitions of Yolngu seasons.
 %
 Many of these problems could be disguised by adding a notion of time to the
-season-detection algorithms -- unacceptable, on the basis that research
-participants explained the fundamental unimportance of date to Yolngu seasons.
+season-detection algorithms.  However, this would impose a non-Indigenous
+character, inconsistent with Yolngu participants explanations that the date
+is fundamentally unimportant to Yolngu seasons.
 
 
-The algorithm which was ultimately used to detect seasons,
-described in \cref{sec:applying-seasons-method}, appears to give good results
--- an objective assessment is not possible without some independent record of
-season occurence, which as mentioned in the Methods chapter likely does not exist.
+The suite of algorithms developed to detect seasons (\cref{sec:applying-seasons-method})
+appears to give good results, noting that an objective assessment is not
+possible without some independent record of season occurence (which as
+mentioned in \cref{meth:seas-detection} likely does not exist).
 %
 The season detection figures above show a relatively clear pattern for the
-dry seasons, with Midawarr, Dharrathamirri, and Rarrandharr in the correct
-dominant order and time of year.  Dhuludur, the start of the wet season, is
-somewhat less clear -- but this seems mostly due to variation in timing between
+dry seasons, with the order and time-of-year of Midawarr, Dharrathamirri, and
+Rarrandharr closely matching participant descriptions and published sources.
+Dhuludur, the start of the wet season, is less clear, but this seems largely due to variation in timing between
 years rather than poor detection.  If Barramirri and Mayaltha were treated as
 a single season, they would be detected reasonably well -- but internally,
 the distinction is very poor and their ordering is inconsistent. It is unclear
-whether this is purely an arifact of the skewed distribution of rainfall,
+whether this is an arifact of the skewed distribution of rainfall,
 or if it has a real basis in Yolngu definitions of seasons.
 
 
@@ -139,21 +139,27 @@ The tendency of this approach to show seasons interrupting each other at odd
 times is a strength to exactly the degree that these interuptions accurately
 reflect Yolngu understanding of the seasons.  Assessing this aspect of the
 results would be a high priority for subsequent rounds of fieldwork, which
-were not possible within the resources available for this thesis.
+were not possible within the time and resources available for this thesis.
 
-In the case that interruptions were too common, two solutions are proposed.
+In the case that detected interruptions were too common, three solutions could be explored.
 If phenological data were available, season definitions accounting for
 ecological events might constrain the periods in which seasons can be detected.
 This would be a fuller reflection of Yolngu knowledge, but faces serious
-practical challenges -- and if historically typical timings are used rather
-than live data, the results will fail to represent the `strange changes'
-that participants reported seeing in their environment.
+practical challenges.  In addition, if historically typical timings are used rather
+than live data the results will fail to represent the `strange changes'
+that participants reported in their environment.
 %
 The second  possibility is to apply a more complex algorithm to weather data,
 which prefers to detect longer runs of days for each season.  The disdvantages
 of this approach include increased complexity, and either heightened sensitivity
 to initial conditions or a loss of locality -- in either case, the result for
 a certain day could be affected by observations at a substantial temporal distance.
+%
+\todo{
+Third, ...
+real time testing / creating a validation dataset via informant data gathering
+over one or more years.
+}
 
 
 \subsection{Quantitative Analysis}
@@ -171,6 +177,8 @@ a certain day could be affected by observations at a substantial temporal distan
         of that season fell -- thin line 90\%, medium 75\%, thick 50\% --
         which is the preferred approach to characterising season timing.
         The colour scheme is given by \cref{fig:galiwinku-season-pie}.
+
+        \todo{rasterise inner rings to prevent further mis-printing}
         }
     \label{fig:galiwinku-timing-circle}
 \end{figure}
@@ -180,9 +188,10 @@ by listing the months in which each season occurs.  Dissatisfaction with this
 approach contributed significantly to the motivation for this research.
 %
 An early draft suggested calculating the onset date of each season in each
-year, and summarising this data.  Unfortunately, such summaries are less
-meaningful when seasons can interrupt one another in any order; simply finding
-the first date or last on which a season occurred is far from a robust method.
+year, and summarising this data.  Unfortunately, such summaries are not
+meaningful when seasons can interrupt one another in any order, implying
+that identifying the first or last date on which a season occurred is not
+a suitable approach.
 
 How then, if at all, can the typical timing of Yolngu seasons be accurately
 characterised?  The results in \cref{sec:applying-seasons-method} suggest two
@@ -200,14 +209,14 @@ year, and while it jitters a little in the Wet no two seasons ever co-occur.
 Comparing observed occurance (see \cref{fig:season-daily-prob}) is somewhat
 further from the raw data, but closer to people's experience.  If a similar
 result to the index-based characterisation is desired -- non-overlapping
-occurance, albeit with some jitter -- the same approach of taking the season
+occurance, albeit with some interruption of seasons -- the same approach of taking the season
 with the highest value for each day of the year can be applied.
 %
 Alternatively, for each season we can calculate the shortest interval which
 contains some proportion of all days on which that season occured -- eg.
 ninety percent for a robust and overlapping intervals, or fifty percent for
-shorter intervale with gaps between them.  In my opinion, this last option
-is the most robust way to characterise typical timing of Yolngu seasons while
+shorter intervale with gaps between them.  On balance, this last option
+appears the most robust way to characterise typical timing of Yolngu seasons while
 remaining well-founded in Indigenous definitions of the seasons.
 %
 All three approaches are drawn for comparison in \cref{fig:galiwinku-timing-circle}.
@@ -224,34 +233,30 @@ made the study responsive to the unexpected qualitative results.  I hypothesise
 that participant-led conversations and this flexibility were the primary
 factors that led to this study's emergent focus on the complex structure of
 Yolngu seasons -- an aspect of Indigenous seasonal knowledge which is neglected
-by much of the literature.
+by most of the available literature.
 
-I believe that the aim of this research -- to develop an approach to
+I consider that the aim of this research -- to develop an approach to
 integrating traditional and quantitative/analytical knowledge -- was well
 served by the chosen methodology and methods.  Multi-stage and iterative
-methods are well suited to exploratory research, and could form a strong
+methods are well suited to exploratory research, and can provide a robust
 basis for further research.  Suggested improvements to the methods within
 each stage, for investigation of Indigenous seasons specifically, are given
-in the section above.  The scope of this thesis transitioned from grand
-ambition to focussed inquiry as the depth and complexity of Yolngu seasonal
-knowledge became clear.  The final scoping focusses on well-grounded analysis
-of the data available, and leaves many tangents simply as suggested directions
+in the section above.  The scope of this thesis transitioned from broard
+synthesis to focussed inquiry as the depth and complexity of Yolngu seasonal
+knowledge became clear.  The final scope focusses on well-grounded analysis
+of the data available, while identifying many tangents as potential directions
 for future research.
 
-The limitations of this research are threefold:  the results barely scratch
+The main limitations are that the results barely scratch
 the depth of Indigenous Knowledge, it is difficult to assess the robustness
-of the findings, and only limited generalisation from them is possible.  These
-limitations do not condemn the study, but urge cautious interpretation.
-%
-That there is much more to learn is not exactly a weakness of the research --
-only so much ground can be covered in a few weeks of fieldwork -- but
-encourages further study and careful thought.  With a small sample size and
-the other limits described above, it is entirely possible that critical parts
-of Yolngu seasonal knowledge are simple missing from the results above.
+of the findings, and only limited generalisation is possible.  These
+limitations imply interpretation should be cautious.  It is possible that
+critical parts of Yolngu seasonal knowledge are missing from the results
+above due to the small sample size and other limits.
 %
 Difficulty in assessing the results is more concerning, and derived from
 uncertainty as to what the results \textit{should} be.   Properly resourcing
-follow-up fieldwork must be a priority for any future study; a second round
+follow-up fieldwork should be a priority for any future study; a second round
 of interviews would allow correction of any issues in the qualitative results.
 It could also validate the thresholds chosen in the numerical definitions of
 seasons, or offer feedback as they were changed.  Most importantly it would
@@ -281,10 +286,12 @@ of this research -- \textit{``developing an approach to integrating traditional
 knowledge with a quantitative analytical approach''} -- but are not suggested
 here.
 
+\todo{depth, then breadth}
+
 \subsection{Breadth of Study}
 Increasing the breadth of study would result in similar but less exploratory
-research; essentially trading novelty for rigor.  Generally this means
-collecting and analysing more data.
+research; essentially trading novelty for rigor.  The clearest avenue for
+this is to collect and analyse more data.
 
 \begin{description}
 \item[Multiple Indigenous calendars]
@@ -310,19 +317,23 @@ collecting and analysing more data.
 \end{description}
 
 \subsection{Depth of Study}
-Deeper studies would likely focus on Indigenous Ecological Knowledge as it
-relates to seasonal patterns, and work to integrate IEK with western scientific
+Deeper studies would likely focus on Indigenous Knowledge as it
+relates to seasonal patterns, and work to integrate IK with western scientific
 knowledge.  Researchers must ensure that both Indigenous and non-Indigenous
-people benefit from such work, as there is a considerable history of
-exploitative `sharing' \citep[eg.][]{smith1999}.  Further analysis of monsoon-
+people benefit from such work, and not continue the history of exploitative
+`sharing' condemed by eg. \citet{smith1999}.  Further analysis of monsoon-
 or weather-based seasons would also fit in this category.
 
 \begin{description}
+\item[Attention to Yolngu benefits]
+    \todo{good two-ways research would include working with Yolngu to determine
+    and implement outcomes that are important to them.}
+
 \item[Kinds of seasons]
     \Cref{sec:complex-seasons} describes a typology of seasons -- monsoonal,
     meteorological, and ecological -- that can be identified as part of a
-    `single' Yolngu calendar (to the degree that a `single yolngu calendar'
-    is coherent).  Further study on the conceptual basis of this typology would
+    `single' Yolngu calendar (to the degree that `single Yolngu calendar'
+    is a coherent idea).  Further study on the conceptual basis of this typology would
     be enlightening, as would gaining a stronger understanding of how
     seasonal indicators interact.
 
@@ -363,12 +374,12 @@ change, non-Indigenous calendars, and so on.
 \item[Climate Change]
     The methods used in this study can be applied to any dataset which
     includes a daily record of the relevant variables.  This enables
-    investigation of changes over time -- past or future -- and scenarios
-    including a wider range of conditions than exist in the historical record.
-    The obvious application of this is to investigate how Yolngu seasons have
+    investigation of observed, estimated, or projected past and future changes
+    across scenarios including a wider range of conditions than exist in the historical record.
+    One obvious application of this is to investigate how Yolngu seasons have
     changed over the past century, and how they may change under future climate
-    change scenarios in model forecast and backcasts.  There is substantial
-    interest in such a study from Yolngu participants.
+    change scenarios in model forecast and backcasts.  Yolngu participants
+    indicated substantial interest in such studies.
 \end{description}
 
 
@@ -379,22 +390,22 @@ change, non-Indigenous calendars, and so on.
 \todo{re-arrange to have benefits, then applications? (S)
 Ensure benefits for Yolngu are clearly stated}
 
-This thesis makes a novel contribution to academic knowledge -- it is the
+This thesis makes a novel contribution to academic knowledge: it is the
 first study to quantitatively assess Australian Indigenous seasons, and
 develops techniques for further novel analysis including characterisation
 of seasonal timing.
 %
 It supports certain concrete applications of interest to both Yolngu and
-non-Indigenous people, substantively through the methods pioneered above
-rather than specific results.  Intangible benefits are less certain, but
-no less important.
+non-Indigenous people, particularly through the methods pioneered above
+rather than the specific results.  Intangible benefits are more difficult
+to identify, but likely to be important.
 
 
 Considering what actitivites in northern Australia might benefit from the
-insights of this research reveals potential applications.  This strategy is
+insights of this research reveals several potential applications.  This strategy is
 founded on the idea that a local and long-tested seasonal calendar has real
 advantages for land, environmental, and natural resource management compared
-to a temperate-zone calendar imported from Europe.
+to an imported temperate-zone calendar assuming low inter-annual variability.
 %
 With the exploratory approach taken by this study, and the context-specific
 nature of Indigenous seasons, it is anticipated that most concrete application
@@ -419,7 +430,7 @@ Knowledge and cutting-edge fire science.
 Northern agriculture, especially for native or other non-traditional crops,
 could benefit from a clear understanding of local seasonality.  Research in
 this field should pay close attention to the relationships between vegetation
-dynamics and weather, and might provide a competitive advantage for Indigenous
+dynamics and weather, and might improve the profitability and viability of Indigenous
 enterprises.
 %
 Finally, Indigenous Knowledge and culture drives a substantial part of the
@@ -451,16 +462,17 @@ ways for Yolngu to apply this research, the specifics of which are a matter for
 community discussion and further research.
 
 
-Beyond specific applications, this research has intangible benefits.  It
+Beyond specific applications, this research has benefits.  It
 demonstrates more nuanced ways of thinking about tropical seasons than the
 simplistic Wet/Dry dichotomy \citep{willmett2009}, and builds the foundation
 for new framing around climate change -- everyone has lived experience with
 weather and seasons, where global average degrees of warming is merely jargon.
 %
 In the long term, it may contribute to the long and difficult process of
-non-Indigenous Australians learning to live in Australia on it's own terms,
-setting aside our `maladaptive traditions' \citep{flannery1994} to understand
-and manage the unique challenges presented by our variable and extreme
+non-Indigenous Australians learning to understand, live in, and nurture
+Australia through a fully Australian world-view.  This would require setting
+aside our `maladaptive traditions' grounded in non-Australian contexts
+\citep{flannery1994} to celebrate the unique challenges presented by our variable and extreme
 environments.  Imagine a future where local radio discusses not the timing of
 European flowers, but seasons -- with a guest panel of Indigenous elders and
 climate scientists.
