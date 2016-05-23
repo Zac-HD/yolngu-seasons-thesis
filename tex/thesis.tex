@@ -10,17 +10,15 @@
 
 \frontmatter
 \input{declaration.tex}
-\begingroup \let\cleardoublepage\clearpage
 \input{acknowledgements.tex}
 \input{abstract.tex}
-\endgroup
 
+\tableofcontents
+\listoffigures
 \begingroup \let\cleardoublepage\relax
-\clearpage  \checkoddpage\ifoddpage\null\clearpage\fi \tableofcontents
-\clearpage  \listoffigures
 \clearpage  \listoftables
-            \addcontentsline{toc}{chapter}{List of Boxes} \listof{infobox}{List of Boxes}
-\clearpage  \thispagestyle{empty}
+\addcontentsline{toc}{chapter}{List of Boxes}
+\listof{infobox}{List of Boxes}
 \endgroup
 %TC:endignore
 
