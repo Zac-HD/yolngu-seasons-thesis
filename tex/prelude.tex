@@ -74,8 +74,16 @@
 
 \lstset{basicstyle=\footnotesize\ttfamily,breaklines=true}
 
+% Quotes
 \renewenvironment{quote}{\begin{quotation}\small}{\end{quotation}}
 
+% TODO -- use differentiated and attributed block quotes
+\def\signed #1{{\leavevmode\unskip\nobreak\hfil\penalty50\hskip2em \hbox{}\nobreak\hfil ---#1 \parfillskip=0pt \finalhyphendemerits=0 \endgraf}}
+\newsavebox\mybox
+\newenvironment{bquote}[1] {\savebox\mybox{#1}\begin{quotation}\small} {\signed{\usebox\mybox}\end{quotation}}
+\newenvironment{pquote}[1] {\begin{bquote}{\textsl{#1}}\slshape}{\end{bquote}}
+
+% Boxes
 \newfloat{infobox}{h}{lob}[chapter]
 \floatname{infobox}{Box}
 \restylefloat*{infobox}
