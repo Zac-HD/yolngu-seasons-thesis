@@ -137,7 +137,8 @@ def timing_circle(daily_seasons, obvs):
             ret[start:] = [1] * (366 - start)
         return np.array(ret)
 
-    fig, ax = plt.subplots(figsize=(8, 8), subplot_kw={'projection': 'polar'})
+    fig, ax = plt.subplots(figsize=(8, 8), dpi=600,
+                           subplot_kw={'projection': 'polar'})
     ax.set_xticks([i * 2 * np.pi / 12 for i in range(12)])
     ax.set_xticklabels(utils._months)
     ax.set_theta_zero_location('N')
@@ -151,7 +152,8 @@ def timing_circle(daily_seasons, obvs):
         idx = is_max(daily_seasons, s)
         for y, dat in [(-3.5, idx), (-5, obs)]:
             ax.plot(radians, dat * y, linewidth=15,
-                    color=sns.color_palette()[i], solid_capstyle='butt')
+                    color=sns.color_palette()[i], solid_capstyle='butt',
+                    rasterized=True)
         for it in (0.5, 0.75, 0.9):
             dat = occur_interval(obvs['is_'+s], interval=it)
             ax.plot(radians, dat * i, linewidth=(1-it)*25,
