@@ -742,9 +742,7 @@ sea breeze).
 In this section, the qualitative data describing a Yolngu seasonal
 calendar is applied to the observational weather record, deriving
 a numerical specification for each season and ultimately a best-effort
-timeseries of which season was `observed' on each day.  The proportion
-of days on which each season was observed at Galiwinku is shown by
-\cref{fig:galiwinku-season-pie}.
+timeseries of which season was `observed' on each day.
 %
 For readability, only figures for the seasons at Galiwinku
 (Ngayawili weather station) are included in the text.  Corresponding
@@ -769,6 +767,7 @@ this code to the weather record.
     \lstinputlisting[firstline=36, lastline=63, xleftmargin=0.1\textwidth]{../code/season.py}
 \end{framedbox}
 
+\clearpage
 
 \begin{table}[h]
     \centering
@@ -792,13 +791,11 @@ this code to the weather record.
 \Cref{fig:galiwinku-seasons} is a multi-panel heatmap, using the same format
 as \cref{fig:galiwinku-observations,fig:milingimbi-observations} above.
 Each season has an individual panel showing the index for that season on each
-day, derived by taking the raw index from \cref{fig:season-definitions-code}
-and applying a four-day rolling mean and converting to a z-score (standard
+day, derived by taking the raw index as shown by \cref{fig:season-definitions-code}
+and applying a four-day rolling mean before converting to a z-score (standard
 deviations from the mean) to allow direct comparison between indices.
-%
 The topmost panel is an aggregated version, showing which season on each day
-had the greatest index.  This aggregated timeseries provides the basis for
-subsequent analysis.
+had the greatest index.
 
 Note the clear distinction between Midawarr (purple), Dharrathamirri (yellow),
 and Rarrandharr (light blue) -- the dry seasons.  This clear pattern in the
@@ -829,6 +826,7 @@ is also visible in the summarising figures below.
     \label{fig:galiwinku-seasons}
 \end{figure}
 
+\clearpage
 
 \begin{SCfigure}[][h]
     \centering
@@ -844,54 +842,49 @@ is also visible in the summarising figures below.
 \end{SCfigure}
 
 
-\todo{re-write this para, and restructure up to floatbarrier for clarity and flow.}
-
-The figures in this section may be characterised in terms of two distinct but related categories.
-Understanding the distinction and the relationship between these categories is crucial
-for accurate interpretation, as each summarise the data shown in
-\cref{fig:galiwinku-seasons} (parts of which fall into each category) without
-erasing or misrepresenting the variability that is a key characteristic of
-Yolngu seasons.
-
-The first category is those figures showing a \textit{normalised index of
-seasonal intensity} -- the z-score of the indices calculated in
-\cref{fig:season-definitions-code}.  These indices can be thought of as scoring
-how well conditions on some day match the definition of each season.
-The full data is shown by the blue-shaded panels in \cref{fig:galiwinku-seasons},
-and the mean (aggregated by day-of-year) is shown in \cref{fig:season-daily-index}.
-
-The second category shows a further step of processing, where each day in
-the dataset is assigned to the season with the greatest index on that day.
-These figures all share the colour scheme used by \cref{fig:galiwinku-season-pie}.
-The full data is shown by the top-most panel in \cref{fig:galiwinku-seasons},
-and shown in aggregate (proportion of days for each day-of-year) in
-\Cref{fig:season-daily-prob}.  The proportional area of each season (colour)
-is equal across these figures, as they represent the same data in more
-or less abstracted formats.
-
-The degree of distinction between seasons is shown as a line chart in
-\cref{fig:season-daily-index}, showing the mean per-day index for each
-season.  This shows ; lines of similar heights show seasons which describe
-typical conditions with similar predictive power.  That Dharrathamirri
-has the highest peak means it is most distinct -- southeast wind and no
-rain describes it well, and also matches other seasons very poorly.
-Note however that these indices are independent.
-
-A different approach is demonstrated in \cref{fig:season-daily-prob}, showing
-empirical probability of observing each season on a given day of the year.
-These data are further smoothed by a running weekly mean, to remove noise
-introduced by the small sample size (only 10-15 years for each station).
+Two distinct methods for characterising the timing of seasons by day-of-year
+are illustrated.  The first considers the \emph{normalised
+index of seasonal intensity}, which can be thought of as scoring how well
+weather conditions match the definition of each season.  This data is shown
+by the blue-shaded panels of \cref{fig:galiwinku-seasons}.
+The second method considers \emph{frequency of season occurance}, shown by
+the top (multi-coloured) panel of \cref{fig:galiwinku-seasons}.
 %
-The data in in \cref{fig:season-daily-prob} tells a similar story to
-the index lines (\cref{fig:season-daily-index}), but readers should note
-that these figures are seperately derived from the data shown in
-\cref{fig:galiwinku-seasons}.  Most importantly, observed occurance
-rates in \cref{fig:season-daily-prob} are not independent -- when one season is observed more, others
-must be observed proportionally less.  This property amplifies the
-difference between indices on a year-by-year basis, which clearly
-shows variability between years or `strong second' finishes.
+Both of these methods summarise the data without erasing or misrepresenting
+the variability that is a key characteristic of Yolngu seasons.  Understanding
+their relationship is important to accurately interpret the figures.
 
-\todo{pull out equal-area stuff, and use at end to draw connections}
+
+Applying the first method, the degree of distinction between seasons is shown
+as a line chart in \cref{fig:season-daily-index}.  This figure illustrates the
+mean index by day-of-year for each season, reducing the data on blue-shaded
+panels in \cref{fig:galiwinku-seasons} from three to two dimensions (dropping
+year).  Lines of similar heights show seasons which describe
+typical conditions for that day of the year with similar predictive power.
+Dharrathamirri has the highest peak, meaning it is most distinct -- southeast
+wind and no rain describe it well, and matches other seasons very poorly.
+Note however that these indices are calculated independently, and it
+is possible for all seasons to rise or fall togther (as in eg. Oct--Nov).
+
+
+Applying the second method, the relative frequency of observing each season
+by day-of-year is illustrated in \cref{fig:season-daily-prob} as shaded areas.
+This can be thought of as vertically sorting (again, removing the year-dimension
+from the data) the topmost panel of \cref{fig:galiwinku-seasons}.  These data
+smoothed by a 7-day running mean to remove noise introduced by the small sample
+of 10-15 years.
+%
+Unlike the index lines, these areas are not imdependent -- if one season was
+observed more often on some date, others were necessarily observed less.
+This property amplifies the difference between indices on a year-by-year basis,
+which clearly shows variability between years or `strong second' finishes.
+
+The frequency data are further reduced in \cref{fig:galiwinku-season-pie},
+discarding both time dimensions to clearly illustrate the relative abundance
+of days of each season.  The connection between the heatmap, shaded area, and
+pie chart is nonetheless clear -- the proportional area of each season
+(or colour) is equal across these figures, as they represent the same data
+in more or less abstracted formats.
 
 
 \begin{figure}[p]
@@ -920,14 +913,15 @@ shows variability between years or `strong second' finishes.
 \end{figure}
 
 
-\FloatBarrier
+\clearpage
 
 Monthly means for the normalised index of each season and most common season
 in each month are shown in \cref{tab:galiwinku-monthly-summary}.  This is
-a simplified textual form of \cref{fig:season-daily-prob,fig:season-daily-index}.
+a simplified textual form of \cref{fig:season-daily-prob,fig:season-daily-index},
+with data aggregated to monthly means.
 
 
-\begin{table}[htb]
+\begin{table}[t]
     \caption[Most common season and indices by month]{
         Most common season at Galiwinku by month, and monthly mean season
         indices.  `Main Season' summarises the data shown in
@@ -958,13 +952,19 @@ a simplified textual form of \cref{fig:season-daily-prob,fig:season-daily-index}
     }
 \end{table}
 
-\todo{summary paragraph for findings of this section
-%
-Those findings are:
-- seasons can be detected based on the OWR
-- detection works well for dry seasons, moderately for wet (possibly due to rainfall variability)
-- structure is consistent with known Yolngu understanding
-- representing seasonal occurance is complicated and there are multiple options
-}
 
+The key finding of analysis presented in this section is that Yolngu season
+can be detected from and characterised based on the observational weather
+record.  Detection is robust for the dry seasons (Midawarr, Dharrathamirri,
+and Rarrandharr), but does not strongly detect Dhuludur and experiences
+substantial `jitter' between Barramirri and Mayaltha.  This may be attributable
+to the consistency of wind direction relative to rainfall over multi-day
+timescales.
+%
+The structure of the characterised seasons are consistent with qualititive
+findings describing the Yolngu calendar, though further fieldwork would
+facilitate refinement of these methods.
+%
+Representing normal or typical occurence of Yolngu seasons is complicated,
+and there are multiple well-grounded options.
 
