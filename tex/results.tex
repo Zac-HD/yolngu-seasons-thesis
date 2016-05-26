@@ -571,15 +571,6 @@ patterns in rainfall and humidity in the climograph, and the monsoon pattern
     }
 \end{table}
 
-\begin{SCfigure}[][h]
-    \includegraphics[width=0.3\linewidth]{compass-rose.pdf}
-    \caption[Compass Rose mapping colour to wind direction]{
-        The mapping of hue to wind direction used for
-        \cref{fig:galiwinku-observations,fig:milingimbi-observations,%
-        fig:galiwinku-wind-vectors}.  These colours are equidistant in
-        the HSL colour space, with constant saturation and lightness.}
-    \label{fig:compass-rose}
-\end{SCfigure}
 
 \begin{figure}[p]
     \centering
@@ -604,6 +595,15 @@ patterns in rainfall and humidity in the climograph, and the monsoon pattern
     \label{fig:galiwinku-wind-vectors}
 \end{figure}
 
+\begin{SCfigure}[][b]
+    \includegraphics[width=0.4\linewidth]{compass-rose.pdf}
+    \caption[Compass Rose mapping colour to wind direction]{
+        The mapping of hue to wind direction used for
+        \cref{fig:galiwinku-observations,fig:milingimbi-observations,%
+        fig:galiwinku-wind-vectors}.  These colours are equidistant in
+        the HSL colour space, with constant saturation and lightness.}
+    \label{fig:compass-rose}
+\end{SCfigure}
 
 The mapping of hue to wind direction shown in \Cref{fig:compass-rose} is
 used for \cref{fig:galiwinku-observations,fig:milingimbi-observations,%
@@ -756,6 +756,20 @@ is listed in \cref{fig:season-definitions-code}; the blue-shaded panels in
 \cref{fig:galiwinku-seasons} display normalised output from application of
 this code to the weather record.
 
+\begin{framedbox}
+    \centering
+    \caption[Python code: definition of season indices]{
+        Code listing of variables and conditions used to detect seasons.
+        Seasons are defined by numerical criteria for each day, such as
+        ``rainfall greater than 15mm'', or ``maximum temperature below mean''.
+        Applying a criterion to the weather data gives a timeseries with 1 or 0
+        for each day, and the raw index for each season is the element-wise
+        sum of these timeseries.}
+    \label{fig:season-definitions-code}
+    \lstinputlisting[firstline=36, lastline=63, xleftmargin=0.1\textwidth]{../code/season.py}
+\end{framedbox}
+
+
 \begin{table}[h]
     \centering
     \caption{A quantifiable summary of the Yolngu seasons case study.}
@@ -774,34 +788,6 @@ this code to the weather record.
         \bottomrule
     \end{tabular}
 \end{table}
-
-\begin{framedbox}
-    \centering
-    \caption[Python code: definition of season indices]{
-        Code listing of variables and conditions used to detect seasons.
-        Seasons are defined by numerical criteria for each day, such as
-        ``rainfall greater than 15mm'', or ``maximum temperature below mean''.
-        Applying a criterion to the weather data gives a timeseries with 1 or 0
-        for each day, and the raw index for each season is the element-wise
-        sum of these timeseries.}
-    \label{fig:season-definitions-code}
-    \lstinputlisting[firstline=36, lastline=63, xleftmargin=0.1\textwidth]{../code/season.py}
-\end{framedbox}
-
-
-\begin{SCfigure}[][h]
-    \centering
-    \includegraphics[width=0.65\textwidth]{galiwinku/season-pie.pdf}
-    \caption[Calculated season frequency, Galiwinku]{
-        Proportion of days on which each season was observed at
-        Galiwinku, over the period of available data.
-        These colours are used for each season in all figures below.
-        This figure shows proportional duration, as seasons do not
-        always occur over contiguous periods.
-        }
-    \label{fig:galiwinku-season-pie}
-\end{SCfigure}
-
 
 \Cref{fig:galiwinku-seasons} is a multi-panel heatmap, using the same format
 as \cref{fig:galiwinku-observations,fig:milingimbi-observations} above.
@@ -842,6 +828,20 @@ is also visible in the summarising figures below.
         }
     \label{fig:galiwinku-seasons}
 \end{figure}
+
+
+\begin{SCfigure}[][h]
+    \centering
+    \includegraphics[width=0.65\textwidth]{galiwinku/season-pie.pdf}
+    \caption[Calculated season frequency, Galiwinku]{
+        Proportion of days on which each season was observed at
+        Galiwinku, over the period of available data.
+        These colours are used for each season in all figures below.
+        This figure shows proportional duration, as seasons do not
+        always occur over contiguous periods.
+        }
+    \label{fig:galiwinku-season-pie}
+\end{SCfigure}
 
 
 \todo{re-write this para, and restructure up to floatbarrier for clarity and flow.}
