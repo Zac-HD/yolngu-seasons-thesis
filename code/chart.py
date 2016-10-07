@@ -194,7 +194,7 @@ def wind_vectors_plot(data):
     def count_by_month(series):
         return [g.value_counts(dropna=True, sort=False) for name, g in (
                 series
-                .where(series != 'CALM')
+                .replace('CALM', np.NaN)
                 .map({w: i for i, w in enumerate(utils.wind_dirs)})
                 .groupby(series.index.month))]
 
