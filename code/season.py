@@ -2,6 +2,7 @@
 """Detect seasons from weather observations."""
 
 import pandas as pd
+from pandas.api.types import CategoricalDtype
 
 from utils import nameof, seasons, wind_dirs
 
@@ -83,7 +84,7 @@ def add_seasons(df):
         df[list(seasons)]
         .dropna()
         .idxmax(axis=1)
-        .astype("category", categories=seasons, ordered=True)
+        .astype(CategoricalDtype(categories=seasons, ordered=True))
     )
     return df
 

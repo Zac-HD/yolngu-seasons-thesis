@@ -2,6 +2,7 @@
 """Load up some BOM weather data."""
 
 import pandas as pd
+from pandas.api.types import CategoricalDtype
 
 import season
 import utils
@@ -48,12 +49,12 @@ def raw_station_dataframe(station_number):
     # Quality fields and wind data are categorical columns
     for c in df.columns:  # pylint:disable=no-member
         if "quality of " in c.lower():
-            df[c] = df[c].astype("category", categories=_BOM_quality_flags)
+            df[c] = df[c].astype(CategoricalDtype(categories=_BOM_quality_flags))
         elif " as 16 compass point text" in c:
             df[c] = (
                 df[c]
                 .str.strip()
-                .astype("category", categories=utils.wind_dirs, ordered=True)
+                .astype(CategoricalDtype(categories=utils.wind_dirs, ordered=True))
             )
     return df
 
