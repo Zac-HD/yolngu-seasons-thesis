@@ -23,6 +23,8 @@ output/*
 *.pdf
 # So allow .pdf in the img dir to be tracked
 !img/*.pdf
+# and also the final outputs
+!/ZacHD_*.pdf
 
 ## Bibliography auxiliary files (bibtex/biblatex/biber):
 *.bbl
