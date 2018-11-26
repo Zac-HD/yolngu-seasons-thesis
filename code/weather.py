@@ -21,8 +21,8 @@ _BOM_quality_flags = (
     "W",  # quality controlled and considered wrong
     "S",  # quality controlled and considered suspect
     "I",  # quality controlled and inconsistent with other known information
-    "X",
-)  # no quality information available
+    "X",  # no quality information available
+)
 
 _data_cols = [
     "Month Day Year in YYYY-MM-DD format",
